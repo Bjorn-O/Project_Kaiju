@@ -185,6 +185,8 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
+    - _Foam_distance: 1.38
+    - _Foam_strength: 0.71
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -205,8 +207,8 @@ Material:
     - _MetallicRemapMin: 0
     - _NormalMapSpace: 0
     - _NormalScale: 1
-    - _Normal_speed: 0.35
-    - _Normal_strenght: 0.29
+    - _Normal_speed: 1.97
+    - _Normal_strenght: 0.24
     - _Normal_tile: 0.48
     - _OpaqueCullMode: 2
     - _PPDLodThreshold: 5
@@ -220,7 +222,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Smoothness: 0.42
+    - _Smoothness: 0.39
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
@@ -256,8 +258,9 @@ Material:
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _Wave_scale: 1
-    - _Wave_speed: 1
+    - _Wave_height: 0.55
+    - _Wave_scale: 1.89
+    - _Wave_speed: 22.6
     - _Wave_tile: 1
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
@@ -266,8 +269,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.031091962, g: 0.027233882, b: 0.11320752, a: 1}
-    - _Color_1: {r: 0.031372547, g: 0.039497163, b: 0.16078432, a: 0}
+    - _Color: {r: 0.060244665, g: 0.052331794, b: 0.2264151, a: 1}
+    - _Color_1: {r: 0.08566217, g: 0.10048194, b: 0.3301887, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
@@ -281,4 +284,6 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _Vector2: {r: 0.7, g: 1, b: 0, a: 0}
+    - _Vector2_1: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
