@@ -8,6 +8,7 @@ public class GunController : MonoBehaviour
 {
     private PlayerControls PlayerControls;
     
+    [Header("Bullet settings")]
     [SerializeField] private Transform gun;
     [SerializeField] private float horizontalRotationSpeed = 5f;
     [SerializeField] private float verticalRotationSpeed = 5f;
@@ -20,11 +21,17 @@ public class GunController : MonoBehaviour
     [SerializeField] private bool canShoot;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
+
+    [Header("Clamp values")]
+    [SerializeField] private int rotationMinX;
+    [SerializeField] private int rotationMaxX;
+    [SerializeField] private int rotationMinY;
+    [SerializeField] private int rotationMaxY;
+
     private float firingTimer; //Timer used to time between shots
     private Rigidbody bulletRigidbody;
 
-
-    private Vector2 rotationInput;
+    private Vector3 rotationInput;
     private Vector3 targetRotation;
 
     private void Awake()
@@ -51,7 +58,6 @@ public class GunController : MonoBehaviour
         if (!canShoot)
         {
             firingTimer += Time.deltaTime;
-            Debug.Log(firingTimer);
 
             if (firingTimer > firingDelay)
             {
@@ -74,37 +80,24 @@ public class GunController : MonoBehaviour
 
     void Aiming()
     {
-        rotationInput = PlayerControls.Turret.aiming.ReadValue<Vector2>();
-
-        // Calculate the target rotation
-        targetRotation.y += rotationInput.x * horizontalRotationSpeed;
-        targetRotation.x += rotationInput.y * verticalRotationSpeed;
+        rotationInput = Camera.main.ScreenPointToRay(PlayerControls.Turret.aiming.ReadValue<Vector2>()).GetPoint(10);
 
         // Clamp the rotation values to the specified limits
-        targetRotation.y = Mathf.Clamp(targetRotation.y, -horizontalRotationLimit, horizontalRotationLimit);
-        targetRotation.x = Mathf.Clamp(targetRotation.x, -verticalRotationLimit, verticalRotationLimit);
+        targetRotation = new Vector3(
+           Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX),
+           Mathf.Clamp(rotationInput.y, rotationMinY, rotationMaxY),
+           rotationInput.z);
 
-        // Smoothly rotate the gun towards the target rotation
-        gun.localRotation = Quaternion.Slerp(gun.localRotation, Quaternion.Euler(targetRotation), Time.deltaTime * resetSpeed);
-
+        gun.transform.rotation = Quaternion.Euler(targetRotation.y * 10, -targetRotation.x * 10, 0f);
     }
 
 
     private void Fire()
     {
-        // Instantiate the bullet
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-    
-        // Calculate the direction to shoot the bullet
         Vector3 bulletDirection = bulletSpawnPoint.forward;
-    
-        // Apply the initial bullet speed
         Vector3 bulletVelocity = bulletDirection * bulletSpeed;
-    
-        // Apply gravity to the bullet
         bulletVelocity.y -= gravity * Time.deltaTime;
-
-        // Apply the velocity to the bullet's rigidbody
         bulletRigidbody = bullet.GetComponent<Rigidbody>();
         bulletRigidbody.velocity = bulletVelocity;
 

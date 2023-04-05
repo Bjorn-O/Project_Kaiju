@@ -31,7 +31,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""aiming"",
                     ""type"": ""Value"",
                     ""id"": ""b8909087-a179-4bbb-a30b-831bb009ab7c"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Delta"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -48,59 +48,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""25f2421a-6e5f-4869-871f-0b0f4a302546"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""b948f0af-ef6d-4c30-97b9-51764fa4d88a"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""aiming"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""70805fef-6f78-41de-93ba-0eda5ab58afc"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aiming"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""a496a887-c509-4b8f-b2e4-122847948bfe"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aiming"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""0cd5a9ca-e56d-42ba-9aff-8716d52fa9af"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aiming"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""f918e005-76bc-40de-a58c-d1dedd991af3"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aiming"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -118,8 +74,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""gunner control scheme"",
-            ""bindingGroup"": ""gunner control scheme"",
+            ""name"": ""Gunner Control Scheme"",
+            ""bindingGroup"": ""Gunner Control Scheme"",
             ""devices"": []
         }
     ]
@@ -224,13 +180,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public TurretActions @Turret => new TurretActions(this);
-    private int m_gunnercontrolschemeSchemeIndex = -1;
-    public InputControlScheme gunnercontrolschemeScheme
+    private int m_GunnerControlSchemeSchemeIndex = -1;
+    public InputControlScheme GunnerControlSchemeScheme
     {
         get
         {
-            if (m_gunnercontrolschemeSchemeIndex == -1) m_gunnercontrolschemeSchemeIndex = asset.FindControlSchemeIndex("gunner control scheme");
-            return asset.controlSchemes[m_gunnercontrolschemeSchemeIndex];
+            if (m_GunnerControlSchemeSchemeIndex == -1) m_GunnerControlSchemeSchemeIndex = asset.FindControlSchemeIndex("Gunner Control Scheme");
+            return asset.controlSchemes[m_GunnerControlSchemeSchemeIndex];
         }
     }
     public interface ITurretActions
