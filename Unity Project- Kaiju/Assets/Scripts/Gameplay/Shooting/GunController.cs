@@ -30,7 +30,6 @@ public class GunController : MonoBehaviour
 
     private float firingTimer; //Timer used to time between shots
     private Rigidbody bulletRigidbody;
-
     private Vector3 rotationInput;
     private Vector3 targetRotation;
 
@@ -50,8 +49,6 @@ public class GunController : MonoBehaviour
     {
         PlayerControls.Disable();
     }
-
-
 
     private void Update()
     {
@@ -77,18 +74,17 @@ public class GunController : MonoBehaviour
 
     }
 
-
     void Aiming()
     {
         rotationInput = Camera.main.ScreenPointToRay(PlayerControls.Turret.aiming.ReadValue<Vector2>()).GetPoint(10);
 
         // Clamp the rotation values to the specified limits
         targetRotation = new Vector3(
-           Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX),
-           Mathf.Clamp(rotationInput.y, rotationMinY, rotationMaxY),
+           Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX) * 10,
+           Mathf.Clamp(rotationInput.y, rotationMinY, rotationMaxY) * 10,
            rotationInput.z);
 
-        gun.transform.rotation = Quaternion.Euler(targetRotation.y * 10, -targetRotation.x * 10, 0f);
+        gun.transform.rotation = Quaternion.Euler(targetRotation.y, -targetRotation.x, 0f);
     }
 
 
