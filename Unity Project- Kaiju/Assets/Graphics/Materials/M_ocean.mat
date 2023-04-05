@@ -209,7 +209,7 @@ Material:
     - _NormalScale: 1
     - _Normal_speed: 1.97
     - _Normal_strenght: 0.24
-    - _Normal_tile: 0.48
+    - _Normal_tile: 0.1
     - _OpaqueCullMode: 2
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
@@ -222,7 +222,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Smoothness: 0.39
+    - _Smoothness: 0.41
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
@@ -258,8 +258,8 @@ Material:
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _Wave_height: 0.55
-    - _Wave_scale: 1.89
+    - _Wave_height: 0.61
+    - _Wave_scale: 2.1
     - _Wave_speed: 22.6
     - _Wave_tile: 1
     - _ZTestDepthEqualForOpaque: 3
@@ -286,4 +286,5 @@ Material:
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
     - _Vector2: {r: 0.7, g: 1, b: 0, a: 0}
     - _Vector2_1: {r: 0, g: 1, b: 0, a: 0}
+    - _Wave_stretching: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
