@@ -466,7 +466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4620544742118667068
 Transform:
   m_ObjectHideFlags: 0
@@ -742,6 +742,7 @@ GameObject:
   - component: {fileID: 7859006238395532188}
   - component: {fileID: 6538970600259062841}
   - component: {fileID: 9033060130534127859}
+  - component: {fileID: 1775245836}
   m_Layer: 0
   m_Name: SM_FRISC-Motorboot
   m_TagString: Untagged
@@ -818,6 +819,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1775245836
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375519757532223782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2656853, y: 0.871374, z: 13.192587}
+  m_Center: {x: 0.0000000065337815, y: 1.04, z: -0.7335825}
 --- !u!1 &8256804763133164998
 GameObject:
   m_ObjectHideFlags: 0
