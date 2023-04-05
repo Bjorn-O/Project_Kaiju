@@ -14,17 +14,24 @@ public class GunController : MonoBehaviour
     [SerializeField] private float horizontalRotationLimit = 45f;
     [SerializeField] private float verticalRotationLimit = 45f;
     [SerializeField] private float resetSpeed = 2f;
-    [SerializeField] private Transform bulletSpawnPoint;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float firingDelay; //Delay between shots in seconds
     [SerializeField] private float bulletSpeed = 20f;
     [SerializeField] private float gravity = 9.81f;
-    
+    [SerializeField] private bool canShoot;
+    [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] private GameObject bulletPrefab;
+    private float firingTimer; //Timer used to time between shots
+    private Rigidbody bulletRigidbody;
+
+
     private Vector2 rotationInput;
     private Vector3 targetRotation;
 
     private void Awake()
     {
         PlayerControls = new PlayerControls();
+        canShoot = true;
+        firingTimer = 0;
     }
 
     private void OnEnable()
@@ -41,11 +48,23 @@ public class GunController : MonoBehaviour
 
     private void Update()
     {
+        if (!canShoot)
+        {
+            firingTimer += Time.deltaTime;
+            Debug.Log(firingTimer);
+
+            if (firingTimer > firingDelay)
+            {
+                firingTimer = 0;
+                canShoot = true;
+            }
+
+        }
 
         Aiming();
         
         // Check for fire input
-        if (PlayerControls.Turret.shooting.triggered)
+        if (PlayerControls.Turret.shooting.triggered && canShoot)
         {
             Fire();
         }
@@ -84,10 +103,12 @@ public class GunController : MonoBehaviour
     
         // Apply gravity to the bullet
         bulletVelocity.y -= gravity * Time.deltaTime;
-    
+
         // Apply the velocity to the bullet's rigidbody
-        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+        bulletRigidbody = bullet.GetComponent<Rigidbody>();
         bulletRigidbody.velocity = bulletVelocity;
+
+        canShoot = false;
     }
 
     
