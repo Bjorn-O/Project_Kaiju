@@ -28,6 +28,7 @@ public class GunController : MonoBehaviour
     [SerializeField] private int rotationMinY;
     [SerializeField] private int rotationMaxY;
 
+    [SerializeField] private float turningSpeed;
     private float firingTimer; //Timer used to time between shots
     private Rigidbody bulletRigidbody;
     private Vector3 rotationInput;
@@ -82,9 +83,13 @@ public class GunController : MonoBehaviour
         targetRotation = new Vector3(
            Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX) * 10,
            Mathf.Clamp(rotationInput.y, rotationMinY, rotationMaxY) * 10,
-           rotationInput.z);
+           0f);
 
         gun.transform.rotation = Quaternion.Euler(targetRotation.y, -targetRotation.x, 0f);
+        /*gun.transform.rotation = Quaternion.RotateTowards(gun.transform.rotation, Quaternion.LookRotation(new Vector3(
+           Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX) * 10,
+           Mathf.Clamp(rotationInput.y, rotationMinY, rotationMaxY) * 10,
+           0f)), turningSpeed * Time.deltaTime);*/
     }
 
 
