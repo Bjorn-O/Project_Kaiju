@@ -62,7 +62,6 @@ public class GunController : MonoBehaviour
                 firingTimer = 0;
                 canShoot = true;
             }
-
         }
 
         Aiming();
@@ -77,6 +76,8 @@ public class GunController : MonoBehaviour
 
     void Aiming()
     {
+        //TODO:
+        // Follow empty gameobject, empty gameobject based on mouse position, gun aim at empty gameobject.
         rotationInput = Camera.main.ScreenPointToRay(PlayerControls.Turret.aiming.ReadValue<Vector2>()).GetPoint(10);
 
         // Clamp the rotation values to the specified limits
@@ -85,11 +86,11 @@ public class GunController : MonoBehaviour
            Mathf.Clamp(rotationInput.y, rotationMinY, rotationMaxY) * 10,
            0f);
 
-        gun.transform.rotation = Quaternion.Euler(targetRotation.y, -targetRotation.x, 0f);
-        /*gun.transform.rotation = Quaternion.RotateTowards(gun.transform.rotation, Quaternion.LookRotation(new Vector3(
+        //gun.transform.rotation = Quaternion.Euler(targetRotation.y, -targetRotation.x, 0f);
+        gun.transform.rotation = Quaternion.Lerp(gun.transform.rotation, Quaternion.LookRotation(new Vector3(
            Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX) * 10,
            Mathf.Clamp(rotationInput.y, rotationMinY, rotationMaxY) * 10,
-           0f)), turningSpeed * Time.deltaTime);*/
+           0f)), turningSpeed * Time.deltaTime);
     }
 
 
