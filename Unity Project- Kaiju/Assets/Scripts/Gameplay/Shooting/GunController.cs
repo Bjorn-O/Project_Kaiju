@@ -10,11 +10,6 @@ public class GunController : MonoBehaviour
     
     [Header("Bullet settings")]
     [SerializeField] private Transform gun;
-    [SerializeField] private float horizontalRotationSpeed = 5f;
-    [SerializeField] private float verticalRotationSpeed = 5f;
-    [SerializeField] private float horizontalRotationLimit = 45f;
-    [SerializeField] private float verticalRotationLimit = 45f;
-    [SerializeField] private float resetSpeed = 2f;
     [SerializeField] private float firingDelay; //Delay between shots in seconds
     [SerializeField] private float bulletSpeed = 20f;
     [SerializeField] private float gravity = 9.81f;
@@ -27,12 +22,13 @@ public class GunController : MonoBehaviour
     [SerializeField] private int rotationMaxX;
     [SerializeField] private int rotationMinY;
     [SerializeField] private int rotationMaxY;
+    [SerializeField] private int rotationMaxZ;
+    [SerializeField] private int rotationMinZ;
 
     [SerializeField] private float turningSpeed;
     private float firingTimer; //Timer used to time between shots
     private Rigidbody bulletRigidbody;
-    private Vector3 rotationInput;
-    private Vector3 targetRotation;
+    private Vector3 aimPosition;
 
     private void Awake()
     {
@@ -76,21 +72,16 @@ public class GunController : MonoBehaviour
 
     void Aiming()
     {
-        //TODO:
-        // Follow empty gameobject, empty gameobject based on mouse position, gun aim at empty gameobject.
-        rotationInput = Camera.main.ScreenPointToRay(PlayerControls.Turret.aiming.ReadValue<Vector2>()).GetPoint(10);
+        aimPosition = Camera.main.ScreenPointToRay(PlayerControls.Turret.aiming.ReadValue<Vector2>()).GetPoint(10);
 
         // Clamp the rotation values to the specified limits
-        targetRotation = new Vector3(
-           Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX) * 10,
-           Mathf.Clamp(rotationInput.y, rotationMinY, rotationMaxY) * 10,
-           0f);
+        aimPosition = new Vector3(
+           Mathf.Clamp(aimPosition.x, rotationMinX, rotationMaxX),
+           Mathf.Clamp(aimPosition.y, rotationMinY, rotationMaxY),
+           Mathf.Clamp(aimPosition.z, rotationMinZ, rotationMaxZ));
 
         //gun.transform.rotation = Quaternion.Euler(targetRotation.y, -targetRotation.x, 0f);
-        gun.transform.rotation = Quaternion.Lerp(gun.transform.rotation, Quaternion.LookRotation(new Vector3(
-           Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX) * 10,
-           Mathf.Clamp(rotationInput.y, rotationMinY, rotationMaxY) * 10,
-           0f)), turningSpeed * Time.deltaTime);
+        gun.transform.LookAt(aimPosition);
     }
 
 
