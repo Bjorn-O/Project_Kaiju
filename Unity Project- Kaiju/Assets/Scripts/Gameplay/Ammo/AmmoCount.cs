@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class AmmoCount : MonoBehaviour
 {
     [SerializeField] private float refillDelay = 2f; // time delay before ammo refill in seconds
     [SerializeField] private int maxAmmo = 10; // maximum ammo count
+    [SerializeField] private int amountOfReloads = 0;
+    [SerializeField] private int maxReloads = 8;
     public int currentAmmo = 10; // current ammo count
     public bool canRefill = true; // flag to control ammo refill timing
 
@@ -21,14 +24,14 @@ public class AmmoCount : MonoBehaviour
 
     public void UpdateUI()
     {
-        ammoCount.text = currentAmmo.ToString() + "/" + maxAmmo.ToString();
+        ammoCount.text = currentAmmo.ToString() + "/" + maxAmmo.ToString() + "/n" + "reloads left" + amountOfReloads.ToString() + "/" + maxReloads.ToString();
 
     }
 
     // function to add ammo with a timed delay
-    public void AddAmmo(int amount)
+    public void AddAmmo()
     {
-        if (canRefill)
+        if (canRefill && amountOfReloads < maxReloads)
         {
             canRefill = false;
             currentAmmo = maxAmmo;
@@ -41,6 +44,7 @@ public class AmmoCount : MonoBehaviour
     {
         yield return new WaitForSeconds(refillDelay);
         canRefill = true;
+        amountOfReloads++;
         UpdateUI();
     }
 
