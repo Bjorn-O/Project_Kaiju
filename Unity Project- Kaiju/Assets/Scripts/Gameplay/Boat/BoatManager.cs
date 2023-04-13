@@ -18,6 +18,5 @@ public class BoatManager : NetworkBehaviour
     {
         base.OnGainedOwnership();
         onInitialize.Invoke();
-        print("Hey, I'm not a slave, baka!");
     }
 }
