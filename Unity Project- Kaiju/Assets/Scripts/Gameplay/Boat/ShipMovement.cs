@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +10,6 @@ using UnityEngine.Rendering.VirtualTexturing;
 public class ShipMovement : MonoBehaviour
 {
     //Compontents 
-    [SerializeField] SteerInput steerInput;
     [SerializeField] protected Rigidbody m_Rigidbody;
     [SerializeField] protected Quaternion m_Rotation;
 
@@ -17,7 +18,7 @@ public class ShipMovement : MonoBehaviour
     PlayerInput playerInput;
     private InputAction accelAction;
     private InputAction brakeAction;
-    private InputAction holdAction;
+    //private InputAction holdAction;
     private InputAction steerAction;
 
     //Properties
@@ -29,53 +30,63 @@ public class ShipMovement : MonoBehaviour
     float steer;
     Vector3 forward;
 
+
     // Start is called before the first frame update
     void Awake()
     {
         //Get Compontents
         playerInput = GetComponent<PlayerInput>();
-        steerInput = GetComponent<SteerInput>();
         m_Rigidbody = GetComponent<Rigidbody>();
 
         //Assign Input Actions
         accelAction = playerInput.actions["Accelerate"];
         brakeAction = playerInput.actions["Brake"];
-        holdAction = playerInput.actions["Hold Steer"];
         steerAction = playerInput.actions["Steer"];
 
         m_Rotation = pivotPoint.localRotation;
 
     }
-
+    
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //steer = steerInput.steered;
+
+        var forward = Vector3.Scale(new Vector3(1, 0, 1), transform.forward);
+        //var targetVel = Vector3.zero;
+        var movingForward = Vector3.Cross(transform.forward, m_Rigidbody.velocity).y < 0;
+        float currentSpeed;
+
         steer = steerAction.ReadValue<Vector2>().x;
-        forward = transform.rotation * Vector3.forward;
-
-        var forceDirection = transform.forward;
-
         //Rotates
-        m_Rigidbody.AddForceAtPosition(-steer * transform.right * steerPower / 100f * accelAction.ReadValue<float>(), pivotPoint.position);
 
+        currentSpeed = m_Rigidbody.velocity.magnitude;
+
+        if (currentSpeed >= 0.5f)
+        m_Rigidbody.AddForceAtPosition(-steer * transform.right * steerPower / 100f, pivotPoint.position);
+
+        //Accelerates boat
         if (accelAction.ReadValue<float>() == 1)
-        {
+        { 
            ApplyForceToReachVelocity(m_Rigidbody, forward * maxSpeed, power);
         }
-        else if (brakeAction.ReadValue<float>() == 1)
+
+        //Applies Drag so Boat can brake
+        if (brakeAction.ReadValue<float>() == 1)
         {
-            ApplyForceToReachVelocity(m_Rigidbody, forward * -10, power);
+            m_Rigidbody.drag = 2.5f;
+        }
+        else if (brakeAction.ReadValue<float>() == 0)
+        {
+            m_Rigidbody.drag = 0.5f;
         }
 
-        forward = pivotPoint.transform.rotation * Vector3.forward;
+        m_Rigidbody.velocity = Quaternion.AngleAxis(Vector3.SignedAngle(m_Rigidbody.velocity, (movingForward ? 1f : 0f) * transform.forward, Vector3.up) * drag, Vector3.up) * m_Rigidbody.velocity;
 
-       // pivotPoint.SetPositionAndRotation(pivotPoint.position, transform.rotation * m_Rotation * Quaternion.Euler(0f, 30f * -steer,0f));
-
+        
+        currentSpeed = Vector3.Magnitude(m_Rigidbody.velocity);
+        Debug.Log(currentSpeed.ToString("F0"));
     }
-
-
-
 
 
     public static void ApplyForceToReachVelocity(Rigidbody rigidbody, Vector3 velocity, float force = 1, ForceMode mode = ForceMode.Force)
