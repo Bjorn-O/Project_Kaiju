@@ -8,27 +8,27 @@ public class GunController : MonoBehaviour
 {
     private PlayerControls PlayerControls;
     
-    [Header("Bullet settings")]
+    [Header("Gun settings")]
     [SerializeField] private Transform gun;
     [SerializeField] private float firingDelay; //Delay between shots in seconds
     [SerializeField] private float bulletSpeed = 20f;
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private bool canShoot;
+    [SerializeField] private int rayDistance;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
 
     [Header("Clamp values")]
-    [SerializeField] private int rotationMinX;
-    [SerializeField] private int rotationMaxX;
     [SerializeField] private int rotationMinY;
     [SerializeField] private int rotationMaxY;
-    [SerializeField] private int rotationMaxZ;
-    [SerializeField] private int rotationMinZ;
+    [SerializeField] private int rotationMinX;
+    [SerializeField] private int rotationMaxX;
 
     [SerializeField] private float turningSpeed;
     private float firingTimer; //Timer used to time between shots
     private Rigidbody bulletRigidbody;
-    private Vector3 aimPosition;
+    private Vector3 rotationInput;
+    private Vector3 targetRotation;
 
     private void Awake()
     {
@@ -72,16 +72,14 @@ public class GunController : MonoBehaviour
 
     void Aiming()
     {
-        aimPosition = Camera.main.ScreenPointToRay(PlayerControls.Turret.aiming.ReadValue<Vector2>()).GetPoint(10);
+        rotationInput = Camera.main.ScreenPointToRay(PlayerControls.Turret.aiming.ReadValue<Vector2>()).GetPoint(rayDistance);
 
-        // Clamp the rotation values to the specified limits
-        aimPosition = new Vector3(
-           Mathf.Clamp(aimPosition.x, rotationMinX, rotationMaxX),
-           Mathf.Clamp(aimPosition.y, rotationMinY, rotationMaxY),
-           Mathf.Clamp(aimPosition.z, rotationMinZ, rotationMaxZ));
+        targetRotation = new Vector3(
+          Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX),
+          Mathf.Clamp(rotationInput.y, -rotationMaxY, -rotationMinY), //Y rotation uses negative value, Max and Min should be reversed and negative
+          rotationInput.z);
 
-        //gun.transform.rotation = Quaternion.Euler(targetRotation.y, -targetRotation.x, 0f);
-        gun.transform.LookAt(aimPosition);
+        gun.transform.rotation = Quaternion.Euler(-targetRotation.y * 10, targetRotation.x * 10, 0f);
     }
 
 
