@@ -25,16 +25,16 @@ public class GunController : MonoBehaviour
     [SerializeField] private int rotationMaxX;
 
     [SerializeField] private float turningSpeed;
-    private float firingTimer; //Timer used to time between shots
-    private Rigidbody bulletRigidbody;
-    private Vector3 rotationInput;
-    private Vector3 targetRotation;
+    private float _firingTimer; //Timer used to time between shots
+    private Rigidbody _bulletRigidbody;
+    private Vector3 _rotationInput;
+    private Vector3 _targetRotation;
 
     private void Awake()
     {
         PlayerControls = new PlayerControls();
         canShoot = true;
-        firingTimer = 0;
+        _firingTimer = 0;
     }
 
     private void OnEnable()
@@ -51,18 +51,18 @@ public class GunController : MonoBehaviour
     {
         if (!canShoot)
         {
-            firingTimer += Time.deltaTime;
+            _firingTimer += Time.deltaTime;
 
-            if (firingTimer > firingDelay)
+            if (_firingTimer > firingDelay)
             {
-                firingTimer = 0;
+                _firingTimer = 0;
                 canShoot = true;
             }
         }
-
+        // Should be an event
         Aiming();
         
-        // Check for fire input
+        // Should be an event
         if (PlayerControls.Turret.shooting.triggered && canShoot)
         {
             Fire();
@@ -72,29 +72,35 @@ public class GunController : MonoBehaviour
 
     void Aiming()
     {
-        rotationInput = Camera.main.ScreenPointToRay(PlayerControls.Turret.aiming.ReadValue<Vector2>()).GetPoint(rayDistance);
+        //Camera.main is an expensive/slow function. Readvalue is an expensive/slow function. Both in Update.
+        
+        // rotationInput = Camera.main.ScreenPointToRay(PlayerControls.Turret.aiming.ReadValue<Vector2>()).GetPoint(rayDistance);
 
-        targetRotation = new Vector3(
-          Mathf.Clamp(rotationInput.x, rotationMinX, rotationMaxX),
-          Mathf.Clamp(rotationInput.y, -rotationMaxY, -rotationMinY), //Y rotation uses negative value, Max and Min should be reversed and negative
-          rotationInput.z);
+        
+        //Creating a new Vector 3 every frame, expensive
+        _targetRotation = new Vector3(
+          Mathf.Clamp(_rotationInput.x, rotationMinX, rotationMaxX),
+          Mathf.Clamp(_rotationInput.y, -rotationMaxY, -rotationMinY), //Y rotation uses negative value, Max and Min should be reversed and negative
+          _rotationInput.z);
 
-        gun.transform.rotation = Quaternion.Euler(-targetRotation.y * 10, targetRotation.x * 10, 0f);
+        //Hard numbers. Why times 10?
+        gun.transform.rotation = Quaternion.Euler(-_targetRotation.y * 10, _targetRotation.x * 10, 0f);
     }
-
-
+    
     private void Fire()
     {
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-        Vector3 bulletDirection = bulletSpawnPoint.forward;
-        Vector3 bulletVelocity = bulletDirection * bulletSpeed;
-        bulletVelocity.y -= gravity * Time.deltaTime;
-        bulletRigidbody = bullet.GetComponent<Rigidbody>();
-        bulletRigidbody.velocity = bulletVelocity;
+        // Should be Raycast
+        
+        // GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        // Vector3 bulletDirection = bulletSpawnPoint.forward;
+        // Vector3 bulletVelocity = bulletDirection * bulletSpeed;
+        // bulletVelocity.y -= gravity * Time.deltaTime;
+        
+        // GetComponent every frame. Great.
+        
+        // bulletRigidbody = bullet.GetComponent<Rigidbody>();
+        // bulletRigidbody.velocity = bulletVelocity;
 
         canShoot = false;
     }
-
-    
 }
-
