@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
@@ -6,20 +7,23 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.VirtualTexturing;
+using UnityEngine.Serialization;
 
 public class ShipMovement : MonoBehaviour
 {
-    //Compontents 
-    [SerializeField] protected Rigidbody m_Rigidbody;
-    [SerializeField] protected Quaternion m_Rotation;
+    //Components 
+    [SerializeField] 
+    private Rigidbody shipRb;
+    [SerializeField] 
+    private Quaternion rotation;
 
     //Input
     [SerializeField] 
     PlayerInput playerInput;
-    private InputAction accelAction;
-    private InputAction brakeAction;
+    private InputAction _accelAction;
+    private InputAction _brakeAction;
     //private InputAction holdAction;
-    private InputAction steerAction;
+    private InputAction _steerAction;
 
     //Properties
     public float steerPower = 500f;
@@ -27,89 +31,85 @@ public class ShipMovement : MonoBehaviour
     public float maxSpeed = 10f;
     public float drag = 0.1f;
     public Transform pivotPoint;
-    float steer;
-    Vector3 forward;
+    private float _steer;
+    private Vector3 _forward;
 
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
-        //Get Compontents
+        //Get Components
         playerInput = GetComponent<PlayerInput>();
-        m_Rigidbody = GetComponent<Rigidbody>();
+        shipRb = GetComponent<Rigidbody>();
 
         //Assign Input Actions
-        accelAction = playerInput.actions["Accelerate"];
-        brakeAction = playerInput.actions["Brake"];
-        steerAction = playerInput.actions["Steer"];
+        _accelAction = playerInput.actions["Accelerate"];
+        _brakeAction = playerInput.actions["Brake"];
+        _steerAction = playerInput.actions["Steer"];
 
-        m_Rotation = pivotPoint.localRotation;
+        rotation = pivotPoint.localRotation;
 
     }
     
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         //steer = steerInput.steered;
 
         var forward = Vector3.Scale(new Vector3(1, 0, 1), transform.forward);
         //var targetVel = Vector3.zero;
-        var movingForward = Vector3.Cross(transform.forward, m_Rigidbody.velocity).y < 0;
-        float currentSpeed;
+        var movingForward = Vector3.Cross(transform.forward, shipRb.velocity).y < 0;
 
-        steer = steerAction.ReadValue<Vector2>().x;
+        _steer = _steerAction.ReadValue<Vector2>().x;
+
         //Rotates
-
-        currentSpeed = m_Rigidbody.velocity.magnitude;
+        var currentSpeed = shipRb.velocity.magnitude;
 
         if (currentSpeed >= 0.5f)
-        m_Rigidbody.AddForceAtPosition(-steer * transform.right * steerPower / 100f, pivotPoint.position);
+        shipRb.AddForceAtPosition(-_steer * transform.right * steerPower / 100f, pivotPoint.position);
 
         //Accelerates boat
-        if (accelAction.ReadValue<float>() == 1)
+        if (Math.Abs(_accelAction.ReadValue<float>() - 1) < 0.01f) //Last number represents Tolerance. Introduce variable
         { 
-           ApplyForceToReachVelocity(m_Rigidbody, forward * maxSpeed, power);
+           ApplyForceToReachVelocity(shipRb, forward * maxSpeed, power);
         }
 
         //Applies Drag so Boat can brake
-        if (brakeAction.ReadValue<float>() == 1)
+        if (Math.Abs(_brakeAction.ReadValue<float>() - 1) < 0.01f) //Last number represents Tolerance. Introduce variable
         {
-            m_Rigidbody.drag = 2.5f;
+            shipRb.drag = 2.5f;
         }
-        else if (brakeAction.ReadValue<float>() == 0)
+        else if (_brakeAction.ReadValue<float>() == 0)
         {
-            m_Rigidbody.drag = 0.5f;
+            shipRb.drag = 0.5f;
         }
 
-        m_Rigidbody.velocity = Quaternion.AngleAxis(Vector3.SignedAngle(m_Rigidbody.velocity, (movingForward ? 1f : 0f) * transform.forward, Vector3.up) * drag, Vector3.up) * m_Rigidbody.velocity;
+        Vector3 velocity = Quaternion.AngleAxis(Vector3.SignedAngle(shipRb.velocity, (movingForward ? 1f : 0f) * transform.forward, Vector3.up) * drag, Vector3.up) * (velocity = shipRb.velocity);
+        shipRb.velocity = velocity;
 
-        
-        currentSpeed = Vector3.Magnitude(m_Rigidbody.velocity);
+
+        currentSpeed = Vector3.Magnitude(velocity);
         Debug.Log(currentSpeed.ToString("F0"));
     }
-
-
-    public static void ApplyForceToReachVelocity(Rigidbody rigidbody, Vector3 velocity, float force = 1, ForceMode mode = ForceMode.Force)
+    
+    private void ApplyForceToReachVelocity(Rigidbody rb, Vector3 velocity, float force = 1, ForceMode mode = ForceMode.Force)
     {
-        if (force == 0 || velocity.magnitude == 0)
-            return;
-
-        velocity = velocity + velocity.normalized * 0.2f * rigidbody.drag;
+        if (force == 0 || velocity.magnitude == 0) return;
+    
+        velocity = velocity + velocity.normalized * (0.2f * rb.drag);
 
         //force = 1 => need 1 s to reach velocity (if mass is 1) => force can be max 1 / Time.fixedDeltaTime
-        force = Mathf.Clamp(force, -rigidbody.mass / Time.fixedDeltaTime, rigidbody.mass / Time.fixedDeltaTime);
+        force = Mathf.Clamp(force, -rb.mass / Time.fixedDeltaTime, rb.mass / Time.fixedDeltaTime);
 
         //dot product is a projection from rhs to lhs with a length of result / lhs.magnitude https://www.youtube.com/watch?v=h0NJK4mEIJU
-        if (rigidbody.velocity.magnitude == 0)
+        if (rb.velocity.magnitude == 0)
         {
-            rigidbody.AddForce(velocity * force, mode);
+            rb.AddForce(velocity * force, mode);
         }
         else
         {
-            var velocityProjectedToTarget = (velocity.normalized * Vector3.Dot(velocity, rigidbody.velocity) / velocity.magnitude);
-            rigidbody.AddForce((velocity - velocityProjectedToTarget) * force, mode);
+            var velocityProjectedToTarget = (velocity.normalized * Vector3.Dot(velocity, rb.velocity) / velocity.magnitude);
+            rb.AddForce((velocity - velocityProjectedToTarget) * force, mode);
         }
-
     }
-
 }
