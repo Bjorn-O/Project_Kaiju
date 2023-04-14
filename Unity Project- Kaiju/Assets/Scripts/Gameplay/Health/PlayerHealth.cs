@@ -19,10 +19,8 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void TakeDamage(uint damage)
+    public void PlayerDamage()
     {
-        currentHealth -= damage;
-        healthSlider.value = currentHealth;
         healthEvents.TriggerHealthChanged(currentHealth);
     }
 
