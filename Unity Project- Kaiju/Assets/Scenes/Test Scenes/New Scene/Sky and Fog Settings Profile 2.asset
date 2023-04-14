@@ -185,8 +185,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {r: 76.56228, g: 76.56228, b: 76.56228, a: 1}
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
   maxFogDistance:
     m_OverrideState: 0
     m_Value: 5000
@@ -207,7 +207,7 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 200
+    m_Value: 100
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -292,8 +292,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: -0.06489081}
   gain:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 0.88446164, z: 0.692438, w: 0}
 --- !u!114 &-648568232700621518
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -391,8 +391,8 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: -0.008865356
-        value: 0.2319336
+        time: -0.30108643
+        value: 0.015735626
         inSlope: -0.06374579
         outSlope: -0.06374579
         tangentMode: 0
@@ -400,17 +400,17 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0.8276952
       - serializedVersion: 3
-        time: 0.16783504
-        value: 1.575077
-        inSlope: 4.416641
-        outSlope: 4.416641
+        time: -0.0077266693
+        value: 1.521787
+        inSlope: 0.8966178
+        outSlope: 0.8966178
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.7563721
-        outWeight: 0.23629864
+        outWeight: 0.86352104
       - serializedVersion: 3
-        time: 0.44550923
-        value: 1.5340693
+        time: 0.26270893
+        value: 1.3562357
         inSlope: -4.129682
         outSlope: -4.129682
         tangentMode: 0
@@ -418,13 +418,13 @@ MonoBehaviour:
         inWeight: 0.18038812
         outWeight: 0.31261313
       - serializedVersion: 3
-        time: 0.56417227
-        value: 0.592625
-        inSlope: -0.09190383
-        outSlope: -0.09190383
+        time: 0.44051504
+        value: -0.2949177
+        inSlope: 0.085988164
+        outSlope: 0.085988164
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.47945395
+        inWeight: 1
         outWeight: 0.54495084
       - serializedVersion: 3
         time: 0.7194086
@@ -528,7 +528,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   scatteringTint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
   powderEffectIntensity:
     m_OverrideState: 1
     m_Value: 1
@@ -537,7 +537,7 @@ MonoBehaviour:
     m_Value: 0.789
   densityMultiplier:
     m_OverrideState: 1
-    m_Value: 0.215
+    m_Value: 0.218
   shapeFactor:
     m_OverrideState: 1
     m_Value: 0.669
@@ -549,7 +549,7 @@ MonoBehaviour:
     m_Value: {x: 8.78, y: 6.88, z: 5.15}
   erosionFactor:
     m_OverrideState: 1
-    m_Value: 0.551
+    m_Value: 0
   erosionScale:
     m_OverrideState: 1
     m_Value: 60.04
@@ -558,10 +558,10 @@ MonoBehaviour:
     m_Value: 1
   ambientLightProbeDimmer:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   sunLightDimmer:
     m_OverrideState: 1
-    m_Value: 0.329
+    m_Value: 0.295
   erosionOcclusion:
     m_OverrideState: 1
     m_Value: 0.026
@@ -694,11 +694,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   postExposure:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.5
   contrast:
     m_OverrideState: 1
-    m_Value: 33
+    m_Value: 14.9
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1.4980392, g: 1.8352941, b: 1.5764706, a: 1}
@@ -707,7 +707,7 @@ MonoBehaviour:
     m_Value: -27
   saturation:
     m_OverrideState: 1
-    m_Value: -58.9
+    m_Value: -42.1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
