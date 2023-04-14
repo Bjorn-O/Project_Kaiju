@@ -258,7 +258,7 @@ Material:
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _Wave_height: 0.2
+    - _Wave_height: 0.77
     - _Wave_scale: 2.1
     - _Wave_speed: 22.6
     - _Wave_tile: 1
