@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(HealthEvents))]
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private uint maxHealth = 100;
@@ -12,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         currentHealth = maxHealth;
     }
@@ -23,7 +24,6 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         healthSlider.value = currentHealth;
         healthEvents.TriggerHealthChanged(currentHealth);
-
     }
 
 }

@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 
 public class AmmoCount : MonoBehaviour
 {
@@ -24,19 +22,16 @@ public class AmmoCount : MonoBehaviour
 
     public void UpdateUI()
     {
-        ammoCount.text = currentAmmo.ToString() + "/" + maxAmmo.ToString() + "/n" + "reloads left" + amountOfReloads.ToString() + "/" + maxReloads.ToString();
-
+        ammoCount.text = currentAmmo + "/" + maxAmmo + "/n" + "reloads left" + amountOfReloads + "/" + maxReloads;
     }
 
     // function to add ammo with a timed delay
     public void AddAmmo()
     {
-        if (canRefill && amountOfReloads < maxReloads)
-        {
-            canRefill = false;
-            currentAmmo = maxAmmo;
-            StartCoroutine(RefillDelay());
-        }
+        if (!canRefill || amountOfReloads >= maxReloads) return;
+        canRefill = false;
+        currentAmmo = maxAmmo;
+        StartCoroutine(RefillDelay());
     }
 
     // coroutine to delay ammo refill
