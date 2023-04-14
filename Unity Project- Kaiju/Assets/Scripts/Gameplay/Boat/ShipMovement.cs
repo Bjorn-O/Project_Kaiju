@@ -105,11 +105,9 @@ public class ShipMovement : MonoBehaviour
         if (rb.velocity.magnitude == 0)
         {
             rb.AddForce(velocity * force, mode);
+            return;
         }
-        else
-        {
-            var velocityProjectedToTarget = (velocity.normalized * Vector3.Dot(velocity, rb.velocity) / velocity.magnitude);
-            rb.AddForce((velocity - velocityProjectedToTarget) * force, mode);
-        }
+        var velocityProjectedToTarget = (velocity.normalized * Vector3.Dot(velocity, rb.velocity) / velocity.magnitude); 
+        rb.AddForce((velocity - velocityProjectedToTarget) * force, mode);
     }
 }
