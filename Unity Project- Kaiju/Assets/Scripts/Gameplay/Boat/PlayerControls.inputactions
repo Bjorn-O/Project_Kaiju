@@ -16,21 +16,21 @@
                 },
                 {
                     "name": "Accelerate",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "0802bbd8-2401-4afa-b08a-8c0832442234",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Brake",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "64c56829-2c3e-4510-8212-471d2bb08f1b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Hold Steer",
