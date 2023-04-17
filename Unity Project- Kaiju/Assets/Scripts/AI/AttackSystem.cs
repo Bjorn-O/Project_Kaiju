@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject floorMarkerSprite;
+    private Quaternion rotationQuaternion;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        rotationQuaternion = Quaternion.Euler(90, 0, 0);
+    }
+    
+    public IEnumerator CircleAttack(Vector3 position, Quaternion rotation, float timeToWait)
+    {
+        Instantiate(floorMarkerSprite, position, rotation);
+        yield return new WaitForSeconds(timeToWait);
+
     }
 }
