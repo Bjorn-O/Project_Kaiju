@@ -3,7 +3,12 @@ guid: 6960127ca135d91439c0d10f219272bd
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: STONE_WALL
+    second: {fileID: 2100000, guid: a32246b216cb4c64793e6389be9753db, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
