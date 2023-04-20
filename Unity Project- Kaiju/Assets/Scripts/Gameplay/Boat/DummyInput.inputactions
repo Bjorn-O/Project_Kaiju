@@ -83,6 +83,45 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "DummyGun",
+            "id": "3f87b534-290d-40cd-ba5f-3c8a77c28bf9",
+            "actions": [
+                {
+                    "name": "RotateGun",
+                    "type": "Value",
+                    "id": "74d4bde8-20de-4af1-86cc-3561ee4dd4db",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7da8e472-c8fe-42f4-abf2-df517a6c47d6",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f37448a-f557-4da8-a01c-95f39c2a0484",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

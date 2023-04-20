@@ -1,14 +1,15 @@
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(NetworkObject))]
 public class PlayerManager : NetworkBehaviour
 {
     public static PlayerManager Singleton { get; private set; }
 
-    public UnityEvent gunConnected;
-    public UnityEvent lightConnected;
+    public UnityEvent onGunConnected;
+    public UnityEvent onLightConnected;
     
     public UnityEvent gunDisconnected;
     public UnityEvent lightDisconnected;
@@ -73,6 +74,7 @@ public class PlayerManager : NetworkBehaviour
             NetworkObjectNotFound(targetObject);
         }
         networkComponent.ChangeOwnership(clientId);
+        SetPlayerSlotServerRPC(playPos, clientId);
     }
     
     private void CheckOccupation()
@@ -107,13 +109,13 @@ public class PlayerManager : NetworkBehaviour
     [ClientRpc]
     private void GunOwnershipSetClientRPC()
     {
-        gunConnected?.Invoke();
+        onGunConnected?.Invoke();
     }
 
     [ClientRpc]
     private void SpotlightOwnershipSetClientRPC()
     {
-        lightConnected?.Invoke();
+        onLightConnected?.Invoke();
     }
 
     private void NetworkObjectNotFound(GameObject obj)
