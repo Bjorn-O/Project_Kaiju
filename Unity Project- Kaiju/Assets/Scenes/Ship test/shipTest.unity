@@ -1328,6 +1328,56 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.9951548
       objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
+      value: 10efefe0-2d84-463c-8d49-1fe717137143
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: 0802bbd8-2401-4afa-b08a-8c0832442234
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 64c56829-2c3e-4510-8212-471d2bb08f1b
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 903dde7f-f655-454d-93d6-33a29bb0c501
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
+      value: Ship/Steer[/Keyboard/a,/Keyboard/d]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: Ship/Accelerate[/Keyboard/w]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: Ship/Brake[/Keyboard/space]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767752834042224474, guid: 9b525d36d714f6b4b93b3ec0524d683d,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: Ship/Hold Steer[/Keyboard/w]
+      objectReference: {fileID: 0}
     - target: {fileID: 2767752834042224478, guid: 9b525d36d714f6b4b93b3ec0524d683d,
         type: 3}
       propertyPath: m_Name
