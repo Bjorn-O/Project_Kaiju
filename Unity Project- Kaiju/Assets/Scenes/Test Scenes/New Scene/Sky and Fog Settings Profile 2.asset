@@ -148,8 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   mode:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   meteringMode:
     m_OverrideState: 0
     m_Value: 2
@@ -163,11 +163,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   limitMin:
-    m_OverrideState: 0
-    m_Value: -1
+    m_OverrideState: 1
+    m_Value: 10.621302
   limitMax:
-    m_OverrideState: 0
-    m_Value: 14
+    m_OverrideState: 1
+    m_Value: 15
   curveMap:
     m_OverrideState: 0
     m_Value:
@@ -337,7 +337,7 @@ MonoBehaviour:
     m_Value: {r: 76.56228, g: 76.56228, b: 76.56228, a: 1}
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+    m_Value: {r: 0.23691706, g: 0.25531322, b: 0.31132078, a: 1}
   maxFogDistance:
     m_OverrideState: 0
     m_Value: 5000
@@ -358,7 +358,7 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 40
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -551,14 +551,14 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0.8276952
       - serializedVersion: 3
-        time: -0.0077266693
-        value: 1.521787
-        inSlope: 0.8966178
-        outSlope: 0.8966178
+        time: -0.14809227
+        value: 1.356336
+        inSlope: 4.2836266
+        outSlope: 4.2836266
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.7563721
-        outWeight: 0.86352104
+        inWeight: 0.5531772
+        outWeight: 0.10499044
       - serializedVersion: 3
         time: 0.26270893
         value: 1.3562357
@@ -691,16 +691,16 @@ MonoBehaviour:
     m_Value: 0.218
   shapeFactor:
     m_OverrideState: 1
-    m_Value: 0.669
+    m_Value: 0.595
   shapeScale:
     m_OverrideState: 1
     m_Value: 10
   shapeOffset:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 8.78, y: 6.88, z: 5.15}
   erosionFactor:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   erosionScale:
     m_OverrideState: 0
     m_Value: 1
@@ -738,7 +738,7 @@ MonoBehaviour:
     m_Value: 0.5
   shapeSpeedMultiplier:
     m_OverrideState: 1
-    m_Value: 0.305
+    m_Value: 1
   erosionSpeedMultiplier:
     m_OverrideState: 1
     m_Value: 1
@@ -762,7 +762,7 @@ MonoBehaviour:
     m_Value: 1
   shadowResolution:
     m_OverrideState: 1
-    m_Value: 512
+    m_Value: 256
   shadowPlaneHeightOffset:
     m_OverrideState: 1
     m_Value: 0
