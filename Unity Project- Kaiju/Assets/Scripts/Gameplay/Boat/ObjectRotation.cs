@@ -20,8 +20,6 @@ public class ObjectRotation : MonoBehaviour
 
     private void ApplyRotation()
     {
-        print(_rotateValue);
-        
         _lookRotation.x = Mathf.Clamp(_lookRotation.x -=
             _rotateValue.y * mouseSensitivity * Time.deltaTime,
             -xClamp, xClamp);
