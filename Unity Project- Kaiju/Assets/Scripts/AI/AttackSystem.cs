@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject floorMarkerSprite;
+    [SerializeField] private GameObject circleFloorMarkerSprite;
+    [SerializeField] private Vector3 storePosition;
     [SerializeField] private GameObject boatObject;
-    [SerializeField] private CapsuleCollider damageTrigger;
-    private Quaternion rotationQuaternion;
+    private CapsuleCollider damageTrigger;
+    private SpriteRenderer circleSprite;
 
     private void Awake()
     {
-        rotationQuaternion = Quaternion.Euler(90, 0, 0);
+        damageTrigger = circleFloorMarkerSprite.GetComponent<CapsuleCollider>();
+        circleSprite = circleFloorMarkerSprite.GetComponent<SpriteRenderer>();
     }
     
     public IEnumerator FloorMarkerAttack(Vector3 position, Quaternion rotation, float timeToWait)
     {
-        Instantiate(floorMarkerSprite, position, rotation);
+        circleFloorMarkerSprite.transform.position = position;
+        circleFloorMarkerSprite.transform.rotation = rotation;
         yield return new WaitForSeconds(timeToWait);
-        if (Vector3.Distance(boatObject.transform.position, damageTrigger.transform.position) > damageTrigger.radius)
+        circleSprite.enabled = false;
+        if (Vector3.Distance(boatObject.transform.position, damageTrigger.transform.position) < damageTrigger.radius) //Checks if boat is in trigger radius
         {
+            Debug.Log("Hit!");
             //Damage function
         }
+        circleFloorMarkerSprite.transform.position = storePosition;
+        circleSprite.enabled = true;
     }
 }
