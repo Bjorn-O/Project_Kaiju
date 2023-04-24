@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 33952055}
   - component: {fileID: 33952054}
   - component: {fileID: 33952053}
+  - component: {fileID: 33952056}
   m_Layer: 5
   m_Name: Damage1
   m_TagString: Untagged
@@ -207,10 +208,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1402606210}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: TakeDamage
-        m_Mode: 3
+      - m_Target: {fileID: 33952056}
+        m_TargetAssemblyTypeName: EnemyattackTest, Assembly-CSharp
+        m_MethodName: HitPlayer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -257,6 +258,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33952051}
   m_CullTransparentMesh: 1
+--- !u!114 &33952056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33952051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3d76fb1c5d01e44a1aea16a0226ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 5
+  playerHealth: {fileID: 1402606210}
 --- !u!1 &162237639
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,12 +658,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631596242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92c9f1dd581e1ef48adbc37d74711532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCount: {fileID: 1402606212}
+  ammoCount: {fileID: 0}
 --- !u!4 &631596244
 Transform:
   m_ObjectHideFlags: 0
@@ -824,7 +839,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1402606212}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AmmoCount, Assembly-CSharp
         m_MethodName: AddAmmo
         m_Mode: 3
@@ -1108,7 +1123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1367816663}
-  - component: {fileID: 1367816662}
+  - component: {fileID: 1367816664}
   m_Layer: 0
   m_Name: HealthManager
   m_TagString: Untagged
@@ -1116,20 +1131,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1367816662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367816661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dccd45cbe7cb954c9b14c507aeeea91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
 --- !u!4 &1367816663
 Transform:
   m_ObjectHideFlags: 0
@@ -1145,92 +1146,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1402606209
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1402606211}
-  - component: {fileID: 1402606210}
-  - component: {fileID: 1402606212}
-  - component: {fileID: 1402606214}
-  - component: {fileID: 1402606213}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1402606210
+--- !u!114 &1367816664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402606209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c89e041ae5c59408b574ad04b5c6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  healthSlider: {fileID: 1320298367}
-  healthEvents: {fileID: 1402606214}
---- !u!4 &1402606211
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402606209}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 456.61182, y: 544.0017, z: -1002.971}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1402606212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402606209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c26cf54f786cc84fb5dbf3aa533e3ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentAmmo: 10
-  canRefill: 1
-  ammoCount: {fileID: 1709432068}
---- !u!114 &1402606213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402606209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad1196a2a3809c42b4d4934e959dfb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthEvents: {fileID: 1402606214}
---- !u!114 &1402606214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402606209}
+  m_GameObject: {fileID: 1367816661}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7754822facd5fa42b043e9b05b4ba07, type: 3}
@@ -1239,10 +1161,10 @@ MonoBehaviour:
   onHealthChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1402606213}
-        m_TargetAssemblyTypeName: HealthEventsTest, Assembly-CSharp
-        m_MethodName: OnHealthChanged
-        m_Mode: 0
+      - m_Target: {fileID: 1402606210}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: PlayerDamage
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1266,6 +1188,95 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1402606209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402606211}
+  - component: {fileID: 1402606210}
+  - component: {fileID: 1402606214}
+  - component: {fileID: 1402606215}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1402606210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402606209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c89e041ae5c59408b574ad04b5c6a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthEvents: {fileID: 1402606214}
+--- !u!4 &1402606211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402606209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 456.61182, y: 544.0017, z: -1002.971}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1402606214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402606209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7754822facd5fa42b043e9b05b4ba07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onHealthZero:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1402606215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402606209}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff79e3a9e84a334f87e2b71c44aecca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatThreshold: 80
+  heatIncreaseRate: 20
+  heatDecreaseRate: 30
+  cooldownDelay: 2
+  OnOverheated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCooledDown:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1688612229
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,10 +20,12 @@ public class OverheatingController : MonoBehaviour
         if (Input.GetMouseButton(0) && !isOverheated)
         {
             Fire();
+            print("firing");
         }
         else
         {
             CoolDown();
+            print("cooling");
         }
     }
     

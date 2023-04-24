@@ -1,13 +1,11 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 [RequireComponent(typeof(HealthEvents))]
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private uint maxHealth = 100;
     [SerializeField] private uint currentHealth;
-    [SerializeField] private Slider healthSlider;
 
     public HealthEvents healthEvents;
 
@@ -19,9 +17,14 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void PlayerDamage()
+    public void PlayerDamage(uint Damage)
     {
+        currentHealth -= Damage;
         healthEvents.TriggerHealthChanged(currentHealth);
+        if (currentHealth <= 0)
+        {
+            healthEvents.TriggerHealthZero();
+        }
     }
 
 }
