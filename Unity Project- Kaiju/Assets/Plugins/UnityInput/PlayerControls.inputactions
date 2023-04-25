@@ -6,7 +6,7 @@
             "id": "0427f45c-ce4b-489b-b4ec-18d46ed99449",
             "actions": [
                 {
-                    "name": "Aim",
+                    "name": "MouseLook",
                     "type": "Value",
                     "id": "92924909-f401-4ada-b627-d80c8cf83a3b",
                     "expectedControlType": "Vector2",
@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Fire",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "e329acf7-0a6b-4089-8ddd-052cff6de12a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -32,7 +32,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "MouseLook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -50,11 +50,5 @@
             ]
         }
     ],
-    "controlSchemes": [
-        {
-            "name": "Gunner Control Scheme",
-            "bindingGroup": "Gunner Control Scheme",
-            "devices": []
-        }
-    ]
+    "controlSchemes": []
 }

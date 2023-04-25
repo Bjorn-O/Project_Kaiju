@@ -28,7 +28,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""id"": ""0427f45c-ce4b-489b-b4ec-18d46ed99449"",
             ""actions"": [
                 {
-                    ""name"": ""Aim"",
+                    ""name"": ""MouseLook"",
                     ""type"": ""Value"",
                     ""id"": ""92924909-f401-4ada-b627-d80c8cf83a3b"",
                     ""expectedControlType"": ""Vector2"",
@@ -38,12 +38,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Fire"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""e329acf7-0a6b-4089-8ddd-052cff6de12a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -54,7 +54,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Aim"",
+                    ""action"": ""MouseLook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -72,17 +72,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": [
-        {
-            ""name"": ""Gunner Control Scheme"",
-            ""bindingGroup"": ""Gunner Control Scheme"",
-            ""devices"": []
-        }
-    ]
+    ""controlSchemes"": []
 }");
         // Gun
         m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
-        m_Gun_Aim = m_Gun.FindAction("Aim", throwIfNotFound: true);
+        m_Gun_MouseLook = m_Gun.FindAction("MouseLook", throwIfNotFound: true);
         m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
     }
 
@@ -143,13 +137,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     // Gun
     private readonly InputActionMap m_Gun;
     private IGunActions m_GunActionsCallbackInterface;
-    private readonly InputAction m_Gun_Aim;
+    private readonly InputAction m_Gun_MouseLook;
     private readonly InputAction m_Gun_Fire;
     public struct GunActions
     {
         private @PlayerControls m_Wrapper;
         public GunActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Aim => m_Wrapper.m_Gun_Aim;
+        public InputAction @MouseLook => m_Wrapper.m_Gun_MouseLook;
         public InputAction @Fire => m_Wrapper.m_Gun_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Gun; }
         public void Enable() { Get().Enable(); }
@@ -160,9 +154,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_GunActionsCallbackInterface != null)
             {
-                @Aim.started -= m_Wrapper.m_GunActionsCallbackInterface.OnAim;
-                @Aim.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnAim;
-                @Aim.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnAim;
+                @MouseLook.started -= m_Wrapper.m_GunActionsCallbackInterface.OnMouseLook;
+                @MouseLook.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnMouseLook;
+                @MouseLook.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnMouseLook;
                 @Fire.started -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
@@ -170,9 +164,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             m_Wrapper.m_GunActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Aim.started += instance.OnAim;
-                @Aim.performed += instance.OnAim;
-                @Aim.canceled += instance.OnAim;
+                @MouseLook.started += instance.OnMouseLook;
+                @MouseLook.performed += instance.OnMouseLook;
+                @MouseLook.canceled += instance.OnMouseLook;
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
@@ -180,18 +174,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public GunActions @Gun => new GunActions(this);
-    private int m_GunnerControlSchemeSchemeIndex = -1;
-    public InputControlScheme GunnerControlSchemeScheme
-    {
-        get
-        {
-            if (m_GunnerControlSchemeSchemeIndex == -1) m_GunnerControlSchemeSchemeIndex = asset.FindControlSchemeIndex("Gunner Control Scheme");
-            return asset.controlSchemes[m_GunnerControlSchemeSchemeIndex];
-        }
-    }
     public interface IGunActions
     {
-        void OnAim(InputAction.CallbackContext context);
+        void OnMouseLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
     }
 }
