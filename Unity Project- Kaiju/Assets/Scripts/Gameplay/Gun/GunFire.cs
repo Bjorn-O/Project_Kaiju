@@ -23,12 +23,8 @@ public class GunFire : MonoBehaviour
         if (isPressed > 0)
         {
             InvokeRepeating(nameof(Pew), 0, (60 / fireRatePerSecond) / 100);
-            
-            print(60 / fireRatePerSecond / 100);
         }
         else CancelInvoke(nameof(Pew));
-        
-
     }
 
     private void Pew()
