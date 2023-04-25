@@ -6,6 +6,9 @@ public class ShipMovement : MonoBehaviour
     [SerializeField] 
     private Rigidbody shipRb;
 
+    [SerializeField]
+    FovOnAccelerate fovOnAccelerate;
+
     //Input booleans
     private bool _isAccelerating;
     private bool _isBraking;
@@ -23,6 +26,7 @@ public class ShipMovement : MonoBehaviour
     {
         //Get Components
         shipRb = GetComponent<Rigidbody>();
+        //fovOnAccelerate = GetComponent<FovOnAccelerate>();
     }
 
     //Brake input
@@ -34,8 +38,16 @@ public class ShipMovement : MonoBehaviour
     //Accelerate input
     private void OnAccelerate(InputValue value)
     {
-        if (value.Get<float>() == 1) _isAccelerating = true;
-        else _isAccelerating = false;
+        if (value.Get<float>() == 1)
+        {
+            _isAccelerating = true;
+            fovOnAccelerate.accelerate = true;
+        }
+        else
+        {
+            _isAccelerating = false;
+            fovOnAccelerate.accelerate = false;
+        }
     }
     //Steering input
     private void OnSteer(InputValue value)
