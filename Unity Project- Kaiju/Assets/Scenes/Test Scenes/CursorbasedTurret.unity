@@ -266,11 +266,6 @@ PrefabInstance:
       propertyPath: fireRate
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8722305576206038390, guid: f37ed62f809c9094ba4dbdb23b33ae50,
-        type: 3}
-      propertyPath: fireRatePerSecond
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8728402682314281635, guid: f37ed62f809c9094ba4dbdb23b33ae50,
         type: 3}
       propertyPath: m_Name

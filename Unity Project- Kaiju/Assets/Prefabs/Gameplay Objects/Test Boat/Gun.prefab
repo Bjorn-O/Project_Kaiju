@@ -506,9 +506,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f150753000944488abb56f307fe1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0
+  shootAbleLayer:
+    serializedVersion: 2
+    m_Bits: 0
   muzzlePoint: {fileID: 6027487535917088601}
   shootEffect: {fileID: 4377440601407472480}
+  fireRatePerSecond: 5
 --- !u!1 &8525077819494252776
 GameObject:
   m_ObjectHideFlags: 0
