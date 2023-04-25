@@ -80,7 +80,7 @@ MonoBehaviour:
       x: 2681
       y: -2288
       width: 1086
-      height: 1834
+      height: 1836
     contents:
     - model: {fileID: 8926484042661614879}
       id: 0
@@ -7673,7 +7673,7 @@ MonoBehaviour:
   particlePerStripCount: 16
   needsComputeBounds: 0
   boundsMode: 0
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661614954
 MonoBehaviour:
   m_ObjectHideFlags: 0
