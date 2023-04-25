@@ -200,6 +200,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuzzlePoint
       objectReference: {fileID: 0}
+    - target: {fileID: 4377440601407472494, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5253842288816898699, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6278192070554598669, guid: f37ed62f809c9094ba4dbdb23b33ae50,
         type: 3}
       propertyPath: m_IsActive
@@ -221,6 +231,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 89c76239e4a2749499ec479f7e805f5a,
         type: 3}
+    - target: {fileID: 8218458984059581783, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218458984059581783, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218458984059581783, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218458984059581783, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218458984059581783, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525077819494252776, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722305576206038390, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: fireRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722305576206038390, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+        type: 3}
+      propertyPath: fireRatePerSecond
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8728402682314281635, guid: f37ed62f809c9094ba4dbdb23b33ae50,
         type: 3}
       propertyPath: m_Name
