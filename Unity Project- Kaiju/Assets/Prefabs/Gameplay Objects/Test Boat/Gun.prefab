@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8218458984059581783}
   - component: {fileID: 1015777668469338783}
   - component: {fileID: 5140295924696886744}
-  - component: {fileID: 9151741921871312639}
   m_Layer: 0
   m_Name: Gun Model
   m_TagString: Untagged
@@ -85,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9151741921871312639
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572520104108077549}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1724928684355313086
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +250,6 @@ GameObject:
   - component: {fileID: 332178346490723152}
   - component: {fileID: 8986227302252716666}
   - component: {fileID: 2907783898456954156}
-  - component: {fileID: 8697096672546231622}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -338,19 +323,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8697096672546231622
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5868934198366621589}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5901493692472758106
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +417,7 @@ GameObject:
   - component: {fileID: 2244869637189123266}
   - component: {fileID: 1075126302808965504}
   - component: {fileID: 233915588954984986}
+  - component: {fileID: 8722305576206038390}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -483,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: ff266cfaadfad964585ee826df5961d3,
+  m_Actions: {fileID: -944628639613478452, guid: 24b1cfbfd46a2ca4ba6f73c573326d5c,
     type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
@@ -497,9 +470,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: DummyBoat
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Gunner Control Scheme
+  m_DefaultActionMap: Gun
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 3265863614665199460}
 --- !u!114 &233915588954984986
@@ -520,6 +493,19 @@ MonoBehaviour:
   xClamp: 550
   yClamp: 400
   downTilt: 100
+--- !u!114 &8722305576206038390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552772081844828119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f150753000944488abb56f307fe1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0
 --- !u!1 &8525077819494252776
 GameObject:
   m_ObjectHideFlags: 0
