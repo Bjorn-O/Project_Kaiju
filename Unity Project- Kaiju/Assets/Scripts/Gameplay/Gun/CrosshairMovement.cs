@@ -20,8 +20,7 @@ public class CrosshairMovement : MonoBehaviour
     private int _yClampMin;
 
     private Vector3 _desiredLocation;
-
-
+    
     private void Awake()
     {
         var width = Screen.width;
@@ -35,11 +34,10 @@ public class CrosshairMovement : MonoBehaviour
         _desiredLocation.y = height / 2;
     }
 
-    private void OnMousePos(InputValue value)
+    private void OnAim(InputValue value)
     {
         var pos = value.Get<Vector2>();
-        // _desiredLocation.x -= Mathf.Clamp(pos.x, xClamp, -xClamp);
-        // _desiredLocation.y += Mathf.Clamp(pos.y, 0, yClamp);
+
         _desiredLocation.x += pos.x;
         _desiredLocation.y += pos.y;
         _desiredLocation.z = canvas.planeDistance;
@@ -47,7 +45,6 @@ public class CrosshairMovement : MonoBehaviour
         _desiredLocation.x = Mathf.Clamp(_desiredLocation.x, _xClampMin, _xClamp);
         _desiredLocation.y = Mathf.Clamp(_desiredLocation.y, _yClampMin, _yClamp);
         
-        print(_desiredLocation);
         crosshair.rectTransform.position = camera.ScreenToWorldPoint(_desiredLocation);
     }
 }

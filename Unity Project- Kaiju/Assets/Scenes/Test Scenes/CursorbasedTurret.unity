@@ -763,8 +763,9 @@ MonoBehaviour:
   camera: {fileID: 677481325}
   canvas: {fileID: 241386603}
   crosshair: {fileID: 6509162}
-  xClamp: 45
-  yClamp: 30
+  xClamp: 600
+  yClamp: 400
+  downTilt: 100
 --- !u!1 &1641397721 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1724928684355313086, guid: f37ed62f809c9094ba4dbdb23b33ae50,

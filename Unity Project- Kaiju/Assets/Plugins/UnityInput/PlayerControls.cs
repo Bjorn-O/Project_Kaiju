@@ -24,22 +24,22 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Turret"",
-            ""id"": ""676e1b00-22f2-406a-8133-9e3761e81ae6"",
+            ""name"": ""Gun"",
+            ""id"": ""0427f45c-ce4b-489b-b4ec-18d46ed99449"",
             ""actions"": [
                 {
-                    ""name"": ""aiming"",
+                    ""name"": ""Aim"",
                     ""type"": ""Value"",
-                    ""id"": ""b8909087-a179-4bbb-a30b-831bb009ab7c"",
-                    ""expectedControlType"": ""Delta"",
+                    ""id"": ""92924909-f401-4ada-b627-d80c8cf83a3b"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""shooting"",
+                    ""name"": ""Fire"",
                     ""type"": ""Button"",
-                    ""id"": ""3f567356-18f8-48b2-8ea8-835bbe9a3f21"",
+                    ""id"": ""e329acf7-0a6b-4089-8ddd-052cff6de12a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -49,23 +49,23 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""b948f0af-ef6d-4c30-97b9-51764fa4d88a"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""780388a1-62e7-4df3-ae93-c2e3018e9bc6"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""aiming"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a635a171-cec0-4b95-9e69-09eb2297ac28"",
+                    ""id"": ""f296ac0a-b950-4249-86fe-df8aecf43211"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""shooting"",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -80,10 +80,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Turret
-        m_Turret = asset.FindActionMap("Turret", throwIfNotFound: true);
-        m_Turret_aiming = m_Turret.FindAction("aiming", throwIfNotFound: true);
-        m_Turret_shooting = m_Turret.FindAction("shooting", throwIfNotFound: true);
+        // Gun
+        m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
+        m_Gun_Aim = m_Gun.FindAction("Aim", throwIfNotFound: true);
+        m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -140,46 +140,46 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Turret
-    private readonly InputActionMap m_Turret;
-    private ITurretActions m_TurretActionsCallbackInterface;
-    private readonly InputAction m_Turret_aiming;
-    private readonly InputAction m_Turret_shooting;
-    public struct TurretActions
+    // Gun
+    private readonly InputActionMap m_Gun;
+    private IGunActions m_GunActionsCallbackInterface;
+    private readonly InputAction m_Gun_Aim;
+    private readonly InputAction m_Gun_Fire;
+    public struct GunActions
     {
         private @PlayerControls m_Wrapper;
-        public TurretActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @aiming => m_Wrapper.m_Turret_aiming;
-        public InputAction @shooting => m_Wrapper.m_Turret_shooting;
-        public InputActionMap Get() { return m_Wrapper.m_Turret; }
+        public GunActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Aim => m_Wrapper.m_Gun_Aim;
+        public InputAction @Fire => m_Wrapper.m_Gun_Fire;
+        public InputActionMap Get() { return m_Wrapper.m_Gun; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(TurretActions set) { return set.Get(); }
-        public void SetCallbacks(ITurretActions instance)
+        public static implicit operator InputActionMap(GunActions set) { return set.Get(); }
+        public void SetCallbacks(IGunActions instance)
         {
-            if (m_Wrapper.m_TurretActionsCallbackInterface != null)
+            if (m_Wrapper.m_GunActionsCallbackInterface != null)
             {
-                @aiming.started -= m_Wrapper.m_TurretActionsCallbackInterface.OnAiming;
-                @aiming.performed -= m_Wrapper.m_TurretActionsCallbackInterface.OnAiming;
-                @aiming.canceled -= m_Wrapper.m_TurretActionsCallbackInterface.OnAiming;
-                @shooting.started -= m_Wrapper.m_TurretActionsCallbackInterface.OnShooting;
-                @shooting.performed -= m_Wrapper.m_TurretActionsCallbackInterface.OnShooting;
-                @shooting.canceled -= m_Wrapper.m_TurretActionsCallbackInterface.OnShooting;
+                @Aim.started -= m_Wrapper.m_GunActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnAim;
+                @Fire.started -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
             }
-            m_Wrapper.m_TurretActionsCallbackInterface = instance;
+            m_Wrapper.m_GunActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @aiming.started += instance.OnAiming;
-                @aiming.performed += instance.OnAiming;
-                @aiming.canceled += instance.OnAiming;
-                @shooting.started += instance.OnShooting;
-                @shooting.performed += instance.OnShooting;
-                @shooting.canceled += instance.OnShooting;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
         }
     }
-    public TurretActions @Turret => new TurretActions(this);
+    public GunActions @Gun => new GunActions(this);
     private int m_GunnerControlSchemeSchemeIndex = -1;
     public InputControlScheme GunnerControlSchemeScheme
     {
@@ -189,9 +189,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_GunnerControlSchemeSchemeIndex];
         }
     }
-    public interface ITurretActions
+    public interface IGunActions
     {
-        void OnAiming(InputAction.CallbackContext context);
-        void OnShooting(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
 }

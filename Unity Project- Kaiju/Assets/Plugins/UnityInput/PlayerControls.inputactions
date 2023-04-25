@@ -2,22 +2,22 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Turret",
-            "id": "676e1b00-22f2-406a-8133-9e3761e81ae6",
+            "name": "Gun",
+            "id": "0427f45c-ce4b-489b-b4ec-18d46ed99449",
             "actions": [
                 {
-                    "name": "aiming",
+                    "name": "Aim",
                     "type": "Value",
-                    "id": "b8909087-a179-4bbb-a30b-831bb009ab7c",
-                    "expectedControlType": "Delta",
+                    "id": "92924909-f401-4ada-b627-d80c8cf83a3b",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "shooting",
+                    "name": "Fire",
                     "type": "Button",
-                    "id": "3f567356-18f8-48b2-8ea8-835bbe9a3f21",
+                    "id": "e329acf7-0a6b-4089-8ddd-052cff6de12a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -27,23 +27,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "b948f0af-ef6d-4c30-97b9-51764fa4d88a",
-                    "path": "<Mouse>/position",
+                    "id": "780388a1-62e7-4df3-ae93-c2e3018e9bc6",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "aiming",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "a635a171-cec0-4b95-9e69-09eb2297ac28",
+                    "id": "f296ac0a-b950-4249-86fe-df8aecf43211",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "shooting",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
