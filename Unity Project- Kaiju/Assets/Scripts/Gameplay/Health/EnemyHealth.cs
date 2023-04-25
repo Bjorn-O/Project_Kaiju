@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(HealthEvents))]
-public class PlayerHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private uint maxHealth = 100;
     [SerializeField] private uint currentHealth;
@@ -16,20 +16,22 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void PlayerDamage(uint Damage)
+    public void TakeDamage(uint damage)
     {
-        currentHealth -= Damage;
+        currentHealth -= damage;
         healthEvents.TriggerHealthChanged(currentHealth);
-        print("player health: " + currentHealth);
+        print("enemy health: " + currentHealth);
         if (currentHealth <= 0)
         {
-            PlayerDeath();  
+            EnemyDeath();
         }
     }
 
-    private void PlayerDeath()
+    public void EnemyDeath()
     {
+        Debug.Log("Enemy has died.");
         healthEvents.TriggerHealthZero();
     }
+
 
 }
