@@ -84,10 +84,10 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 311
+    x: 310
     y: -278
-    width: 3505
-    height: 2067
+    width: 3504
+    height: 2056
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7274,9 +7274,9 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children:
+  - {fileID: 8926484042661615707}
   - {fileID: 8926484042661615703}
   - {fileID: 8926484042661615704}
-  - {fileID: 8926484042661615707}
   - {fileID: 8926484042661615853}
   m_UIPosition: {x: 3390, y: 1150}
   m_UICollapsed: 0
@@ -7483,7 +7483,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 3
+      m_SerializableObject: 1
     m_Space: 2147483647
   m_Property:
     name: B
@@ -7548,7 +7548,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.10000000149011612,"y":1.0,"z":0.10000000149011612}'
+      m_SerializableObject: '{"x":0.10000000149011612,"y":0.800000011920929,"z":0.10000000149011612}'
     m_Space: 2147483647
   m_Property:
     name: A
@@ -7684,7 +7684,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.30000001192092898,"y":4.0,"z":0.30000001192092898}'
+      m_SerializableObject: '{"x":0.30000001192092898,"y":1.2000000476837159,"z":0.30000001192092898}'
     m_Space: 2147483647
   m_Property:
     name: B
@@ -8657,7 +8657,7 @@ MonoBehaviour:
   m_InputSlots:
   - {fileID: 8926484042661615886}
   m_OutputSlots: []
-  m_Disabled: 0
+  m_Disabled: 1
 --- !u!114 &8926484042661615886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8713,7 +8713,7 @@ MonoBehaviour:
   m_InputSlots:
   - {fileID: 8926484042661615888}
   m_OutputSlots: []
-  m_Disabled: 0
+  m_Disabled: 1
 --- !u!114 &8926484042661615888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8769,7 +8769,7 @@ MonoBehaviour:
   m_InputSlots:
   - {fileID: 8926484042661615890}
   m_OutputSlots: []
-  m_Disabled: 0
+  m_Disabled: 1
 --- !u!114 &8926484042661615890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9333,7 +9333,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":-0.15000000596046449,"y":-0.15000000596046449,"z":10.0}}'
+      m_SerializableObject: '{"vector":{"x":-0.15000000596046449,"y":-0.15000000596046449,"z":20.0}}'
     m_Space: 0
   m_Property:
     name: A
