@@ -122,6 +122,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DummyCrosshair",
+            "id": "86797f87-e74f-4253-a6c4-e45fb190bcd5",
+            "actions": [
+                {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "31949b58-943d-47de-ad9c-20b2a9b53bea",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "61de32c1-7dd3-4fa7-b220-071e51ac294d",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
