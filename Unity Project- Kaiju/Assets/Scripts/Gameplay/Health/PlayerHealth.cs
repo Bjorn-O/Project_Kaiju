@@ -1,13 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-
-[RequireComponent(typeof(HealthEvents))]
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamage
 {
     [SerializeField] private uint maxHealth = 100;
     [SerializeField] private uint currentHealth;
 
-    [SerializeField] private HealthEvents healthEvents;
+    public UnityEvent OnDamage;
+    public UnityEvent OnDeath;
 
 
     private void Start()
@@ -15,20 +15,19 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-
-    public void PlayerDamage(uint Damage)
+    public void TakeDamage(uint damage)
     {
-        currentHealth -= Damage;
-        healthEvents.TriggerHealthChanged(currentHealth);
+        currentHealth -= damage;
+        OnDamage.Invoke();
         if (currentHealth <= 0)
         {
-            PlayerDeath();  
+            PlayerDeath();
         }
     }
 
     private void PlayerDeath()
     {
-        healthEvents.TriggerHealthZero();
+        OnDamage.Invoke();
     }
 
 }

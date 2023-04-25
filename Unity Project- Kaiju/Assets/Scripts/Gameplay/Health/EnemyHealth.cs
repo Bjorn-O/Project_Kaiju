@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 
-[RequireComponent(typeof(HealthEvents))]
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IDamage
 {
-    [SerializeField] private uint maxHealth = 100;
+    [SerializeField] private uint maxHealth = 200;
     [SerializeField] private uint currentHealth;
 
-    [SerializeField] private HealthEvents healthEvents;
+    public UnityEvent OnDamage;
+    public UnityEvent OnDeath;
 
 
     private void Start()
@@ -19,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(uint damage)
     {
         currentHealth -= damage;
-        healthEvents.TriggerHealthChanged(currentHealth);
+        OnDamage.Invoke();
         if (currentHealth <= 0)
         {
             EnemyDeath();
@@ -28,7 +29,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyDeath()
     {
-        healthEvents.TriggerHealthZero();
+        OnDeath.Invoke();   
     }
 
 }
