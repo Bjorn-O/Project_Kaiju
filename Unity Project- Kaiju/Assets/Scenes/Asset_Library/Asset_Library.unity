@@ -259,7 +259,7 @@ Transform:
   - {fileID: 787265165}
   - {fileID: 1659550579}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &321848318
 GameObject:
@@ -292,7 +292,7 @@ Transform:
   - {fileID: 2009088466}
   - {fileID: 1259958431}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366808903
 GameObject:
@@ -1200,7 +1200,7 @@ Transform:
   m_Children:
   - {fileID: 1870843814}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498655170
 GameObject:
@@ -1232,7 +1232,7 @@ Transform:
   m_Children:
   - {fileID: 916704012}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1582209748
 GameObject:
@@ -1428,6 +1428,75 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1675763546
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 64.93183
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.145251
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.939894
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a0887268964d07745911437c41ba479b,
+        type: 3}
+      propertyPath: m_Name
+      value: SM_Frisc
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a0887268964d07745911437c41ba479b, type: 3}
 --- !u!1 &1720310336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1527,7 @@ Transform:
   m_Children:
   - {fileID: 561407701}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1774751156
 GameObject:
@@ -1932,5 +2001,5 @@ Transform:
   - {fileID: 569077733}
   - {fileID: 1422949570}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
