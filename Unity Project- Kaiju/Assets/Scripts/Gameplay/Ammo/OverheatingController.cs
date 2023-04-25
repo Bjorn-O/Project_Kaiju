@@ -13,10 +13,13 @@ public class OverheatingController : MonoBehaviour
     public UnityEvent OnCooledDown; // Event to invoke when the gun cools down
     
     private float currentHeat = 0f; // Current heat of the gun
-    private bool isOverheated = false; // Flag to track if the gun is overheated
+    public bool isOverheated = false; // Flag to track if the gun is overheated
     
     private void Update()
     {
+
+        // we need to get the actual firing from the aiming and shooting system this is just for testing
+/*
         if (Input.GetMouseButton(0) && !isOverheated)
         {
             Fire();
@@ -27,6 +30,7 @@ public class OverheatingController : MonoBehaviour
             CoolDown();
             print("cooling");
         }
+*/
     }
     
     private IEnumerator CoolingDown()
@@ -34,26 +38,29 @@ public class OverheatingController : MonoBehaviour
         yield return new WaitForSeconds(cooldownDelay);
         isOverheated = false;
         OnCooledDown.Invoke();
+        print("enumcooling");
     }
     
-    private void Fire()
+    public void Fire()
     {
         currentHeat += heatIncreaseRate * Time.deltaTime;
         
         if (currentHeat >= heatThreshold)
         {
+            print("isoverheated");
             isOverheated = true;
             currentHeat = heatThreshold;
             OnOverheated.Invoke();
             StartCoroutine(CoolingDown());
+            print("cooling1");
         }
     }
     
-    private void CoolDown()
+    public void CoolDown()
     {
         currentHeat -= heatDecreaseRate * Time.deltaTime;
         currentHeat = Mathf.Clamp(currentHeat, 0f, heatThreshold);
-        
+        print("func cooldown");
         if (isOverheated && currentHeat <= 0f)
         {
             isOverheated = false;

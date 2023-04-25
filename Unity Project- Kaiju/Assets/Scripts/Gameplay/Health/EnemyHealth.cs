@@ -20,7 +20,6 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
         healthEvents.TriggerHealthChanged(currentHealth);
-        print("enemy health: " + currentHealth);
         if (currentHealth <= 0)
         {
             EnemyDeath();
@@ -29,9 +28,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyDeath()
     {
-        Debug.Log("Enemy has died.");
         healthEvents.TriggerHealthZero();
     }
-
 
 }

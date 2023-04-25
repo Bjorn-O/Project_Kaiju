@@ -20,7 +20,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= Damage;
         healthEvents.TriggerHealthChanged(currentHealth);
-        print("player health: " + currentHealth);
         if (currentHealth <= 0)
         {
             PlayerDeath();  

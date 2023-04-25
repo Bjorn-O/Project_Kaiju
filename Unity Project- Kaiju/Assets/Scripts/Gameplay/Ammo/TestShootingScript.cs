@@ -2,16 +2,20 @@ using UnityEngine;
 
 public class TestShootingScript : MonoBehaviour
 {
-    [SerializeField] private AmmoCount ammoCount;
+    [SerializeField] private OverheatingController overheatingController;
 
     void Update()
     {
         // check for fire input
-        if (Input.GetButtonDown("Fire1") && ammoCount.currentAmmo > 0 && ammoCount.canRefill == true)
+        if (Input.GetMouseButton(0) && overheatingController.isOverheated == false)
         {
-            // fire bullet and decrement ammo count
-            ammoCount.currentAmmo--;
-            ammoCount.UpdateUI();
+            overheatingController.Fire();
+            print("shooting");
+        }
+        else
+        {
+            overheatingController.CoolDown();
+            print("cooling");
         }
     }
 

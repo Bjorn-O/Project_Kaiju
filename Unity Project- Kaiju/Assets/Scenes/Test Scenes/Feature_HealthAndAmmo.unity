@@ -664,7 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c9f1dd581e1ef48adbc37d74711532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCount: {fileID: 0}
+  overheatingController: {fileID: 0}
 --- !u!4 &631596244
 Transform:
   m_ObjectHideFlags: 0
@@ -1283,6 +1283,7 @@ GameObject:
   - component: {fileID: 1402606210}
   - component: {fileID: 1402606214}
   - component: {fileID: 1402606215}
+  - component: {fileID: 1402606216}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1345,7 +1346,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402606209}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fff79e3a9e84a334f87e2b71c44aecca, type: 3}
   m_Name: 
@@ -1360,6 +1361,20 @@ MonoBehaviour:
   OnCooledDown:
     m_PersistentCalls:
       m_Calls: []
+  isOverheated: 0
+--- !u!114 &1402606216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402606209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c9f1dd581e1ef48adbc37d74711532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overheatingController: {fileID: 1402606215}
 --- !u!1 &1688612229
 GameObject:
   m_ObjectHideFlags: 0
