@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private uint maxHealth = 100;
     [SerializeField] private uint currentHealth;
 
-    public HealthEvents healthEvents;
+    [SerializeField] private HealthEvents healthEvents;
 
 
     private void Start()
