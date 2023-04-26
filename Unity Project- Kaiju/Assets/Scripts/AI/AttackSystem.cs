@@ -1,33 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject circleFloorMarkerSprite;
+    [SerializeField] private GameObject floorMarkerObject;
     [SerializeField] private Vector3 storePosition;
     [SerializeField] private GameObject boatObject;
+    private Quaternion rotation;
     private CapsuleCollider damageTrigger;
-    private SpriteRenderer circleSprite;
+    private SpriteRenderer markerRenderer;
 
     private void Awake()
     {
-        damageTrigger = circleFloorMarkerSprite.GetComponent<CapsuleCollider>();
-        circleSprite = circleFloorMarkerSprite.GetComponent<SpriteRenderer>();
+        damageTrigger = floorMarkerObject.GetComponent<CapsuleCollider>();
+        markerRenderer = floorMarkerObject.GetComponent<SpriteRenderer>();
+        rotation = Quaternion.Euler(90, 0, 0);
     }
     
-    public IEnumerator FloorMarkerAttack(Vector3 position, Quaternion rotation, float timeToWait)
+    public IEnumerator FloorMarkerAttack(Vector3 position, float timeToWait, float yScale = default)
     {
-        circleFloorMarkerSprite.transform.position = position;
-        circleFloorMarkerSprite.transform.rotation = rotation;
+        floorMarkerObject.transform.position = position;
+        floorMarkerObject.transform.rotation = rotation;
         yield return new WaitForSeconds(timeToWait);
-        circleSprite.enabled = false;
+        markerRenderer.enabled = false;
+
         if (Vector3.Distance(boatObject.transform.position, damageTrigger.transform.position) < damageTrigger.radius) //Checks if boat is in trigger radius
         {
-            Debug.Log("Hit!");
             //Damage function
         }
-        circleFloorMarkerSprite.transform.position = storePosition;
-        circleSprite.enabled = true;
+
+        floorMarkerObject.transform.position = storePosition;
+        markerRenderer.enabled = true;
     }
 }
