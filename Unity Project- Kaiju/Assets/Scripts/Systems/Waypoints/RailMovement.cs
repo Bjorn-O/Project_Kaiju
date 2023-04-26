@@ -9,7 +9,8 @@ public class RailMovement : MonoBehaviour
     public Waypoints wp;
     //private Transform currentWaypoint;
     public int i;
-
+    public int totalWaypoints;
+    public float speed;
     private void Start()
     {
         i = 0;
@@ -21,13 +22,15 @@ public class RailMovement : MonoBehaviour
         if(Vector3.Distance(transform.position, wp.waypoints[i].transform.position) == 0f)
         {
             i++;
+            
             print(i);
         }
-        if(i >= 4)
+        if(i >= totalWaypoints)
         {
             i = 0;
         }
-        print("Current Waypoint coörds = " + wp.waypoints[i].transform.position);
-        transform.position = Vector3.MoveTowards(transform.position, wp.waypoints[i].transform.position, 1 * Time.deltaTime);
+        print("Current Waypoint coÃ¶rds = " + wp.waypoints[i].transform.position);
+        transform.LookAt(wp.waypoints[i].transform);
+        transform.position = Vector3.MoveTowards(transform.position, wp.waypoints[i].transform.position, speed * Time.deltaTime);
     }
 }
