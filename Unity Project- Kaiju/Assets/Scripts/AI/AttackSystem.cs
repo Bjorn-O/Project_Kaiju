@@ -31,14 +31,14 @@ public class AttackSystem : MonoBehaviour
     /// <param name="sprite">Sprite and corresponding collider to use on floor marker.</param>
     public IEnumerator FloorMarkerAttack(Vector3 spawnPosition, float timeToWait, int sprite)
     {
-        markerRenderer.sprite = floorMarkers[sprite];
-        usedCollider = attackColliders[sprite];
+        markerRenderer.sprite = floorMarkers[sprite]; //Sets sprite to appropriate sprite
+        usedCollider = attackColliders[sprite]; //Selects appropriate collider
         floorMarkerObject.transform.position = spawnPosition;
 
         yield return new WaitForSeconds(timeToWait);
-        markerRenderer.enabled = false;
+        markerRenderer.enabled = false; //Turns invisible
 
-        if (isCancelled)
+        if (isCancelled) //Check if cancelled
         {
             isCancelled = false;
         }
@@ -46,12 +46,11 @@ public class AttackSystem : MonoBehaviour
         {
             if (usedCollider.bounds.Contains(boatObject.transform.position)) //Checks if boat is in trigger radius
             {
-                Debug.Log("Hit");
-                //Damage function
+                //Add damage function
             }
         }
 
-        floorMarkerObject.transform.position = storePosition;
-        markerRenderer.enabled = true;
+        floorMarkerObject.transform.position = storePosition; //Stores away in different position
+        markerRenderer.enabled = true; //Turns visible
     }
 }
