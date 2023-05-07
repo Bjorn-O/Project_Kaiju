@@ -16,6 +16,8 @@ public class GunFire : MonoBehaviour
     private RaycastHit _hit;
     private int i;
 
+    public Hitmarker hitmarker;
+
     private void OnFire(InputValue value)
     {
         var isPressed = value.Get<float>();
@@ -32,8 +34,17 @@ public class GunFire : MonoBehaviour
         shootEffect.Play();
         if (Physics.Raycast(muzzlePoint.position, muzzlePoint.forward, out _hit, shootAbleLayer))
         {
-            
+            //Debug.Log(_hit.transform.name);
+
+            EnemyHealth enemy = _hit.transform.GetComponent<EnemyHealth>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(100);
+                hitmarker.Hit();
+            }
+
         }
+
         //Play Sound effect
         //Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward, Color.red);
     }

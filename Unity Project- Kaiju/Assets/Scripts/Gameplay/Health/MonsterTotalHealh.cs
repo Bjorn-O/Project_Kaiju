@@ -43,7 +43,15 @@ public class MonsterTotalHealh : MonoBehaviour
 
         if (totalCurrentHealth <= 0)
         {
+            //Kills Head
             headHealth.EnemyDeath();
+            //Kills Tentacles
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                health = enemy.GetComponent<EnemyHealth>();
+                health.EnemyDeath();
+            }
         }
     }
 }
