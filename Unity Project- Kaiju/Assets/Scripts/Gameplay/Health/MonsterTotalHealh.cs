@@ -9,8 +9,8 @@ public class MonsterTotalHealh : MonoBehaviour
     public EnemyHealth headHealth;
     private EnemyHealth health;
 
-    private uint totalMaxHealth;
-    private uint totalCurrentHealth;
+    private float totalMaxHealth;
+    private float totalCurrentHealth;
 
     void Start()
     {
@@ -36,7 +36,7 @@ public class MonsterTotalHealh : MonoBehaviour
         Debug.Log("Current enemy health: " + totalCurrentHealth); 
     }
 
-    public void TakeTotalDamage(uint damage)
+    public void TakeTotalDamage(float damage)
     {
         totalCurrentHealth -= damage;
         healthbar.SetHealth(totalCurrentHealth);

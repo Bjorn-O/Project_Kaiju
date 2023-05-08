@@ -37,9 +37,14 @@ public class GunFire : MonoBehaviour
             //Debug.Log(_hit.transform.name);
 
             EnemyHealth enemy = _hit.transform.GetComponent<EnemyHealth>();
-            if (enemy != null)
+            if(enemy != null && enemy.tag == "EnemyMain")
             {
-                enemy.TakeDamage(100);
+                enemy.TakeDamage(50);
+                hitmarker.Hit();
+            }           
+            else if (enemy != null && enemy.tag == "Enemy")
+            {
+                enemy.TakeDamage(33);
                 hitmarker.Hit();
             }
 
