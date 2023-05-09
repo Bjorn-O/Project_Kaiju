@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Baboo
+    second: {fileID: 2100000, guid: 1f39959d6fdd18b41ae4f562ca4d088d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: 189cbd1aab771ec47ac451143cc71fdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Tentakel
     second: {fileID: 2100000, guid: 1f39959d6fdd18b41ae4f562ca4d088d, type: 2}
   materials:
