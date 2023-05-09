@@ -90,7 +90,7 @@ MonoBehaviour:
     m_Value: 3
   groundTint:
     m_OverrideState: 1
-    m_Value: {r: 0.011764706, g: 0.01860732, b: 0.03529412, a: 1}
+    m_Value: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
   groundColorTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -331,7 +331,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1.59
+    m_Value: 1.107
   directLightingStrength:
     m_OverrideState: 0
     m_Value: 0
@@ -497,7 +497,7 @@ MonoBehaviour:
     m_Value: 4
   intensity:
     m_OverrideState: 1
-    m_Value: 0.176
+    m_Value: 0.294
   response:
     m_OverrideState: 0
     m_Value: 0.188
@@ -519,13 +519,13 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.98333335, z: 0.9, w: -0.0034153285}
+    m_Value: {x: 1, y: 0.965, z: 0.95, w: -0.0034153285}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.06489081}
+    m_Value: {x: 0.95, y: 1, z: 0.985, w: -0.15717268}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.8811667, z: 0.69, w: 0}
+    m_Value: {x: 1, y: 0.94, z: 0.8, w: 0}
 --- !u!114 &-648568232700621518
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -933,7 +933,7 @@ MonoBehaviour:
     m_Value: 14.9
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 1.6150587, g: 1.835294, b: 1.6716906, a: 1}
+    m_Value: {r: 1.835294, g: 1.835294, b: 1.835294, a: 1}
   hueShift:
     m_OverrideState: 1
     m_Value: -27
