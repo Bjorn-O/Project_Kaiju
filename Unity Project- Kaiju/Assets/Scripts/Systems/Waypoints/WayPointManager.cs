@@ -27,18 +27,21 @@ namespace Systems.Waypoints
             
             SetWaypointPaths();
         }
-
+        
+        //Overload that returns the next possible waypoint. 
         public Waypoint GetWaypoint(Waypoint currentWaypoint)
         {
             return waypointsList.GetNextPossibleItem(currentWaypoint);
         }
-
+        
+        //Overload that returns the first waypoint
         public Waypoint GetWaypoint()
         {
             return waypointsList[0];
         }
     
-        private void OnDrawGizmosSelected()
+        //In-Editor tool for showing the correct curves of they waypoints
+        private void OnDrawGizmos()
         {
             foreach (var waypoint in waypointsList)
             {

@@ -5,9 +5,10 @@ public class Waypoint : MonoBehaviour
 {
     [SerializeField] private Vector3 position;
     [SerializeField] private float speed;
-
     public bool hasPath;
-    
+
+    public float distance { get; private set; }
+
     private BezierPath _path;
     private Waypoint _destination;
 
@@ -16,6 +17,7 @@ public class Waypoint : MonoBehaviour
         _path = BezierPath.CreateInstance(transform, endPoint.GetTransform());
         if (_path != null) hasPath = true;
         _destination = endPoint;
+        distance = Vector3.Distance(transform.position, endPoint.GetTransform().position);
     }
 
     public BezierPath GetPath()
