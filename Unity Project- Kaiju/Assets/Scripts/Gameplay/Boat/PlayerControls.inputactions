@@ -16,30 +16,21 @@
                 },
                 {
                     "name": "Accelerate",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "0802bbd8-2401-4afa-b08a-8c0832442234",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Brake",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "64c56829-2c3e-4510-8212-471d2bb08f1b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hold Steer",
-                    "type": "Button",
-                    "id": "903dde7f-f655-454d-93d6-33a29bb0c501",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -117,17 +108,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Brake",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c39ee7cf-7081-4365-8701-52f579397770",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hold Steer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
