@@ -37,6 +37,10 @@ public class BezierPath
 
     public Vector3 ReturnPosition(float t)
     {
-        return Mathf.Pow(1f - t, 3f) * _pos0 + 3f * Mathf.Pow(1f - t, 2f) * t * _pos1 + 3f * (1f - t) * Mathf.Pow(t, 2f) * _pos2 + Mathf.Pow(t,3f) * _pos3;
+        var returnVl = Mathf.Pow(1f - t, 3f) * _pos0 + 3f *
+                       Mathf.Pow(1f - t, 2f) * t * _pos1 + 3f * (1f - t) *
+                       Mathf.Pow(t, 2f) * _pos2 +
+                       Mathf.Pow(t, 3f) * _pos3;
+        return returnVl ;
     }
 }
