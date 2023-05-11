@@ -17,6 +17,7 @@ public class GunFire : MonoBehaviour
     private int i;
 
     public Hitmarker hitmarker;
+    public Recoil recoil;
 
     private void OnFire(InputValue value)
     {
@@ -36,7 +37,7 @@ public class GunFire : MonoBehaviour
         {
             //Debug.Log(_hit.transform.name);
 
-            EnemyHealth enemy = _hit.transform.GetComponent<EnemyHealth>();
+            EnemyHealth enemy = _hit.transform.GetComponentInParent<EnemyHealth>();
             if(enemy != null && enemy.tag == "EnemyMain")
             {
                 enemy.TakeDamage(50);
@@ -49,7 +50,7 @@ public class GunFire : MonoBehaviour
             }
 
         }
-
+        recoil.RecoilOnFire();
         //Play Sound effect
         //Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward, Color.red);
     }

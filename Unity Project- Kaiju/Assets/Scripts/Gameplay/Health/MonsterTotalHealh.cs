@@ -9,8 +9,8 @@ public class MonsterTotalHealh : MonoBehaviour
     public EnemyHealth headHealth;
     private EnemyHealth health;
 
-    private float totalMaxHealth;
-    private float totalCurrentHealth;
+    private float _totalMaxHealth;
+    private float _totalCurrentHealth;
 
     void Start()
     {
@@ -20,28 +20,28 @@ public class MonsterTotalHealh : MonoBehaviour
             health = enemy.GetComponent<EnemyHealth>();
             if (health != null)
             {
-                totalMaxHealth += health.GetMaxHealth();
+                _totalMaxHealth += health.GetMaxHealth();
                 health.OnDamage.AddListener(TakeTotalDamage);
             }
         }
 
-        totalMaxHealth += 600;
-        headHealth.SetMaxHealth(totalMaxHealth);
+        _totalMaxHealth += 600;
+        headHealth.SetMaxHealth(_totalMaxHealth);
 
         headHealth.OnDamage.AddListener(TakeTotalDamage);
-        totalCurrentHealth = totalMaxHealth;
-        healthbar.SetMaxHealth(totalMaxHealth);
+        _totalCurrentHealth = _totalMaxHealth;
+        healthbar.SetMaxHealth(_totalMaxHealth);
 
-        Debug.Log("Total enemy health: " + totalMaxHealth);
-        Debug.Log("Current enemy health: " + totalCurrentHealth); 
+        Debug.Log("Total enemy health: " + _totalMaxHealth);
+        Debug.Log("Current enemy health: " + _totalCurrentHealth); 
     }
 
     public void TakeTotalDamage(float damage)
     {
-        totalCurrentHealth -= damage;
-        healthbar.SetHealth(totalCurrentHealth);
+        _totalCurrentHealth -= damage;
+        healthbar.SetHealth(_totalCurrentHealth);
 
-        if (totalCurrentHealth <= 0)
+        if (_totalCurrentHealth <= 0)
         {
             //Kills Head
             headHealth.EnemyDeath();

@@ -52,6 +52,17 @@ public class CrosshairMovement : MonoBehaviour
         _desiredLocation.x = Mathf.Clamp(_desiredLocation.x, _xClampMin, _xClamp);
         _desiredLocation.y = Mathf.Clamp(_desiredLocation.y, _yClampMin, _yClamp);
         
-        crosshair.rectTransform.position = camera.ScreenToWorldPoint(_desiredLocation);
+        //crosshair.rectTransform.position = camera.ScreenToWorldPoint(_desiredLocation);
+    }
+
+    private void Update()
+    {
+       crosshair.rectTransform.position = camera.ScreenToWorldPoint(_desiredLocation);
+    }
+
+    public Vector3 DesiredLocation
+    {
+        get { return _desiredLocation; }
+        set { _desiredLocation = value; }
     }
 }

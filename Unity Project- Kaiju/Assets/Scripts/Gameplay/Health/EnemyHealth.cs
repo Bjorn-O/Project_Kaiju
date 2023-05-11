@@ -26,11 +26,6 @@ public class EnemyHealth : MonoBehaviour, IDamage
         maxHealth = health;
     }
 
-    public void TestDMG()
-    {
-        TakeDamage(100);
-    }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
