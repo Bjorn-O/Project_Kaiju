@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 299955828056278098}
   m_Layer: 6
-  m_Name: Baboo Tentacle
+  m_Name: Tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
