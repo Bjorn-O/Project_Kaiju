@@ -27,12 +27,12 @@ public class BezierPath
 
     }
     
-    public void UpdatePath(Transform startPosition, Transform endPosition)
+    public void UpdatePath(Transform startPosition, Transform endPosition, float amplifier)
     {
         _pos0 = startPosition.position;
-        _pos1 = _pos0 + startPosition.forward;
+        _pos1 = _pos0 + startPosition.forward * amplifier;
         _pos3 = endPosition.position;
-        _pos2 = _pos3 - endPosition.forward;
+        _pos2 = _pos3 - endPosition.forward * amplifier;
     }
 
     public Vector3 ReturnPosition(float t)

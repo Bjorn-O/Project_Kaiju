@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Toolbox.Attributes;
 using Toolbox.MethodExtensions;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Systems.Waypoints
@@ -13,6 +14,7 @@ namespace Systems.Waypoints
         public List<Waypoint> waypointsList = new();
 
         [SerializeField] private int gizmoLines;
+        [SerializeField] private GameObject waypointGameObject;
 
         private void Awake()
         {
@@ -46,7 +48,7 @@ namespace Systems.Waypoints
             foreach (var waypoint in waypointsList)
             {
                 var path = waypoint.GetPath();
-                path.UpdatePath(waypoint.GetTransform(), waypointsList.GetNextPossibleItem(waypoint).GetTransform());
+                path.UpdatePath(waypoint.GetTransform(), waypointsList.GetNextPossibleItem(waypoint).GetTransform(), waypoint.GetCurveStrength());
                 var lastPos = waypoint.GetTransform().position;
                 for (var i = 0; i <= gizmoLines; i++)
                 {
@@ -95,6 +97,27 @@ namespace Systems.Waypoints
             {
                 waypoint.SetPath(waypointsList.GetNextPossibleItem(waypoint));
             }
+        }
+
+        [Button]
+        private void SpawnWaypoint()
+        {
+            GameObject waypoint; 
+            if (waypointsList.Count > 0)
+            {
+                waypoint = Instantiate(waypointGameObject, waypointsList[^1].GetTransform().position, quaternion.identity);
+                waypoint.transform.parent = this.transform;
+                waypointsList.Add(waypoint.GetComponent<Waypoint>());
+            }
+            else
+            {
+                waypoint = Instantiate(waypointGameObject, Vector3.zero, quaternion.identity );
+                waypoint.transform.parent = this.transform;
+                waypointsList.Add(waypoint.GetComponent<Waypoint>());
+            }
+            waypoint.name = $"Waypoint{waypointsList.Count - 1}";
+            
+            SetWaypointPaths();
         }
     }
 }

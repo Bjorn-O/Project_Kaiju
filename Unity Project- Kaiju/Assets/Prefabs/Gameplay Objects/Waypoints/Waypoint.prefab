@@ -47,3 +47,4 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   speed: 0
   hasPath: 0
+  curveStrength: 5
