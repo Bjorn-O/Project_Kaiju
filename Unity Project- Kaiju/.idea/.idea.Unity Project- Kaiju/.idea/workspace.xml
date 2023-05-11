@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0008974-6a40-4cb8-aa12-c2c46f29431b" name="Changes" comment="" />
+    <list default="true" id="b0008974-6a40-4cb8-aa12-c2c46f29431b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/PathTester.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/PathTester.cs.meta" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +91,7 @@
       <workItem from="1681456449738" duration="2606000" />
       <workItem from="1682493695911" duration="3490000" />
       <workItem from="1682946340078" duration="6822000" />
-      <workItem from="1683721066399" duration="4730000" />
+      <workItem from="1683721066399" duration="5332000" />
     </task>
     <servers />
   </component>
