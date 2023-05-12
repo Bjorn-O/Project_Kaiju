@@ -3,7 +3,12 @@ guid: 694ba4cf53018cb49a81bf9ea143752c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cring
+    second: {fileID: 2100000, guid: 2c2877a58590de541a5645a877e5958a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
