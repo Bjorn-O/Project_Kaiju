@@ -7,6 +7,9 @@ using UnityEngine.VFX;
 
 public class GunFire : MonoBehaviour
 {
+    [SerializeField] private Hitmarker hitmarker;
+    [SerializeField] private Recoil recoil;
+
     [FormerlySerializedAs("shootAble")] [SerializeField] private LayerMask shootAbleLayer;
     [SerializeField] private Transform muzzlePoint;
     [SerializeField] private VisualEffect shootEffect;
@@ -16,8 +19,6 @@ public class GunFire : MonoBehaviour
     private RaycastHit _hit;
     private int i;
 
-    public Hitmarker hitmarker;
-    public Recoil recoil;
 
     private void OnFire(InputValue value)
     {
