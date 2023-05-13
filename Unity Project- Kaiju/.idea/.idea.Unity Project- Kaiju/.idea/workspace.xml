@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b0008974-6a40-4cb8-aa12-c2c46f29431b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity Project- Kaiju/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity Project- Kaiju/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/Waypoint.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/Waypoint.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/WaypointManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/WaypointManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Asset_Library/light_scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Asset_Library/light_scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelLayouts/OnRailLayout.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LevelLayouts/OnRailLayout.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/BezierPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/BezierPath.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/WayPointManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/WayPointManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/Waypoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/Waypoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/HDRPUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/HDRPUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +94,7 @@
       <workItem from="1682493695911" duration="3490000" />
       <workItem from="1682946340078" duration="6822000" />
       <workItem from="1683721066399" duration="5332000" />
+      <workItem from="1683877767652" duration="4528000" />
     </task>
     <servers />
   </component>
