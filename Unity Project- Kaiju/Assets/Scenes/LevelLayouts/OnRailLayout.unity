@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 123.672, g: 135.27466, b: 165.30261, a: 1}
+  m_IndirectSpecularColor: {r: 124.750305, g: 137.13013, b: 170.54028, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 151.7, y: 0, z: -37.5}
+  position: {x: 151.7, y: 11.75, z: -37.5}
   speed: 0
   hasPath: 1
   curveStrength: 9
@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 31.8, y: 0, z: 50.1}
+  position: {x: 31.8, y: 11.75, z: 50.1}
   speed: 0
   hasPath: 1
   curveStrength: 10.9
@@ -3210,7 +3210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -16, y: 0, z: -30.3}
+  position: {x: -16, y: 11.75, z: -30.3}
   speed: 0
   hasPath: 1
   curveStrength: 10
@@ -5381,6 +5381,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1257854523160394150, guid: 38cb4d6992e30fe4e81de8b42a12ebdd,
         type: 3}
+      propertyPath: gizmoLines
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257854523160394150, guid: 38cb4d6992e30fe4e81de8b42a12ebdd,
+        type: 3}
       propertyPath: waypointsList.Array.size
       value: 26
       objectReference: {fileID: 0}
@@ -5542,7 +5547,7 @@ PrefabInstance:
     - target: {fileID: 4353798598401112929, guid: 38cb4d6992e30fe4e81de8b42a12ebdd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 11.75
       objectReference: {fileID: 0}
     - target: {fileID: 4353798598401112929, guid: 38cb4d6992e30fe4e81de8b42a12ebdd,
         type: 3}
@@ -5869,7 +5874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 79.4, y: 0, z: 66.8}
+  position: {x: 79.4, y: 11.75, z: 66.8}
   speed: 0
   hasPath: 1
   curveStrength: 25
@@ -8854,7 +8859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 13.8, y: 0, z: -56.8}
+  position: {x: 13.8, y: 11.75, z: -56.8}
   speed: 0
   hasPath: 1
   curveStrength: 5
@@ -9632,7 +9637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -33.4, y: 0, z: 47.9}
+  position: {x: -26, y: 11.75, z: 44.9}
   speed: 0
   hasPath: 1
   curveStrength: 20.79
@@ -9643,14 +9648,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835743499}
-  m_LocalRotation: {x: -0, y: 0.8090774, z: -0, w: 0.5877022}
-  m_LocalPosition: {x: -33.4, y: 0, z: 47.9}
+  m_LocalRotation: {x: -0, y: 0.76212853, z: -0, w: 0.64742583}
+  m_LocalPosition: {x: -26, y: 0, z: 44.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 642991878}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 108.012, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 99.304, z: 0}
 --- !u!1001 &838411978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10156,7 +10161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -47.7, y: 0, z: -69.4}
+  position: {x: -47.7, y: 11.75, z: -69.4}
   speed: 0
   hasPath: 1
   curveStrength: 6.22
@@ -10458,7 +10463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 93.3, y: 0, z: -40.8}
+  position: {x: 92.4, y: 11.75, z: -39.4}
   speed: 0
   hasPath: 1
   curveStrength: 22.1
@@ -10469,14 +10474,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885841059}
-  m_LocalRotation: {x: 0.0000000034782748, y: 0.34516844, z: 0.000000015881415, w: -0.9385408}
-  m_LocalPosition: {x: 93.3, y: -0, z: -40.8}
+  m_LocalRotation: {x: 0.0000000023857205, y: 0.28027612, z: 0.000000016081852, w: -0.9599194}
+  m_LocalPosition: {x: 92.4, y: 0, z: -39.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 642991878}
   m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: -40.384, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -32.553, z: 0}
 --- !u!1001 &885863661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11649,7 +11654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 122.7, y: 0, z: 21.5}
+  position: {x: 122.7, y: 11.75, z: 21.5}
   speed: 0
   hasPath: 1
   curveStrength: 25
@@ -12363,7 +12368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 184.3, y: 0, z: 21.5}
+  position: {x: 184.3, y: 11.75, z: 21.5}
   speed: 0
   hasPath: 1
   curveStrength: 19.5
@@ -12411,10 +12416,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -27, y: 0, z: -117.9}
+  position: {x: -27, y: 11.75, z: -117.9}
   speed: 0
   hasPath: 1
-  curveStrength: 15
+  curveStrength: 8.21
 --- !u!4 &1053709678
 Transform:
   m_ObjectHideFlags: 0
@@ -12935,7 +12940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -133.3, y: 0, z: 18.7}
+  position: {x: -133.3, y: 11.75, z: 18.7}
   speed: 0
   hasPath: 1
   curveStrength: 13.96
@@ -13433,7 +13438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -98.8, y: 0, z: 111.5}
+  position: {x: -98.8, y: 11.75, z: 111.5}
   speed: 0
   hasPath: 1
   curveStrength: 25
@@ -18226,7 +18231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 34.4, y: 0, z: -16.1}
+  position: {x: 32.8, y: 11.75, z: -17.3}
   speed: 0
   hasPath: 1
   curveStrength: 24.3
@@ -18238,7 +18243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650564675}
   m_LocalRotation: {x: 0.000000011699388, y: 0.80759007, z: 0.000000011289023, w: -0.5897442}
-  m_LocalPosition: {x: 34.4, y: 0, z: -16.1}
+  m_LocalPosition: {x: 32.8, y: 0, z: -17.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18464,7 +18469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 41.2, y: 0, z: -88.6}
+  position: {x: 41.2, y: 11.75, z: -88.6}
   speed: 0
   hasPath: 1
   curveStrength: 25
@@ -18608,7 +18613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 41.5, y: 0, z: 86.1}
+  position: {x: 41.5, y: 11.75, z: 86.1}
   speed: 0
   hasPath: 1
   curveStrength: 5
@@ -19544,7 +19549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 35.8, y: 0, z: 94.7}
+  position: {x: 35.8, y: 11.75, z: 94.7}
   speed: 0
   hasPath: 1
   curveStrength: 22.8
@@ -19972,7 +19977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -50.2, y: 0, z: -99.3}
+  position: {x: -50.2, y: 11.75, z: -99.3}
   speed: 0
   hasPath: 1
   curveStrength: 10.9
@@ -19983,14 +19988,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749724659}
-  m_LocalRotation: {x: -0, y: -0.3936817, z: -0, w: 0.9192468}
+  m_LocalRotation: {x: -0, y: -0.3510119, z: -0, w: 0.93637097}
   m_LocalPosition: {x: -50.2, y: 0, z: -99.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 642991878}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -46.368, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -41.098, z: 0}
 --- !u!1 &1758763552
 GameObject:
   m_ObjectHideFlags: 0
@@ -20211,7 +20216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -85.5, y: 0, z: 4.1}
+  position: {x: -85.5, y: 11.75, z: 4.1}
   speed: 0
   hasPath: 1
   curveStrength: 10
@@ -20354,7 +20359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -159.1, y: 0, z: 53.8}
+  position: {x: -159.1, y: 11.75, z: 53.8}
   speed: 0
   hasPath: 1
   curveStrength: 11.84
@@ -20402,10 +20407,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 118, y: 0, z: -44.6}
+  position: {x: 118, y: 11.75, z: -44.6}
   speed: 0
   hasPath: 1
-  curveStrength: 5
+  curveStrength: 8.43
 --- !u!4 &1795021530
 Transform:
   m_ObjectHideFlags: 0
@@ -20413,14 +20418,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795021528}
-  m_LocalRotation: {x: 0.000000012292719, y: 0.83829874, z: 0.000000010639868, w: -0.5452113}
+  m_LocalRotation: {x: 0.00000001155024, y: 0.79978174, z: 0.000000011441573, w: -0.6002909}
   m_LocalPosition: {x: 118, y: 0, z: -44.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 642991878}
   m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: -113.922, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -106.219, z: 0}
 --- !u!1 &1802900537
 GameObject:
   m_ObjectHideFlags: 0
@@ -20641,7 +20646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -155.4, y: 0, z: 87.3}
+  position: {x: -155.4, y: 11.75, z: 87.3}
   speed: 0
   hasPath: 1
   curveStrength: 21
@@ -20911,7 +20916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 189.2, y: 0, z: -23.1}
+  position: {x: 189.2, y: 11.75, z: -23.1}
   speed: 0
   hasPath: 1
   curveStrength: 9.4
@@ -20991,7 +20996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 6.6, y: 0, z: -127.5}
+  position: {x: 6.6, y: 11.75, z: -127.5}
   speed: 0
   hasPath: 1
   curveStrength: 9.4
@@ -21325,7 +21330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -39.5, y: 0, z: -4.2}
+  position: {x: -39.5, y: 11.75, z: -4.2}
   speed: 0
   hasPath: 1
   curveStrength: 10
@@ -22205,7 +22210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414736b2cf48c6d49aea2dbef3c6f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: -62.1, y: 0, z: 76.6}
+  position: {x: -62.1, y: 11.75, z: 76.6}
   speed: 0
   hasPath: 1
   curveStrength: 9.33
