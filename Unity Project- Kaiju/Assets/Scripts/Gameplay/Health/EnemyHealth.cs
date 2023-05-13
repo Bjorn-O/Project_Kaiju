@@ -4,10 +4,10 @@ using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour, IDamage
 {
-    [SerializeField] private uint maxHealth = 200;
-    [SerializeField] private uint currentHealth;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth;
 
-    public UnityEvent OnDamage;
+    public UnityEvent<float> OnDamage;
     public UnityEvent OnDeath;
 
 
@@ -16,11 +16,20 @@ public class EnemyHealth : MonoBehaviour, IDamage
         currentHealth = maxHealth;
     }
 
+    public float GetMaxHealth()
+    {
+        return maxHealth; 
+    }
 
-    public void TakeDamage(uint damage)
+    public void SetMaxHealth(float health)
+    {
+        maxHealth = health;
+    }
+
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        OnDamage.Invoke();
+        OnDamage.Invoke(damage);
         if (currentHealth <= 0)
         {
             EnemyDeath();
@@ -29,7 +38,8 @@ public class EnemyHealth : MonoBehaviour, IDamage
 
     public void EnemyDeath()
     {
-        OnDeath.Invoke();   
+        OnDeath.Invoke();
+        Destroy(gameObject);
     }
 
 }

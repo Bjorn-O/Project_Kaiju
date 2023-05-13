@@ -7,6 +7,9 @@ using UnityEngine.VFX;
 
 public class GunFire : MonoBehaviour
 {
+    [SerializeField] private Hitmarker hitmarker;
+    [SerializeField] private Recoil recoil;
+
     [FormerlySerializedAs("shootAble")] [SerializeField] private LayerMask shootAbleLayer;
     [SerializeField] private Transform muzzlePoint;
     [SerializeField] private VisualEffect shootEffect;
@@ -15,6 +18,7 @@ public class GunFire : MonoBehaviour
 
     private RaycastHit _hit;
     private int i;
+
 
     private void OnFire(InputValue value)
     {
@@ -32,8 +36,22 @@ public class GunFire : MonoBehaviour
         shootEffect.Play();
         if (Physics.Raycast(muzzlePoint.position, muzzlePoint.forward, out _hit, shootAbleLayer))
         {
-            
+            //Debug.Log(_hit.transform.name);
+
+            EnemyHealth enemy = _hit.transform.GetComponentInParent<EnemyHealth>();
+            if(enemy != null && enemy.tag == "EnemyMain")
+            {
+                enemy.TakeDamage(50);
+                hitmarker.Hit();
+            }           
+            else if (enemy != null && enemy.tag == "Enemy")
+            {
+                enemy.TakeDamage(33);
+                hitmarker.Hit();
+            }
+
         }
+        recoil.RecoilOnFire();
         //Play Sound effect
         //Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward, Color.red);
     }
