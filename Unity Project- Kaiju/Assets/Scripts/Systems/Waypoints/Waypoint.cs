@@ -6,8 +6,8 @@ public class Waypoint : MonoBehaviour
     [SerializeField] private Vector3 position;
     [SerializeField] private float speed;
     public bool hasPath;
-
     public float distance { get; private set; }
+    [Range(5.0f, 25.0f)] [SerializeField] private float curveStrength;
 
     private BezierPath _path;
     private Waypoint _destination;
@@ -35,6 +35,11 @@ public class Waypoint : MonoBehaviour
         var localTransform = transform;
         position = localTransform.position;
         return localTransform;
+    }
+
+    public float GetCurveStrength()
+    {
+        return curveStrength;
     }
 
     public void FlattenWaypoint()
