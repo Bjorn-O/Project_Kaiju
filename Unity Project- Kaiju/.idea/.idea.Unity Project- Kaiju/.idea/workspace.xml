@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b0008974-6a40-4cb8-aa12-c2c46f29431b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity Project- Kaiju/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity Project- Kaiju/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelLayouts/OnRailLayout.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LevelLayouts/OnRailLayout.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/WayPointManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/WayPointManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/HDRPUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/HDRPUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Materials/M_ocean_far.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Materials/M_ocean_far.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enviornments/SM_ocean_prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enviornments/SM_ocean_prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainSceneTemp.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainSceneTemp.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scenes/Waypoints/WayPointScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test Scenes/Waypoints/WayPointScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.learn.iet-framework/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.learn.iet-framework/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +99,8 @@
       <workItem from="1682946340078" duration="6822000" />
       <workItem from="1683721066399" duration="5332000" />
       <workItem from="1683877767652" duration="4528000" />
+      <workItem from="1683976808638" duration="770000" />
+      <workItem from="1684233425483" duration="397000" />
     </task>
     <servers />
   </component>
