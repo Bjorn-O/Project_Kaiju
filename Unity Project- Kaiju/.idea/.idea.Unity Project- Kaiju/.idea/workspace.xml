@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0008974-6a40-4cb8-aa12-c2c46f29431b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Boat 2/RailSteering.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Boat 2/RailSteering.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity Project- Kaiju/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity Project- Kaiju/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Finalized Levels/Main_scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Finalized Levels/Main_scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/UnityInput/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/UnityInput/PlayerControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/UnityInput/PlayerControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/UnityInput/PlayerControls.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Test Boat/PlayableBoat Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Test Boat/PlayableBoat Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/WaypointFollower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/WaypointFollower.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scenes/Waypoints/WayPointScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test Scenes/Waypoints/WayPointScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/RailMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/RailMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +20,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Boat/ShipMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/RailMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/TentacleHentai.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Developer Folder/SciFi-Shooter/Assets/Scripts/SimpleCameraController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -93,7 +96,12 @@
       <option name="presentableId" value="Default" />
       <updated>1681456443952</updated>
       <workItem from="1681456449738" duration="2606000" />
-      <workItem from="1682493695911" duration="2604000" />
+      <workItem from="1682493695911" duration="3490000" />
+      <workItem from="1682946340078" duration="6822000" />
+      <workItem from="1683721066399" duration="5332000" />
+      <workItem from="1683877767652" duration="4528000" />
+      <workItem from="1683976808638" duration="770000" />
+      <workItem from="1684233425483" duration="5318000" />
     </task>
     <servers />
   </component>

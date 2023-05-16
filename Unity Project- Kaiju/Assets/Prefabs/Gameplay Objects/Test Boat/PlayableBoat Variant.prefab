@@ -5228,9 +5228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f282889145d0b43be5e23ac2f555e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wp: {fileID: 0}
-  i: 0
-  totalWaypoints: 12
   speed: 10
 --- !u!4 &1872710672168957965 stripped
 Transform:
