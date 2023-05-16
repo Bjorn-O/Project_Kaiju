@@ -44,6 +44,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Drift"",
+                    ""type"": ""Value"",
+                    ""id"": ""ca6da8b5-891b-4f56-b34b-da2082a6de56"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""A/D"",
+                    ""id"": ""7fc56a16-4395-46fa-ad1e-a468df63677a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drift"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""9f46c58a-8c33-49d5-949e-f3a60cb5c126"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8f2647a2-64b5-436f-a111-f1519bd7521c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -78,6 +120,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
         m_Gun_MouseLook = m_Gun.FindAction("MouseLook", throwIfNotFound: true);
         m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
+        m_Gun_Drift = m_Gun.FindAction("Drift", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,12 +182,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IGunActions m_GunActionsCallbackInterface;
     private readonly InputAction m_Gun_MouseLook;
     private readonly InputAction m_Gun_Fire;
+    private readonly InputAction m_Gun_Drift;
     public struct GunActions
     {
         private @PlayerControls m_Wrapper;
         public GunActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @MouseLook => m_Wrapper.m_Gun_MouseLook;
         public InputAction @Fire => m_Wrapper.m_Gun_Fire;
+        public InputAction @Drift => m_Wrapper.m_Gun_Drift;
         public InputActionMap Get() { return m_Wrapper.m_Gun; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -160,6 +205,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
+                @Drift.started -= m_Wrapper.m_GunActionsCallbackInterface.OnDrift;
+                @Drift.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnDrift;
+                @Drift.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnDrift;
             }
             m_Wrapper.m_GunActionsCallbackInterface = instance;
             if (instance != null)
@@ -170,6 +218,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @Drift.started += instance.OnDrift;
+                @Drift.performed += instance.OnDrift;
+                @Drift.canceled += instance.OnDrift;
             }
         }
     }
@@ -178,5 +229,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnMouseLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnDrift(InputAction.CallbackContext context);
     }
 }
