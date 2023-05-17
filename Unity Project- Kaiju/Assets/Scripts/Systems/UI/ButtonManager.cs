@@ -1,44 +1,44 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class ButtonManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] menuButtons;
+    [SerializeField] private int buttonsToHide;
 
     public void LoadSpecifiedScene(string name)
     {
         SceneManager.LoadScene(name);
     }
 
-    public void LoadLevelSelect()
+    public void LevelSelect(bool loadLevelSelect) //Load or unload the level select buttons. True = load, false = unload.
     {
-        for (int i = 0; i < menuButtons.Length; i++)
+        if (loadLevelSelect) //Load level select
         {
-            if (i < 3)
+            for (int i = 0; i < menuButtons.Length; i++)
             {
-                menuButtons[i].SetActive(false);
-            }
-            else
-            {
-                menuButtons[i].SetActive(true);
+                if (i < buttonsToHide)
+                {
+                    menuButtons[i].SetActive(false);
+                }
+                else
+                {
+                    menuButtons[i].SetActive(true);
+                }
             }
         }
-    }
-
-    public void UnloadLevelSelect()
-    {
-        for (int i = 0; i < menuButtons.Length; i++)
+        else //Unload level select
         {
-            if (i < 3)
+            for (int i = 0; i < menuButtons.Length; i++)
             {
-                menuButtons[i].SetActive(true);
-            }
-            else
-            {
-                menuButtons[i].SetActive(false);
+                if (i < buttonsToHide)
+                {
+                    menuButtons[i].SetActive(true);
+                }
+                else
+                {
+                    menuButtons[i].SetActive(false);
+                }
             }
         }
     }
