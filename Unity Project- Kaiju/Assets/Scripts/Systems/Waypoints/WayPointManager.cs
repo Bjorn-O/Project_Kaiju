@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Enums;
 using Toolbox.Attributes;
 using Toolbox.MethodExtensions;
-using Unity.Mathematics;
-using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace Systems.Waypoints
@@ -17,6 +15,9 @@ namespace Systems.Waypoints
 
         [SerializeField] private int gizmoLines;
         [SerializeField] private GameObject waypointGameObject;
+        [SerializeField] private GameObject brakePointGameObject;
+        [SerializeField] private GameObject splitPointGameObject;
+        [SerializeField] private GameObject waitPointGameObject;
 
         private void Awake()
         {
@@ -28,7 +29,6 @@ namespace Systems.Waypoints
             {
                 Instance = this;
             }
-            
             SetWaypointPaths();
         }
         
@@ -73,7 +73,7 @@ namespace Systems.Waypoints
             waypointsList.Sort();
         }
 
-        [Button(Mode = ButtonMode.AlwaysEnabled)]
+        [Button]
         private void GetWaypointTransforms()
         {
             foreach (var waypoint in waypointsList)
@@ -83,7 +83,7 @@ namespace Systems.Waypoints
             }
         }
 
-        [Button(Mode = ButtonMode.AlwaysEnabled)]
+        [Button]
         private void LevelWaypointsToZ0()
         {
             foreach (var waypoint in waypointsList)
@@ -102,71 +102,25 @@ namespace Systems.Waypoints
         }
 
         [Button]
-        private void SpawnWaypoint()
+        private void SpawnWaypoint(WaypointTypes waypointType)
         {
-            GameObject waypoint; 
-            if (waypointsList.Count > 0)
+            var targetPrefab = waypointType switch
             {
-                waypoint = Instantiate(waypointGameObject, waypointsList[^1].GetTransform().position, waypointsList[^1].GetTransform().rotation);
-                waypoint.transform.parent = this.transform;
-                waypointsList.Add(waypoint.GetComponent<Waypoint>());
-            }
-            else
-            {
-                waypoint = Instantiate(waypointGameObject, Vector3.zero, quaternion.identity );
-                waypoint.transform.parent = this.transform;
-                waypointsList.Add(waypoint.GetComponent<Waypoint>());
-            }
+                WaypointTypes.Waypoint => waypointGameObject,
+                WaypointTypes.Brakepoint => brakePointGameObject,
+                WaypointTypes.Splitpoint => splitPointGameObject,
+                WaypointTypes.Waitpoint => waitPointGameObject,
+                _ => throw new ArgumentOutOfRangeException(nameof(waypointType), waypointType, null)
+            };
+
+            var waypoint = waypointsList.Count > 0 ?
+                Instantiate(targetPrefab, waypointsList[^1].GetTransform().position, waypointsList[^1].GetTransform().rotation) :
+                Instantiate(targetPrefab, Vector3.zero, Quaternion.identity );
+            waypoint.transform.parent = this.transform;
+            waypointsList.Add(waypoint.GetComponent<Waypoint>());
             waypoint.name = $"Waypoint{waypointsList.Count - 1}";
             
             SetWaypointPaths();
-        }
-
-        [Button]
-        private void InsertNextWaypoint()
-        {
-            Debug.Log("Called");
-            foreach (var waypoint in waypointsList)
-            {
-                if (Selection.Contains(waypoint.gameObject))
-                {
-                    Debug.Log("Heard");
-                    var waypointTransform = waypoint.GetTransform();
-                    var newPoint = Instantiate(waypointGameObject, waypointTransform.position,
-                        waypointTransform.rotation);
-                    newPoint.transform.parent = this.transform;
-                    waypointsList.Insert(waypointsList.IndexOf(waypoint) +1, newPoint.GetComponent<Waypoint>());
-                    SetWaypointPaths();
-                }
-            }
-        }
-        [Button]
-        private void InsertPreviousWaypoint()
-        {
-            var possibleSelectedPoints = waypointsList.Where(waypoint => Selection.Contains(waypoint.gameObject)).ToList();
-            if (possibleSelectedPoints.IsEmpty()) return;
-            var waypoint = possibleSelectedPoints.First();
-            
-            var waypointTransform = waypoint.GetTransform();
-            var useRotation = waypointTransform.rotation;
-            var usePosition = waypointTransform.position;
-           
-            var newPoint = Instantiate(waypointGameObject, usePosition, useRotation, transform);
-            waypointsList.Insert(waypointsList.IndexOf(waypoint), newPoint.GetComponent<Waypoint>());
-            SetWaypointPaths();
-            
-            
-            //has nesting but should add one for each
-            // foreach (var waypoint in possibleSelectedPoints)
-            // {
-            //     Debug.Log("Heard");
-            //     var waypointTransform = waypoint.GetTransform();
-            //     var newPoint = Instantiate(waypointGameObject, waypointTransform.position,
-            //         waypointTransform.rotation);
-            //     newPoint.transform.parent = this.transform;
-            //     waypointsList.Insert(waypointsList.IndexOf(waypoint), newPoint.GetComponent<Waypoint>());
-            //     SetWaypointPaths();
-            // }
         }
     }
 }

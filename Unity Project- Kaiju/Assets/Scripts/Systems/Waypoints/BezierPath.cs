@@ -41,6 +41,6 @@ public class BezierPath
                        Mathf.Pow(1f - t, 2f) * t * _pos1 + 3f * (1f - t) *
                        Mathf.Pow(t, 2f) * _pos2 +
                        Mathf.Pow(t, 3f) * _pos3;
-        return returnVl ;
+        return returnVl;
     }
 }
