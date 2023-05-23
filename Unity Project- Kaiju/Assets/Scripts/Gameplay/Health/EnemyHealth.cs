@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour, IDamage
 
     public float GetMaxHealth()
     {
-        return maxHealth; 
+        return maxHealth;
     }
 
     public void SetMaxHealth(float health)
@@ -35,10 +35,11 @@ public class EnemyHealth : MonoBehaviour, IDamage
             EnemyDeath();
         }
     }
-
+    
     public void EnemyDeath()
     {
         OnDeath.Invoke();
+        print("DEATH INVOKED");
         Destroy(gameObject);
     }
 
