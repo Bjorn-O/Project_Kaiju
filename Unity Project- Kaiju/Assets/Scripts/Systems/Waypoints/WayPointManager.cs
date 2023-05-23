@@ -4,6 +4,7 @@ using System.Linq;
 using Enums;
 using Toolbox.Attributes;
 using Toolbox.MethodExtensions;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 namespace Systems.Waypoints
@@ -13,6 +14,7 @@ namespace Systems.Waypoints
         public static WayPointManager Instance; 
         public List<Waypoint> waypointsList = new();
 
+        [SerializeField] private bool isLoop;
         [SerializeField] private int gizmoLines;
         [SerializeField] private GameObject waypointGameObject;
         [SerializeField] private GameObject brakePointGameObject;
@@ -33,6 +35,7 @@ namespace Systems.Waypoints
         }
         
         //Overload that returns the next possible waypoint. 
+
         public Waypoint GetWaypoint(Waypoint currentWaypoint)
         {
             return waypointsList.GetNextPossibleItem(currentWaypoint);
@@ -43,12 +46,18 @@ namespace Systems.Waypoints
         {
             return waypointsList[0];
         }
+
+        public bool RequestToContinue(Waypoint point)
+        {
+            return (waypointsList.IsLast(point) && isLoop || !waypointsList.IsLast(point));
+        }
     
         //In-Editor tool for showing the correct curves of they waypoints
         private void OnDrawGizmos()
         {
             foreach (var waypoint in waypointsList)
             {
+                if(!isLoop && waypointsList.IsLast(waypoint) || waypoint.GetPath() == null) return;
                 var path = waypoint.GetPath();
                 path.UpdatePath(waypoint.GetTransform(), waypointsList.GetNextPossibleItem(waypoint).GetTransform(), waypoint.GetCurveStrength());
                 var lastPos = waypoint.GetTransform().position;
@@ -59,6 +68,8 @@ namespace Systems.Waypoints
                     Gizmos.color = Color.green;
                     lastPos = waypoint.GetPath().ReturnPosition(x);
                 }
+                
+                
             }
         }
         
@@ -84,7 +95,7 @@ namespace Systems.Waypoints
         }
 
         [Button]
-        private void LevelWaypointsToZ0()
+        private void LevelWaypoints()
         {
             foreach (var waypoint in waypointsList)
             {

@@ -44,7 +44,7 @@ public class CrosshairMovement : MonoBehaviour
     private void OnMouseLook(InputValue value)
     {
         var pos = value.Get<Vector2>();
-
+        print(pos);
         _desiredLocation.x += pos.x * sensitivity;
         _desiredLocation.y += pos.y * sensitivity;
         _desiredLocation.z = canvas.planeDistance;

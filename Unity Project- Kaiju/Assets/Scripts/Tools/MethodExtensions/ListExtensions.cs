@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting.FullSerializer;
@@ -210,6 +211,11 @@ namespace Toolbox.MethodExtensions
             if (i < 0) i = 0;
 
             return list[i];
+        }
+        
+        public static bool IsLast<T>(this IList<T> list, T checkObject)
+        {
+            return (list.IndexOf(checkObject) == list.Count - 1) ;
         }
     }
 }

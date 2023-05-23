@@ -24,7 +24,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Gun"",
+            ""name"": ""OnRail"",
             ""id"": ""0427f45c-ce4b-489b-b4ec-18d46ed99449"",
             ""actions"": [
                 {
@@ -116,11 +116,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Gun
-        m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
-        m_Gun_MouseLook = m_Gun.FindAction("MouseLook", throwIfNotFound: true);
-        m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
-        m_Gun_Drift = m_Gun.FindAction("Drift", throwIfNotFound: true);
+        // OnRail
+        m_OnRail = asset.FindActionMap("OnRail", throwIfNotFound: true);
+        m_OnRail_MouseLook = m_OnRail.FindAction("MouseLook", throwIfNotFound: true);
+        m_OnRail_Fire = m_OnRail.FindAction("Fire", throwIfNotFound: true);
+        m_OnRail_Drift = m_OnRail.FindAction("Drift", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -177,39 +177,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Gun
-    private readonly InputActionMap m_Gun;
-    private IGunActions m_GunActionsCallbackInterface;
-    private readonly InputAction m_Gun_MouseLook;
-    private readonly InputAction m_Gun_Fire;
-    private readonly InputAction m_Gun_Drift;
-    public struct GunActions
+    // OnRail
+    private readonly InputActionMap m_OnRail;
+    private IOnRailActions m_OnRailActionsCallbackInterface;
+    private readonly InputAction m_OnRail_MouseLook;
+    private readonly InputAction m_OnRail_Fire;
+    private readonly InputAction m_OnRail_Drift;
+    public struct OnRailActions
     {
         private @PlayerControls m_Wrapper;
-        public GunActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MouseLook => m_Wrapper.m_Gun_MouseLook;
-        public InputAction @Fire => m_Wrapper.m_Gun_Fire;
-        public InputAction @Drift => m_Wrapper.m_Gun_Drift;
-        public InputActionMap Get() { return m_Wrapper.m_Gun; }
+        public OnRailActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MouseLook => m_Wrapper.m_OnRail_MouseLook;
+        public InputAction @Fire => m_Wrapper.m_OnRail_Fire;
+        public InputAction @Drift => m_Wrapper.m_OnRail_Drift;
+        public InputActionMap Get() { return m_Wrapper.m_OnRail; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GunActions set) { return set.Get(); }
-        public void SetCallbacks(IGunActions instance)
+        public static implicit operator InputActionMap(OnRailActions set) { return set.Get(); }
+        public void SetCallbacks(IOnRailActions instance)
         {
-            if (m_Wrapper.m_GunActionsCallbackInterface != null)
+            if (m_Wrapper.m_OnRailActionsCallbackInterface != null)
             {
-                @MouseLook.started -= m_Wrapper.m_GunActionsCallbackInterface.OnMouseLook;
-                @MouseLook.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnMouseLook;
-                @MouseLook.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnMouseLook;
-                @Fire.started -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
-                @Drift.started -= m_Wrapper.m_GunActionsCallbackInterface.OnDrift;
-                @Drift.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnDrift;
-                @Drift.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnDrift;
+                @MouseLook.started -= m_Wrapper.m_OnRailActionsCallbackInterface.OnMouseLook;
+                @MouseLook.performed -= m_Wrapper.m_OnRailActionsCallbackInterface.OnMouseLook;
+                @MouseLook.canceled -= m_Wrapper.m_OnRailActionsCallbackInterface.OnMouseLook;
+                @Fire.started -= m_Wrapper.m_OnRailActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_OnRailActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_OnRailActionsCallbackInterface.OnFire;
+                @Drift.started -= m_Wrapper.m_OnRailActionsCallbackInterface.OnDrift;
+                @Drift.performed -= m_Wrapper.m_OnRailActionsCallbackInterface.OnDrift;
+                @Drift.canceled -= m_Wrapper.m_OnRailActionsCallbackInterface.OnDrift;
             }
-            m_Wrapper.m_GunActionsCallbackInterface = instance;
+            m_Wrapper.m_OnRailActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @MouseLook.started += instance.OnMouseLook;
@@ -224,8 +224,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             }
         }
     }
-    public GunActions @Gun => new GunActions(this);
-    public interface IGunActions
+    public OnRailActions @OnRail => new OnRailActions(this);
+    public interface IOnRailActions
     {
         void OnMouseLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);

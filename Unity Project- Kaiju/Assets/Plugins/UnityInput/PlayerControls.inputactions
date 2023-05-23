@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Gun",
+            "name": "OnRail",
             "id": "0427f45c-ce4b-489b-b4ec-18d46ed99449",
             "actions": [
                 {

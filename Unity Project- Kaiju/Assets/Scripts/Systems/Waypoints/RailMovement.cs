@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Net.NetworkInformation;
 using Systems.Waypoints;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 
@@ -14,6 +16,7 @@ public class RailMovement : MonoBehaviour
 
     private Waypoint _currentWaypoint;
     private bool _updatingWaypoint;
+    private bool _continue = true;
     private float _speed;
     private float _currentProgress;
     private float _waypointDistance;
@@ -29,7 +32,13 @@ public class RailMovement : MonoBehaviour
     {
         _updatingWaypoint = true;
         var wayPoint = WayPointManager.Instance.GetWaypoint(_currentWaypoint);
-
+        wayPoint.arrivalEvent?.Invoke();
+        if (!WayPointManager.Instance.RequestToContinue(wayPoint))
+        {
+            _continue = false;
+            _updatingWaypoint = false;
+            return;
+        }
         _currentProgress = 0;
 
         switch (wayPoint)
@@ -57,6 +66,7 @@ public class RailMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!_continue) return;
         if (_currentWaypoint && _currentProgress <= 1f && !_updatingWaypoint)
         {
             transform.position = _currentWaypoint.GetPath().ReturnPosition(_currentProgress);

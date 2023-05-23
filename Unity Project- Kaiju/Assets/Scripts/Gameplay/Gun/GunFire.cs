@@ -7,10 +7,10 @@ using UnityEngine.VFX;
 
 public class GunFire : MonoBehaviour
 {
-    [SerializeField] private Hitmarker hitmarker;
+    [SerializeField] private Hitmarker hitMarker;
     [SerializeField] private Recoil recoil;
 
-    [FormerlySerializedAs("shootAble")] [SerializeField] private LayerMask shootAbleLayer;
+    [SerializeField] private LayerMask shootAbleLayer;
     [SerializeField] private Transform muzzlePoint;
     [SerializeField] private VisualEffect shootEffect;
     
@@ -38,16 +38,16 @@ public class GunFire : MonoBehaviour
         {
             //Debug.Log(_hit.transform.name);
 
-            EnemyHealth enemy = _hit.transform.GetComponentInParent<EnemyHealth>();
-            if(enemy != null && enemy.tag == "EnemyMain")
+            var enemy = _hit.transform.GetComponentInParent<EnemyHealth>();
+            if(enemy != null && enemy.CompareTag("EnemyMain"))
             {
                 enemy.TakeDamage(50);
-                hitmarker.Hit();
+                hitMarker.Hit();
             }           
-            else if (enemy != null && enemy.tag == "Enemy")
+            else if (enemy != null && enemy.CompareTag("Enemy"))
             {
                 enemy.TakeDamage(33);
-                hitmarker.Hit();
+                hitMarker.Hit();
             }
 
         }
