@@ -16,6 +16,8 @@ public class GunFire : MonoBehaviour
     
     [SerializeField] private float fireRatePerSecond;
 
+    AudioManager audioManager;
+
     private RaycastHit _hit;
     private int i;
 
@@ -29,6 +31,10 @@ public class GunFire : MonoBehaviour
             InvokeRepeating(nameof(Pew), 0, (60 / fireRatePerSecond) / 100);
         }
         else CancelInvoke(nameof(Pew));
+    }
+    private void Awake()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Pew()
@@ -52,7 +58,7 @@ public class GunFire : MonoBehaviour
 
         }
         recoil.RecoilOnFire();
-        //Play Sound effect
+        audioManager.Play("Shoot");
         //Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward, Color.red);
     }
 }

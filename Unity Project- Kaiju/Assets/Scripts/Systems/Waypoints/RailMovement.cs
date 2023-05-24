@@ -15,6 +15,7 @@ public class RailMovement : MonoBehaviour
     [SerializeField] private float minimumSpeedPercentage;
 
     private Waypoint _currentWaypoint;
+    private AudioManager audioManager;
     private bool _updatingWaypoint;
     private bool _continue = true;
     private float _speed;
@@ -24,6 +25,7 @@ public class RailMovement : MonoBehaviour
     private void Start()
     {
         _currentWaypoint = WayPointManager.Instance.GetWaypoint();
+        audioManager = FindObjectOfType<AudioManager>();
         _currentProgress = 0;
         _speed = originalSpeed;
     }
@@ -44,6 +46,7 @@ public class RailMovement : MonoBehaviour
         switch (wayPoint)
         {
             case Brakepoint:
+                audioManager.Play("BoatAccelStop");
                 StartCoroutine(EaseOut());
                 break;
             
@@ -53,11 +56,16 @@ public class RailMovement : MonoBehaviour
             
             case WaitPoint waitPoint:
                 await waitPoint.WaitForGreenLight();
+                audioManager.Play("BoatAccelStart");
                 StartCoroutine(EaseIn());
                 break;
             
             default:
-                if (_speed < originalSpeed) StartCoroutine(EaseIn()); 
+                if (_speed < originalSpeed)
+                {
+                    audioManager.Play("BoatAccelStart");
+                    StartCoroutine(EaseIn());
+                }
                 break;
         }
         SetWaypoint(wayPoint);

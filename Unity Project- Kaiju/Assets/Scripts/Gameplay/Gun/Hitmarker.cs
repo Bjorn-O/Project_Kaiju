@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Hitmarker : MonoBehaviour
 {
+    AudioManager audioManager;
+
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         gameObject.SetActive(false);
     }
 
     public void Hit()
     {
         HitOn();
-        //Play Sound
+        audioManager.Play("Hit");
         Invoke("HitOff", 0.2f);
     }
     

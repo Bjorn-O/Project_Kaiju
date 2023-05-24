@@ -1,9 +1,12 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    Sound start;
+    Sound loop;
 
     void Awake()
     {
@@ -15,6 +18,9 @@ public class AudioManager : MonoBehaviour
             s.audioSource.pitch = s.pitch;
             s.audioSource.loop = s.loop;
         }
+
+        start = Array.Find(sounds, sound => sound.name == "BoatAccelStart");
+        loop = Array.Find(sounds, sound => sound.name == "BoatAccel");
     }
 
 
@@ -27,6 +33,32 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("sound " + name + " not found");
             return;
         }
+
+        if (name == "BoatAccelStart")
+        {
+            StartCoroutine(AccelStart());
+            return;
+        }
+
+        if(name == "BoatAccelStop")
+        {
+            start.audioSource.Stop();
+            loop.audioSource.Stop();
+            StopAllCoroutines();
+            s.audioSource.Play();
+            return;
+        }
+
         s.audioSource.Play();
     }
+        
+    IEnumerator AccelStart()
+    {
+        start.audioSource.Play();
+        yield return new WaitForSeconds(2.3f);       
+        loop.audioSource.Play();
+    }
+
+
+
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterTotalHealh : MonoBehaviour
 {
     public Healthbar healthbar;
+    AudioManager audioManager;
 
     public EnemyHealth headHealth;
     private EnemyHealth health;
@@ -14,6 +15,7 @@ public class MonsterTotalHealh : MonoBehaviour
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
@@ -45,6 +47,7 @@ public class MonsterTotalHealh : MonoBehaviour
         {
             //Kills Head
             headHealth.EnemyDeath();
+            audioManager.Play("MonsterDeath");
             //Kills Tentacles
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
