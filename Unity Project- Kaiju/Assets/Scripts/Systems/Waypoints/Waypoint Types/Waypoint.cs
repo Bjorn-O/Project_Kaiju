@@ -5,7 +5,7 @@ public class Waypoint : MonoBehaviour
 {
     public UnityEvent arrivalEvent;
     
-    [Range(5.0f, 25.0f)]
+    [Range(5.0f, 100.0f)]
     [SerializeField] private float curveStrength = 5f;
     [SerializeField] private float speed;
 

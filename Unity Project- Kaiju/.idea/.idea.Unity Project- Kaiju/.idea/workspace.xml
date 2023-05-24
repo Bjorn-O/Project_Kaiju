@@ -3,18 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="b0008974-6a40-4cb8-aa12-c2c46f29431b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity Project- Kaiju/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity Project- Kaiju/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EnemyHealthEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnemyHealthEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Animation/Tentacle_Idle.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Animation/Tentacle_Idle.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Graphics/Particles/muzzel_flash/vfxgraph_muzzleFlash.vfx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Particles/muzzel_flash/vfxgraph_muzzleFlash.vfx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/UnityInput/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/UnityInput/PlayerControls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/UnityInput/PlayerControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/UnityInput/PlayerControls.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/WaypointFollower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/WaypointFollower.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Monster/Baboo Tentacle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Monster/Baboo Tentacle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Shooting/Gun.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Shooting/Gun.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Test Boat/Gun.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Test Boat/Gun.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/WaitPoint.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects/Waypoints/WaitPoint.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Finalized Levels/Levels/Level-1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Finalized Levels/Levels/Level-1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Finalized Levels/Levels/Level-1/SkyandFogSettingsProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Finalized Levels/Levels/Level-1/SkyandFogSettingsProfile.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Gun/CrosshairMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Gun/CrosshairMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Gun/GunFire.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Gun/GunFire.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/BezierPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/BezierPath.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/RailMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/RailMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/WayPointManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/WayPointManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tools/MethodExtensions/ListExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tools/MethodExtensions/ListExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/Waypoint Types/Waypoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Waypoints/Waypoint Types/Waypoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/WaveSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,10 +99,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2724">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="2724" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -122,7 +130,8 @@
       <workItem from="1684484926564" duration="10256000" />
       <workItem from="1684664372981" duration="2791000" />
       <workItem from="1684742328429" duration="7706000" />
-      <workItem from="1684828456911" duration="719000" />
+      <workItem from="1684828456911" duration="3188000" />
+      <workItem from="1684838383960" duration="19527000" />
     </task>
     <servers />
   </component>
