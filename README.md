@@ -19,6 +19,10 @@ Riley:
 * [audio systeem](https://github.com/Bjorn-O/Project_Kaiju/tree/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Systems/Audio)
 * [Health system](https://github.com/Bjorn-O/Project_Kaiju/tree/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Gameplay/Health)
 
+Jori:
+* Link toevoegen [Attack systeem]()
+* Link toevoegen [Main menu]()
+
 # overheat mechanic
 
 De overheat feature zorgt er voor dat de game gebalanced door de player niet oneindig te laten schieten
@@ -88,3 +92,27 @@ graph TD
     B -->|Check Health Zero| C((Game Over))
 
 ```
+
+# Floor Marker system
+
+Als een floor marker nodig is kan een script de FloorMarketAttack coroutine starten. Deze functie heeft 3 parameters: Vector3 spawnPosition, float timeToWait, int sprite.
+
+spawnPosition is gebruikt om de positie waar de Floor Marker tevoorschijn komt, timeToWait is gebruikt om de tijd tussen het spawnen van de Floor Marker en de schade toe te passen en sprite wordt gebruikt om te bepalen welke sprite en welke hitbox gebruikt moet worden. De Floor Marker kan geannuleerd worden als het nodig is, de aanval wordt dan geannuleerd nadat timeToWait voorbij is.
+
+Als de aanval niet geannuleerd is dan word er gecheckt of de speler in de hitbox zit en dan wordt schade toegepast als het nodig is.
+
+### flowchart voor floor market system:
+
+```mermaid
+flowchart TD
+
+start((Start)) --> call_attack(Attack is called from other script with a parameter for a Spawn Position, Time to Wait, and Sprite number)
+call_attack --> floor_m_spawn(Move Floor Marker object to Spawn Postion)
+floor_m_spawn --> wait(Wait amount of seconds given in Time to Wait)
+wait --> invisible(Turn invisible)
+invisible -->attack_cancelled{Has attack been cancelled?}
+attack_cancelled -->|yes|return_marker(Return Floor Marker object to the position used for storing the object)
+attack_cancelled -->|no|bounds_check(Check if player is inside the bounds of the collider)
+return_marker --> turn_visible(Turn visible)
+bounds_check --> return_marker
+``` 
