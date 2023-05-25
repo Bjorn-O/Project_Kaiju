@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: gebouw_texture
     second: {fileID: 2100000, guid: a240ccf7c667649148e968913f61c2e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ramen
+    second: {fileID: 2100000, guid: d9f6a9003666246af88823bc0005ce4e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
