@@ -3,7 +3,12 @@ guid: dcaa02cd54cafb041ae5b797994b60d1
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dock_top
+    second: {fileID: 2100000, guid: 6b8f664159194124a937a6098385d99b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

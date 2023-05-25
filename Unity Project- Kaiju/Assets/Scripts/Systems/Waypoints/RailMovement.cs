@@ -1,14 +1,10 @@
 using System.Collections;
-using System.Net.NetworkInformation;
 using Systems.Waypoints;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
-
 
 public class RailMovement : MonoBehaviour
 {
+    [Range(1f, 5f)]
     [SerializeField] private float originalSpeed;
     [SerializeField] private float easeInTolerance = 0.1f;
     [Range(0.1f, 1.0f)]
@@ -20,14 +16,15 @@ public class RailMovement : MonoBehaviour
     private bool _continue = true;
     private float _speed;
     private float _currentProgress;
-    private float _waypointDistance;
-    
+    private float _calculationSpeed;
+
     private void Start()
     {
+        _continue = true;
         _currentWaypoint = WayPointManager.Instance.GetWaypoint();
         audioManager = FindObjectOfType<AudioManager>();
         _currentProgress = 0;
-        _speed = originalSpeed;
+        SetSpeed(originalSpeed);
     }
 
     private async void UpdateWaypoint()
@@ -49,17 +46,17 @@ public class RailMovement : MonoBehaviour
                 audioManager.Play("BoatAccelStop");
                 StartCoroutine(EaseOut());
                 break;
-            
+
             case Splitpoint splitPoint:
                 wayPoint = splitPoint.ReturnIntendedPoint();
                 break;
-            
+
             case WaitPoint waitPoint:
                 await waitPoint.WaitForGreenLight();
                 audioManager.Play("BoatAccelStart");
                 StartCoroutine(EaseIn());
                 break;
-            
+
             default:
                 if (_speed < originalSpeed)
                 {
@@ -77,9 +74,13 @@ public class RailMovement : MonoBehaviour
         if (!_continue) return;
         if (_currentWaypoint && _currentProgress <= 1f && !_updatingWaypoint)
         {
-            transform.position = _currentWaypoint.GetPath().ReturnPosition(_currentProgress);
-            _currentProgress += 0.01f * Time.deltaTime * _speed;
-            transform.LookAt(_currentWaypoint.GetPath().ReturnPosition(_currentProgress));
+            transform.position = _currentWaypoint.GetPath().ReturnCalculatedPosition(_currentProgress);
+            var oldProgress = _currentProgress;
+            var distance = _currentWaypoint.GetPath().CalculateDistance(oldProgress, _currentProgress) + 0.1f;
+            var step = _speed / distance * Time.deltaTime;
+
+            _currentProgress += step;
+            transform.LookAt(_currentWaypoint.GetPath().ReturnCalculatedPosition(_currentProgress));
             return;
         }
         if (!_updatingWaypoint)
@@ -91,24 +92,32 @@ public class RailMovement : MonoBehaviour
     private void SetWaypoint(Waypoint point)
     {
         _currentWaypoint = point;
-        _waypointDistance = point.distance;
     }
 
     private IEnumerator EaseOut()
     {
         while (_currentProgress <= 1)
         {
-            _speed = Mathf.Max(originalSpeed * minimumSpeedPercentage, originalSpeed * (1 - _currentProgress));
+            _speed = Mathf.Max(_calculationSpeed * minimumSpeedPercentage, _calculationSpeed * (1 - _currentProgress));
             yield return null;
         }
     }
-    
+
     private IEnumerator EaseIn()
     {
+        print("Early Test");
         while (_currentProgress <= 1)
         {
-            _speed = Mathf.Max(originalSpeed * minimumSpeedPercentage, originalSpeed * (_currentProgress + easeInTolerance));
+            print("Test");
+            _speed = Mathf.Max(_calculationSpeed * minimumSpeedPercentage, _calculationSpeed * (_currentProgress + easeInTolerance));
             yield return null;
         }
+    }
+
+    private void SetSpeed(float f)
+    {
+        f = f / 100;
+        _speed = f;
+        _calculationSpeed = f;
     }
 }

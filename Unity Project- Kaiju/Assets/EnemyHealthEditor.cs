@@ -9,13 +9,11 @@ public class EnemyHealthEditor : Editor
     {
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Enemy Death"))
+        if (!GUILayout.Button("Enemy Death")) return;
+        foreach (var targetObject in targets)
         {
-            foreach (var targetObject in targets)
-            {
-                var enemyHealth = (EnemyHealth)targetObject;
-                enemyHealth.EnemyDeath();
-            }
+            var enemyHealth = (EnemyHealth)targetObject;
+            enemyHealth.EnemyDeath();
         }
     }
 }

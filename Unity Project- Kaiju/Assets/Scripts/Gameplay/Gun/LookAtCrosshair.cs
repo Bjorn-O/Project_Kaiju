@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LookAtCrosshair : MonoBehaviour
 {
-    [SerializeField] private Canvas canvas;
     [SerializeField] private Transform target;
+    [SerializeField] private float rotationSpeed = 10f;
 
     private Transform _gun;
 
@@ -16,6 +16,9 @@ public class LookAtCrosshair : MonoBehaviour
 
     private void Update()
     {
-        _gun.LookAt(target);
+        var targetDir = target.position - _gun.position;
+        var targetRot = Quaternion.LookRotation(targetDir);
+        
+        transform.rotation = Quaternion.Slerp(_gun.rotation, targetRot, rotationSpeed * Time.deltaTime);
     }
 }

@@ -64,9 +64,9 @@ namespace Systems.Waypoints
                 for (var i = 0; i <= gizmoLines; i++)
                 {
                     var x = (1f / gizmoLines) * i;
-                    Gizmos.DrawLine(lastPos, waypoint.GetPath().ReturnPosition(x));
+                    Gizmos.DrawLine(lastPos, waypoint.GetPath().ReturnCalculatedPosition(x));
                     Gizmos.color = Color.green;
-                    lastPos = waypoint.GetPath().ReturnPosition(x);
+                    lastPos = waypoint.GetPath().ReturnCalculatedPosition(x);
                 }
                 
                 

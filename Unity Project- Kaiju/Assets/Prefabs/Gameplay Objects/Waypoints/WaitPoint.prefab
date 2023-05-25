@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2394604794307806617}
   - component: {fileID: 5038762907827271585}
+  - component: {fileID: 5463367409982904500}
   m_Layer: 0
   m_Name: WaitPoint
   m_TagString: Untagged
@@ -50,3 +51,32 @@ MonoBehaviour:
   curveStrength: 0
   speed: 0
   hasPath: 0
+--- !u!114 &5463367409982904500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135428465345510584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a21040163daa241ad95dcd2460c97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints: []
+  waves: []
+  onLastWaveCompleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5038762907827271585}
+        m_TargetAssemblyTypeName: WaitPoint, Assembly-CSharp
+        m_MethodName: SetContinue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

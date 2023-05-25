@@ -13,13 +13,13 @@ public class GunFire : MonoBehaviour
     [SerializeField] private LayerMask shootAbleLayer;
     [SerializeField] private Transform muzzlePoint;
     [SerializeField] private VisualEffect shootEffect;
-    
+
+    [SerializeField] private float damagePerShot;
     [SerializeField] private float fireRatePerSecond;
 
     AudioManager audioManager;
 
     private RaycastHit _hit;
-    private int i;
 
 
     private void OnFire(InputValue value)
@@ -40,25 +40,17 @@ public class GunFire : MonoBehaviour
     private void Pew()
     {
         shootEffect.Play();
-        if (Physics.Raycast(muzzlePoint.position, muzzlePoint.forward, out _hit, shootAbleLayer))
+        if (Physics.Raycast(muzzlePoint.position, muzzlePoint.forward, out _hit, Mathf.Infinity, shootAbleLayer))
         {
-            //Debug.Log(_hit.transform.name);
-
             var enemy = _hit.transform.GetComponentInParent<EnemyHealth>();
-            if(enemy != null && enemy.CompareTag("EnemyMain"))
+            if(enemy != null && enemy.CompareTag("Enemy"))
             {
-                enemy.TakeDamage(50);
+                enemy.TakeDamage(damagePerShot);
                 hitMarker.Hit();
-            }           
-            else if (enemy != null && enemy.CompareTag("Enemy"))
-            {
-                enemy.TakeDamage(33);
-                hitMarker.Hit();
+                print("HIT!");
             }
-
         }
         recoil.RecoilOnFire();
         audioManager.Play("Shoot");
-        //Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward, Color.red);
     }
 }

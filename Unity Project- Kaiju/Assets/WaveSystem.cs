@@ -16,10 +16,9 @@ public class WaveSystem : MonoBehaviour
     public List<Transform> spawnPoints;
     public List<Wave> waves;
 
-    public UnityEvent OnLastWaveCompleted;
+    public UnityEvent onLastWaveCompleted;
 
     private int _currentWaveIndex = 0;
-    private bool _isSpawning = false;
     private bool _isWaveActive = false;
     private List<Transform> _availableSpawnPoints;
     private int _enemyCount;
@@ -38,7 +37,7 @@ public class WaveSystem : MonoBehaviour
         _availableSpawnPoints.Clear();
         _availableSpawnPoints.AddRange(spawnPoints);
 
-        for (int i = 0; i < wave.count; i++)
+        for (var i = 0; i < wave.count; i++)
         {
             if (_availableSpawnPoints.Count == 0)
             {
@@ -46,11 +45,11 @@ public class WaveSystem : MonoBehaviour
                 yield break;
             }
 
-            int randomIndex = Random.Range(0, _availableSpawnPoints.Count);
-            Transform spawnPoint = _availableSpawnPoints[randomIndex];
+            var randomIndex = Random.Range(0, _availableSpawnPoints.Count);
+            var spawnPoint = _availableSpawnPoints[randomIndex];
             _availableSpawnPoints.RemoveAt(randomIndex);
 
-            GameObject enemy = Instantiate(wave.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            var enemy = Instantiate(wave.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
             var enemyHealth = enemy.GetComponent<EnemyHealth>();
 
             // Subscribe to the enemy's OnDeath event using a delegate
@@ -65,34 +64,20 @@ public class WaveSystem : MonoBehaviour
         enemyHealth.OnDeath.RemoveListener(() => HandleEnemyDeath(enemyHealth)); // Unsubscribe from the event
 
         _enemyCount--;
+        print("Enemy count");
+        if (_enemyCount > 0 || !_isWaveActive) return;
+        print("Check passed");
+        _isWaveActive = false;
+        _currentWaveIndex++;
 
-        if (_enemyCount <= 0 && _isWaveActive)
-        {
-            _isWaveActive = false;
-            _currentWaveIndex++;
-            _isSpawning = false;
 
-            if (_currentWaveIndex >= waves.Count)
-            {
-                OnLastWaveCompleted.Invoke();
-            }
-        }
-    }
-
-    private void Update()
-    {
-        if (_isSpawning || _currentWaveIndex >= waves.Count || _isWaveActive)
-        {
-            return;
-        }
+        if (_currentWaveIndex >= waves.Count) onLastWaveCompleted.Invoke();
+        else StartCoroutine(SpawnWave(waves[_currentWaveIndex]));
     }
 
     public void StartFirstWave()
     {
-        if (_currentWaveIndex == 0)
-        {
-            StartCoroutine(SpawnWave(waves[_currentWaveIndex]));
-            _isSpawning = true;
-        }
+        if (_currentWaveIndex != 0) return;
+        StartCoroutine(SpawnWave(waves[_currentWaveIndex]));
     }
 }
