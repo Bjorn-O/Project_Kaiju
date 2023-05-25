@@ -24,7 +24,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Gun"",
+            ""name"": ""OnRail"",
             ""id"": ""0427f45c-ce4b-489b-b4ec-18d46ed99449"",
             ""actions"": [
                 {
@@ -41,6 +41,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""e329acf7-0a6b-4089-8ddd-052cff6de12a"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""ca6da8b5-891b-4f56-b34b-da2082a6de56"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -68,16 +77,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""A/D"",
+                    ""id"": ""7fc56a16-4395-46fa-ad1e-a468df63677a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""9f46c58a-8c33-49d5-949e-f3a60cb5c126"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8f2647a2-64b5-436f-a111-f1519bd7521c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Gun
-        m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
-        m_Gun_MouseLook = m_Gun.FindAction("MouseLook", throwIfNotFound: true);
-        m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
+        // OnRail
+        m_OnRail = asset.FindActionMap("OnRail", throwIfNotFound: true);
+        m_OnRail_MouseLook = m_OnRail.FindAction("MouseLook", throwIfNotFound: true);
+        m_OnRail_Fire = m_OnRail.FindAction("Fire", throwIfNotFound: true);
+        m_OnRail_Rotate = m_OnRail.FindAction("Rotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -134,34 +177,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Gun
-    private readonly InputActionMap m_Gun;
-    private IGunActions m_GunActionsCallbackInterface;
-    private readonly InputAction m_Gun_MouseLook;
-    private readonly InputAction m_Gun_Fire;
-    public struct GunActions
+    // OnRail
+    private readonly InputActionMap m_OnRail;
+    private IOnRailActions m_OnRailActionsCallbackInterface;
+    private readonly InputAction m_OnRail_MouseLook;
+    private readonly InputAction m_OnRail_Fire;
+    private readonly InputAction m_OnRail_Rotate;
+    public struct OnRailActions
     {
         private @PlayerControls m_Wrapper;
-        public GunActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MouseLook => m_Wrapper.m_Gun_MouseLook;
-        public InputAction @Fire => m_Wrapper.m_Gun_Fire;
-        public InputActionMap Get() { return m_Wrapper.m_Gun; }
+        public OnRailActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MouseLook => m_Wrapper.m_OnRail_MouseLook;
+        public InputAction @Fire => m_Wrapper.m_OnRail_Fire;
+        public InputAction @Rotate => m_Wrapper.m_OnRail_Rotate;
+        public InputActionMap Get() { return m_Wrapper.m_OnRail; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GunActions set) { return set.Get(); }
-        public void SetCallbacks(IGunActions instance)
+        public static implicit operator InputActionMap(OnRailActions set) { return set.Get(); }
+        public void SetCallbacks(IOnRailActions instance)
         {
-            if (m_Wrapper.m_GunActionsCallbackInterface != null)
+            if (m_Wrapper.m_OnRailActionsCallbackInterface != null)
             {
-                @MouseLook.started -= m_Wrapper.m_GunActionsCallbackInterface.OnMouseLook;
-                @MouseLook.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnMouseLook;
-                @MouseLook.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnMouseLook;
-                @Fire.started -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
+                @MouseLook.started -= m_Wrapper.m_OnRailActionsCallbackInterface.OnMouseLook;
+                @MouseLook.performed -= m_Wrapper.m_OnRailActionsCallbackInterface.OnMouseLook;
+                @MouseLook.canceled -= m_Wrapper.m_OnRailActionsCallbackInterface.OnMouseLook;
+                @Fire.started -= m_Wrapper.m_OnRailActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_OnRailActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_OnRailActionsCallbackInterface.OnFire;
+                @Rotate.started -= m_Wrapper.m_OnRailActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_OnRailActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_OnRailActionsCallbackInterface.OnRotate;
             }
-            m_Wrapper.m_GunActionsCallbackInterface = instance;
+            m_Wrapper.m_OnRailActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @MouseLook.started += instance.OnMouseLook;
@@ -170,13 +218,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
             }
         }
     }
-    public GunActions @Gun => new GunActions(this);
-    public interface IGunActions
+    public OnRailActions @OnRail => new OnRailActions(this);
+    public interface IOnRailActions
     {
         void OnMouseLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
 }

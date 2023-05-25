@@ -4932,6 +4932,46 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4581353681644488592}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5095188663628846387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8728402682314281635, guid: f37ed62f809c9094ba4dbdb23b33ae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 4581353681644488592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4000496428750581644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5095188663628846387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &4581353682378178371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5100,7 +5140,7 @@ PrefabInstance:
     - target: {fileID: 2767752834042224478, guid: 9b525d36d714f6b4b93b3ec0524d683d,
         type: 3}
       propertyPath: m_Name
-      value: PlayableBoat
+      value: PlayableBoat Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2767752834042224478, guid: 9b525d36d714f6b4b93b3ec0524d683d,
         type: 3}
@@ -5188,9 +5228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f282889145d0b43be5e23ac2f555e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wp: {fileID: 0}
-  i: 0
-  totalWaypoints: 12
   speed: 10
 --- !u!4 &1872710672168957965 stripped
 Transform:

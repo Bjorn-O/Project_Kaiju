@@ -7,17 +7,17 @@ using UnityEngine.VFX;
 
 public class GunFire : MonoBehaviour
 {
-    [SerializeField] private Hitmarker hitmarker;
+    [SerializeField] private Hitmarker hitMarker;
     [SerializeField] private Recoil recoil;
 
-    [FormerlySerializedAs("shootAble")] [SerializeField] private LayerMask shootAbleLayer;
+    [SerializeField] private LayerMask shootAbleLayer;
     [SerializeField] private Transform muzzlePoint;
     [SerializeField] private VisualEffect shootEffect;
-    
+
+    [SerializeField] private float damagePerShot;
     [SerializeField] private float fireRatePerSecond;
 
     private RaycastHit _hit;
-    private int i;
 
 
     private void OnFire(InputValue value)
@@ -34,25 +34,17 @@ public class GunFire : MonoBehaviour
     private void Pew()
     {
         shootEffect.Play();
-        if (Physics.Raycast(muzzlePoint.position, muzzlePoint.forward, out _hit, shootAbleLayer))
+        if (Physics.Raycast(muzzlePoint.position, muzzlePoint.forward, out _hit, Mathf.Infinity, shootAbleLayer))
         {
-            //Debug.Log(_hit.transform.name);
-
-            EnemyHealth enemy = _hit.transform.GetComponentInParent<EnemyHealth>();
-            if(enemy != null && enemy.tag == "EnemyMain")
+            var enemy = _hit.transform.GetComponentInParent<EnemyHealth>();
+            if(enemy != null && enemy.CompareTag("Enemy"))
             {
-                enemy.TakeDamage(50);
-                hitmarker.Hit();
-            }           
-            else if (enemy != null && enemy.tag == "Enemy")
-            {
-                enemy.TakeDamage(33);
-                hitmarker.Hit();
+                enemy.TakeDamage(damagePerShot);
+                hitMarker.Hit();
+                print("HIT!");
             }
-
         }
         recoil.RecoilOnFire();
         //Play Sound effect
-        //Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward, Color.red);
     }
 }

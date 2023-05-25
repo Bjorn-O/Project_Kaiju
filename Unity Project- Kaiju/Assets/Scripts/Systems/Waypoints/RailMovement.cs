@@ -1,58 +1,115 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using Systems.Waypoints;
 using UnityEngine;
 
-
 public class RailMovement : MonoBehaviour
 {
-    public float speed;
-    
+    [Range(1f, 5f)]
+    [SerializeField] private float originalSpeed;
+    [SerializeField] private float easeInTolerance = 0.1f;
+    [Range(0.1f, 1.0f)]
+    [SerializeField] private float minimumSpeedPercentage;
+
     private Waypoint _currentWaypoint;
+    private bool _updatingWaypoint;
+    private bool _continue = true;
+    private float _speed;
     private float _currentProgress;
-    private float _waypointDistance;
+    private float _calculationSpeed;
     
     private void Start()
     {
+        _continue = true;
         _currentWaypoint = WayPointManager.Instance.GetWaypoint();
         _currentProgress = 0;
+        SetSpeed(originalSpeed);
     }
 
-    private void UpdatePath()
+    private async void UpdateWaypoint()
     {
-        _currentWaypoint = WayPointManager.Instance.GetWaypoint(_currentWaypoint);
-        _waypointDistance = _currentWaypoint.distance;
+        _updatingWaypoint = true;
+        var wayPoint = WayPointManager.Instance.GetWaypoint(_currentWaypoint);
+        wayPoint.arrivalEvent?.Invoke();
+        if (!WayPointManager.Instance.RequestToContinue(wayPoint))
+        {
+            _continue = false;
+            _updatingWaypoint = false;
+            return;
+        }
+        _currentProgress = 0;
         
+        switch (wayPoint)
+        {
+            case Brakepoint:
+                StartCoroutine(EaseOut());
+                break;
+            
+            case Splitpoint splitPoint:
+                wayPoint = splitPoint.ReturnIntendedPoint();
+                break;
+            
+            case WaitPoint waitPoint:
+                await waitPoint.WaitForGreenLight();
+                StartCoroutine(EaseIn());
+                break;
+            
+            default:
+                if (_speed < _calculationSpeed) StartCoroutine(EaseIn()); 
+                break;
+        }
+        SetWaypoint(wayPoint);
+        _updatingWaypoint = false;
     }
 
     private void Update()
     {
-        if (!_currentWaypoint) return;
-        transform.position = _currentWaypoint.GetPath().ReturnPosition(_currentProgress);
-        _currentProgress += 0.01f * Time.deltaTime * (speed / _waypointDistance);
-        transform.LookAt(_currentWaypoint.GetPath().ReturnPosition(_currentProgress));
-        if (!(_currentProgress >= 1)) return;
-        UpdatePath();
-        _currentProgress = 0;
+        if (!_continue) return;
+        if (_currentWaypoint && _currentProgress <= 1f && !_updatingWaypoint)
+        {
+            transform.position = _currentWaypoint.GetPath().ReturnCalculatedPosition(_currentProgress);
+            var oldProgress = _currentProgress;
+            var distance = _currentWaypoint.GetPath().CalculateDistance(oldProgress, _currentProgress) + 0.1f;
+            var step = _speed / distance * Time.deltaTime;
+
+            _currentProgress += step; 
+            transform.LookAt(_currentWaypoint.GetPath().ReturnCalculatedPosition(_currentProgress));
+            return;
+        }
+        if (!_updatingWaypoint)
+        {
+            UpdateWaypoint();
+        }
     }
 
-    // private void Update()
-    // {
-    //     
-    //     //if(Vector3.Distance(transform.position, wp.waypoints[i].transform.position) == 0f)
-    //     //{
-    //     //    i++;
-    //         
-    //     //    print(i);
-    //     //}
-    //     //if(i >= totalWaypoints)
-    //     //{
-    //     //    i = 0;
-    //     //}
-    //     //print("Current Waypoint coörds = " + wp.waypoints[i].transform.position);
-    //     //transform.LookAt(wp.waypoints[i].transform);
-    //     //transform.position = Vector3.MoveTowards(transform.position, wp.waypoints[i].transform.position, speed * Time.deltaTime);
-    // }
+    private void SetWaypoint(Waypoint point)
+    {
+        _currentWaypoint = point;
+    }
+
+    private IEnumerator EaseOut()
+    {
+        while (_currentProgress <= 1)
+        {
+            _speed = Mathf.Max(_calculationSpeed * minimumSpeedPercentage, _calculationSpeed * (1 - _currentProgress));
+            yield return null;
+        }
+    }
+    
+    private IEnumerator EaseIn()
+    {
+        print("Early Test");
+        while (_currentProgress <= 1)
+        {
+            print("Test");
+            _speed = Mathf.Max(_calculationSpeed * minimumSpeedPercentage, _calculationSpeed * (_currentProgress + easeInTolerance));
+            yield return null;
+        }
+    }
+
+    private void SetSpeed(float f)
+    {
+        f = f / 100;
+        _speed = f;
+        _calculationSpeed = f;
+    }
 }

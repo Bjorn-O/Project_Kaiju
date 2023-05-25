@@ -439,7 +439,7 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 80
+    m_Value: 8.78
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -525,7 +525,7 @@ MonoBehaviour:
     m_Value: {x: 0.95, y: 1, z: 0.985, w: -0.15717268}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.94, z: 0.8, w: 0}
+    m_Value: {x: 1, y: 0.94, z: 0.8, w: 0.09080591}
 --- !u!114 &-648568232700621518
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -896,7 +896,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.23
+    m_Value: 0.257
   smoothness:
     m_OverrideState: 1
     m_Value: 0.303
@@ -936,10 +936,10 @@ MonoBehaviour:
     m_Value: {r: 1.835294, g: 1.835294, b: 1.835294, a: 1}
   hueShift:
     m_OverrideState: 1
-    m_Value: -27
+    m_Value: -17
   saturation:
     m_OverrideState: 1
-    m_Value: -42.1
+    m_Value: -28
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,15 +983,15 @@ MonoBehaviour:
     m_Value: 1
   focusMode:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   focusDistance:
     m_OverrideState: 1
-    m_Value: 1.8
+    m_Value: 451.7
   focusDistanceMode:
     m_OverrideState: 0
     m_Value: 0
   nearFocusStart:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   nearFocusEnd:
     m_OverrideState: 1

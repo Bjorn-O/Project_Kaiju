@@ -44,7 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a605baee93932d64d9d52d67611acf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypointsList: []
+  waypointsList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isLoop: 0
   gizmoLines: 16
   waypointGameObject: {fileID: 3995583817961953724, guid: 87443128d72d0564a871a287298d4be3,
+    type: 3}
+  brakePointGameObject: {fileID: 782285843327130811, guid: b5d3df40871bd8b48997455a8304aea8,
+    type: 3}
+  splitPointGameObject: {fileID: 1820055223496130882, guid: dcecc4f099a3f22439ef41bcddbce92b,
+    type: 3}
+  waitPointGameObject: {fileID: 1135428465345510584, guid: cb8f6600147ed1d4799a0d6460bd063f,
     type: 3}
