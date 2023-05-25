@@ -75,6 +75,7 @@ public class RailMovement : MonoBehaviour
         if (_currentWaypoint && _currentProgress <= 1f && !_updatingWaypoint)
         {
             transform.position = _currentWaypoint.GetPath().ReturnCalculatedPosition(_currentProgress);
+            //TODO: Fix oversight on this bit of code, currently non-functional distance calculation
             var oldProgress = _currentProgress;
             var distance = _currentWaypoint.GetPath().CalculateDistance(oldProgress, _currentProgress) + 0.1f;
             var step = _speed / distance * Time.deltaTime;
