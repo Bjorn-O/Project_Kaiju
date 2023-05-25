@@ -24,6 +24,7 @@ public class BezierPath
 
     }
     
+    //TODO: Fuse the constructor and UpdatePath into one. Double code
     public void UpdatePath(Transform startPosition, Transform endPosition, float amplifier)
     {
         _pos0 = startPosition.position;
