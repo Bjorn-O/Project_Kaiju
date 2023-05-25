@@ -8,9 +8,6 @@ public class BezierPath
     private Vector3 _pos1;
     private Vector3 _pos2;
     private Vector3 _pos3;
-
-    private bool pleaseRecompilesigh;
-    
     
     public static BezierPath CreateInstance(Transform startPosition, Transform endPosition)
     {
