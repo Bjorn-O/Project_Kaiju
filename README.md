@@ -3,6 +3,16 @@
 
 # Geproduceerde Game Onderdelen
 
+Bjorn:
+* [Waypoint Manager](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Systems/Waypoints/WayPointManager.cs)
+* [Waypoint](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Systems/Waypoints/Waypoint%20Types/Waypoint.cs)
+* [Bezier Paths](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Systems/Waypoints/BezierPath.cs)
+* [RailMovement](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Systems/Waypoints/RailMovement.cs)
+* [Crosshair Movement](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Gameplay/Gun/CrosshairMovement.cs)
+* [Gun Rotation](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Gameplay/Gun/LookAtCrosshair.cs)
+* [PlayerManager](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Systems/Networking/PlayerManager.cs)
+* [ClientManager](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Systems/Networking/ClientManager.cs)
+* [TentacleAnimationManager](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Enemies/TentacleAnimatorManager.cs)
 
 Riley:
 * [overheat mechanic](https://github.com/Bjorn-O/Project_Kaiju/tree/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Gameplay/Ammo)
