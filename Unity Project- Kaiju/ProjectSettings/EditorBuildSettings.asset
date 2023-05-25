@@ -5,7 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/OutdoorsScene.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
-  m_configObjects: {}
+    path: Assets/Scenes/Test Scenes/Networking - Tes Scene.unity
+    guid: 6ad44947bf3ab6f4d863ec142ac52ff7
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/Feature_MenuTest.unity
+    guid: fc94dea4b5b25584d95d70e7b3a341c8
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 8e8fd32fc9d7ad94c8e837d70478d7d8,
+      type: 2}

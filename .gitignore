@@ -9,8 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-/Unity Project- Kaiju_clone_1/
 /Unity Project- Kaiju_clone_0/
+/Unity Project- Kaiju_clone_1/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -60,3 +60,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Unity Project- Kaiju/UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+Unity Project- Kaiju/UserSettings/Layouts/default-2021.dwlt
+Unity Project- Kaiju/UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+Unity Project- Kaiju/UserSettings/Layouts/default-2021.dwlt
