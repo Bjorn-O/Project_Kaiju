@@ -11,16 +11,18 @@ public class RailMovement : MonoBehaviour
     [SerializeField] private float minimumSpeedPercentage;
 
     private Waypoint _currentWaypoint;
+    private AudioManager audioManager;
     private bool _updatingWaypoint;
     private bool _continue = true;
     private float _speed;
     private float _currentProgress;
     private float _calculationSpeed;
-    
+
     private void Start()
     {
         _continue = true;
         _currentWaypoint = WayPointManager.Instance.GetWaypoint();
+        audioManager = FindObjectOfType<AudioManager>();
         _currentProgress = 0;
         SetSpeed(originalSpeed);
     }
@@ -37,24 +39,30 @@ public class RailMovement : MonoBehaviour
             return;
         }
         _currentProgress = 0;
-        
+
         switch (wayPoint)
         {
             case Brakepoint:
+                audioManager.Play("BoatAccelStop");
                 StartCoroutine(EaseOut());
                 break;
-            
+
             case Splitpoint splitPoint:
                 wayPoint = splitPoint.ReturnIntendedPoint();
                 break;
-            
+
             case WaitPoint waitPoint:
                 await waitPoint.WaitForGreenLight();
+                audioManager.Play("BoatAccelStart");
                 StartCoroutine(EaseIn());
                 break;
-            
+
             default:
-                if (_speed < _calculationSpeed) StartCoroutine(EaseIn()); 
+                if (_speed < originalSpeed)
+                {
+                    audioManager.Play("BoatAccelStart");
+                    StartCoroutine(EaseIn());
+                }
                 break;
         }
         SetWaypoint(wayPoint);
@@ -71,7 +79,7 @@ public class RailMovement : MonoBehaviour
             var distance = _currentWaypoint.GetPath().CalculateDistance(oldProgress, _currentProgress) + 0.1f;
             var step = _speed / distance * Time.deltaTime;
 
-            _currentProgress += step; 
+            _currentProgress += step;
             transform.LookAt(_currentWaypoint.GetPath().ReturnCalculatedPosition(_currentProgress));
             return;
         }
@@ -94,7 +102,7 @@ public class RailMovement : MonoBehaviour
             yield return null;
         }
     }
-    
+
     private IEnumerator EaseIn()
     {
         print("Early Test");

@@ -8,9 +8,9 @@ public class Sound
     public AudioClip audioClip;
 
     [Range(0f, 1f)]
-    public float volume;
+    public float volume = 1;
     [Range(0f, 1f)]
-    public float pitch;
+    public float pitch = 1;
 
     public bool loop;
 
