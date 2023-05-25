@@ -46,7 +46,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Drift"",
+                    ""name"": ""Rotate"",
                     ""type"": ""Value"",
                     ""id"": ""ca6da8b5-891b-4f56-b34b-da2082a6de56"",
                     ""expectedControlType"": ""Axis"",
@@ -85,7 +85,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drift"",
+                    ""action"": ""Rotate"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -96,7 +96,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drift"",
+                    ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -107,7 +107,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drift"",
+                    ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -120,7 +120,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_OnRail = asset.FindActionMap("OnRail", throwIfNotFound: true);
         m_OnRail_MouseLook = m_OnRail.FindAction("MouseLook", throwIfNotFound: true);
         m_OnRail_Fire = m_OnRail.FindAction("Fire", throwIfNotFound: true);
-        m_OnRail_Drift = m_OnRail.FindAction("Drift", throwIfNotFound: true);
+        m_OnRail_Rotate = m_OnRail.FindAction("Rotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -182,14 +182,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IOnRailActions m_OnRailActionsCallbackInterface;
     private readonly InputAction m_OnRail_MouseLook;
     private readonly InputAction m_OnRail_Fire;
-    private readonly InputAction m_OnRail_Drift;
+    private readonly InputAction m_OnRail_Rotate;
     public struct OnRailActions
     {
         private @PlayerControls m_Wrapper;
         public OnRailActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @MouseLook => m_Wrapper.m_OnRail_MouseLook;
         public InputAction @Fire => m_Wrapper.m_OnRail_Fire;
-        public InputAction @Drift => m_Wrapper.m_OnRail_Drift;
+        public InputAction @Rotate => m_Wrapper.m_OnRail_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_OnRail; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -205,9 +205,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_OnRailActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_OnRailActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_OnRailActionsCallbackInterface.OnFire;
-                @Drift.started -= m_Wrapper.m_OnRailActionsCallbackInterface.OnDrift;
-                @Drift.performed -= m_Wrapper.m_OnRailActionsCallbackInterface.OnDrift;
-                @Drift.canceled -= m_Wrapper.m_OnRailActionsCallbackInterface.OnDrift;
+                @Rotate.started -= m_Wrapper.m_OnRailActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_OnRailActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_OnRailActionsCallbackInterface.OnRotate;
             }
             m_Wrapper.m_OnRailActionsCallbackInterface = instance;
             if (instance != null)
@@ -218,9 +218,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
-                @Drift.started += instance.OnDrift;
-                @Drift.performed += instance.OnDrift;
-                @Drift.canceled += instance.OnDrift;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
             }
         }
     }
@@ -229,6 +229,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnMouseLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
-        void OnDrift(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
 }

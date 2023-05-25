@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Drift",
+                    "name": "Rotate",
                     "type": "Value",
                     "id": "ca6da8b5-891b-4f56-b34b-da2082a6de56",
                     "expectedControlType": "Axis",
@@ -63,7 +63,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Drift",
+                    "action": "Rotate",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -74,7 +74,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Drift",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -85,7 +85,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Drift",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

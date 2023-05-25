@@ -64,15 +64,15 @@ public class WaveSystem : MonoBehaviour
         enemyHealth.OnDeath.RemoveListener(() => HandleEnemyDeath(enemyHealth)); // Unsubscribe from the event
 
         _enemyCount--;
-
+        print("Enemy count");
         if (_enemyCount > 0 || !_isWaveActive) return;
+        print("Check passed");
         _isWaveActive = false;
         _currentWaveIndex++;
 
-        if (_currentWaveIndex >= waves.Count)
-        {
-            onLastWaveCompleted.Invoke();
-        }
+
+        if (_currentWaveIndex >= waves.Count) onLastWaveCompleted.Invoke();
+        else StartCoroutine(SpawnWave(waves[_currentWaveIndex]));
     }
 
     public void StartFirstWave()

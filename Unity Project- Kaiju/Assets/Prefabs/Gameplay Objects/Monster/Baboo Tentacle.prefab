@@ -437,6 +437,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6754775397125212636}
   - component: {fileID: 3207379847802432747}
+  - component: {fileID: 2463594501163625838}
+  - component: {fileID: 6103650423872266517}
   m_Layer: 6
   m_Name: Baboo Tentacle
   m_TagString: Enemy
@@ -479,7 +481,45 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6103650423872266517}
+        m_TargetAssemblyTypeName: TentacleAnimatorManager, Assembly-CSharp
+        m_MethodName: DeathAnimTrigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2463594501163625838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207379847802432744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d752168289416714e8228e1ca561433c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6103650423872266517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207379847802432744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6065e497b912a6e419a8ea7c19d50aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4492001252051831303}
+  glowMaterial: {fileID: 0}
 --- !u!1 &3583244058120447324
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,7 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a605baee93932d64d9d52d67611acf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypointsList: []
+  waypointsList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isLoop: 0
   gizmoLines: 16
   waypointGameObject: {fileID: 3995583817961953724, guid: 87443128d72d0564a871a287298d4be3,
     type: 3}
