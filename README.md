@@ -22,8 +22,8 @@ Riley:
 * [Overheat mechanic](https://github.com/Bjorn-O/Project_Kaiju/tree/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Gameplay/Ammo) [Unused]
 
 Jori:
-* Link toevoegen [Attack systeem]() [Unused]
-* Link toevoegen [Main menu]() [Unused]
+* [Attack systeem](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/AI/AttackSystem.cs) [Unused]
+* [Main menu](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Systems/UI/ButtonManager.cs) [Unused]
 
 # overheat mechanic
 
