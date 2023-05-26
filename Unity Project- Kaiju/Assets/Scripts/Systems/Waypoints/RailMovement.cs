@@ -106,10 +106,8 @@ public class RailMovement : MonoBehaviour
 
     private IEnumerator EaseIn()
     {
-        print("Early Test");
         while (_currentProgress <= 1)
         {
-            print("Test");
             _speed = Mathf.Max(_calculationSpeed * minimumSpeedPercentage, _calculationSpeed * (_currentProgress + easeInTolerance));
             yield return null;
         }

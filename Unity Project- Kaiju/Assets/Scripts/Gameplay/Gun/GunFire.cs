@@ -17,7 +17,7 @@ public class GunFire : MonoBehaviour
     [SerializeField] private float damagePerShot;
     [SerializeField] private float fireRatePerSecond;
 
-    AudioManager audioManager;
+    private AudioManager audioManager;
 
     private RaycastHit _hit;
 
@@ -47,7 +47,6 @@ public class GunFire : MonoBehaviour
             {
                 enemy.TakeDamage(damagePerShot);
                 hitMarker.Hit();
-                print("HIT!");
             }
         }
         recoil.RecoilOnFire();

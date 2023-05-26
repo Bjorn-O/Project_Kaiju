@@ -5,12 +5,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
-    Sound start;
-    Sound loop;
+    private Sound start;
+    private Sound loop;
 
-    void Awake()
+    private void Awake()
     {
-        foreach (Sound s in sounds)
+        foreach (var s in sounds)
         {
             s.audioSource = gameObject.AddComponent<AudioSource>();
             s.audioSource.clip = s.audioClip;
@@ -27,32 +27,31 @@ public class AudioManager : MonoBehaviour
     public void Play(string name)// to play the music you need to referance this function in the script where you want to play it with as paramater the name of the sound
     {
 
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        var s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
-        {
+        { 
             Debug.LogWarning("sound " + name + " not found");
             return;
         }
 
-        if (name == "BoatAccelStart")
+        switch (name)
         {
-            StartCoroutine(AccelStart());
-            return;
+            case "BoatAccelStart":
+                StartCoroutine(AccelStart());
+                return;
+            case "BoatAccelStop":
+                start.audioSource.Stop();
+                loop.audioSource.Stop();
+                StopAllCoroutines();
+                s.audioSource.Play();
+                return;
+            default:
+                s.audioSource.Play();
+                break;
         }
-
-        if(name == "BoatAccelStop")
-        {
-            start.audioSource.Stop();
-            loop.audioSource.Stop();
-            StopAllCoroutines();
-            s.audioSource.Play();
-            return;
-        }
-
-        s.audioSource.Play();
     }
-        
-    IEnumerator AccelStart()
+
+    private IEnumerator AccelStart()
     {
         start.audioSource.Play();
         yield return new WaitForSeconds(2.3f);       
