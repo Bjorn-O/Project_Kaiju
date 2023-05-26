@@ -36,60 +36,34 @@ Jori:
 * [Attack systeem](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/AI/AttackSystem.cs) [Unused]
 * [Main menu](https://github.com/Bjorn-O/Project_Kaiju/blob/Develop/Unity%20Project-%20Kaiju/Assets/Scripts/Systems/UI/ButtonManager.cs) [Unused]
 
-# overheat mechanic
+# Waypoint System
 
-De overheat feature zorgt er voor dat de game gebalanced door de player niet oneindig te laten schieten
-Om het telaten werken voeg je het script toe aan de gun en in de shooting script moet bij de shooting function de fire function hebben ook zijn er 2 events die er invooked worden wanneer hij overheated is en wanneer hij weer afgekoeld is je lan ook in de inspecter de floats van de heatthreshold aanpassen om het spel anders te blanceren
+Het Waypoint system is een complex system dat bestaat uit 4 classes, de Waypoint Manager, de Waypoint en variaties, de Bezier Path en de Railmovement. Gezamelijk maakt het voor een flexibel en dynamisch systeem om de speler door het level te begeleiden. De Waypoint Manager is de singleton die aan het hoofd van alles zit, die roept de Waypoints aan die de fysieke punten zijn in het level om daarna samen te komen in de Bezier Paths, die de wiskunden doen voor de gladde bochten. Uiteindelijk hebben we de RailMovement die via deze structuur alleen nieuwe posities aanvraagt en behaviour afspeelt liggend aan wat voor point hij op aankomt. 
 
-
-### flowchart voor overheat mechanic:
 ```mermaid
-graph TD;
-
-Start((Start)) --> A{Is firing?};
-A --> |Yes| B{Is overheated?};
-B --> |Yes| C[Cooldown];
-B --> |No| D{Is heat above threshold?};
-C --> D;
-D --> |Yes| E[Overheated];
-D --> |No| A;
-E --> F[Cooling down];
-F --> B;
-
+flowchart TD;
+      idUpdate((Update))-->idContinue{Can continue on rail\n and has a current waypoint?};
+      idContinue-->|Yes|idCompletedProgress{Is progress 100%?}
+      idCompletedProgress-->|No|idCallGetPath(Get path of current waypoint);
+      idCallGetPath-->idGetPathPos(Get position on path based on current progress);
+      idGetPathPos-->idSetObjPos(Set object postion to that position);
+      idSetObjPos-->idCalcStep(Add speed to current progress);
+      idCalcStep-->idLookAt(Let the object look at \nthe postion on the path based on \nthe new current progress);
+      idCompletedProgress-->|Yes|idCallOnArrival(Get next waypoint);
+      idCallOnArrival-->idNextWp(Call OnArrival);
+      idNextWp-->idCanContinue{Can Object continue?};
+      idCanContinue-->|No|idWaitContiue(Wait until can continue);
+      idWaitContiue-->idCanContinue;
+      idCanContinue-->|Yes|idCheckWpType{Check waypoint type};
+      idCheckWpType-->|Default|idSpeedLowCheck{Is speed lower than starting speed?};
+      idSpeedLowCheck-->|Yes|idEaseIn(Play boat accel sound and \nEaseIn to next waypoint);
+      idCheckWpType-->|BrakePoint|idEaseOut(Play boat stop sound and \nEaseOut to next waypoint);
+      idCheckWpType-->|SplitPoint|idSecondPathCheck{Does splitpoint have a second path?};
+      idSecondPathCheck-->|Yes|idSetNextWpSplit(Set next waypoint to \nthe second path waypoint);
+      idCheckWpType-->|WaitPoint|idWaitPoint(Wait until the waypoint \ngives the green light);
+      idCheckWpType-->idSetCp(Set current progress to 0);
+      idSetCp-->idSetCurrentWp(Set current waypoint to next waypoint);
 ```
-
-
-# Audio system
-
-De audio systeem zorgt voor alle audio in de game
-Je kan in de inspecter audioclips in de array van sounds op de plus klikken je kan dan een clip er aan toevoegen een naam geven en het volume van de clip aanpassen
-1.	De sounds array stamt af van een costum class genaamd Sound die hoef je nergens aan toe te voegen, die script zorgt voor de array van clips zodat ze allemaal een naam krijgen en andere vraiable kan aanpassen
-
-2.	audiomanager script toevoegen aan een gameobject. om een sound af te laten spelen moet je in een ander script waar je het geluidje van wil laten afspelen de Play(string name) functie aanroepen en de parameter moet de naam zijn van de sound die je hebt toegevoegd dus niet de audioclips naam zelf maar de naam die je hebt toegevoegd.
-
-
-
-### flowchart voor Audio manager:
-```mermaid
-flowchart TD
-    A(Start Execution) --> B(Declare sounds)
-    B --> C(On Awake )
-    C --> D{Loop through<br>sounds array}
-    D --> E[Add AudioSource component]
-    E --> F[Set AudioClip<br>for AudioSource]
-    F --> G[Set volume<br>for AudioSource]
-    G --> H[Set pitch<br>for AudioSource]
-    H --> I[Set loop<br>for AudioSource]
-    J(On Play paramater: string name)
-    J --> K[Find sound by<br>name in array]
-    K --> L{Check if sound<br>exists}
-    L --> M[Print warning<br>if sound not found]
-    L --> N[Play audio]
-    N --> O(End Execution)
-
-
-```
-
 
 # Health system
 
@@ -220,5 +194,57 @@ W --> X(Compute velocity)
 X --> Y(Update velocity)
 Y --> Z(Compute currentSpeed)
 Z --> A
+
+```
+# Audio system
+
+De audio systeem zorgt voor alle audio in de game
+Je kan in de inspecter audioclips in de array van sounds op de plus klikken je kan dan een clip er aan toevoegen een naam geven en het volume van de clip aanpassen
+1.	De sounds array stamt af van een costum class genaamd Sound die hoef je nergens aan toe te voegen, die script zorgt voor de array van clips zodat ze allemaal een naam krijgen en andere vraiable kan aanpassen
+
+2.	audiomanager script toevoegen aan een gameobject. om een sound af te laten spelen moet je in een ander script waar je het geluidje van wil laten afspelen de Play(string name) functie aanroepen en de parameter moet de naam zijn van de sound die je hebt toegevoegd dus niet de audioclips naam zelf maar de naam die je hebt toegevoegd.
+
+
+
+### flowchart voor Audio manager:
+```mermaid
+flowchart TD
+    A(Start Execution) --> B(Declare sounds)
+    B --> C(On Awake )
+    C --> D{Loop through<br>sounds array}
+    D --> E[Add AudioSource component]
+    E --> F[Set AudioClip<br>for AudioSource]
+    F --> G[Set volume<br>for AudioSource]
+    G --> H[Set pitch<br>for AudioSource]
+    H --> I[Set loop<br>for AudioSource]
+    J(On Play paramater: string name)
+    J --> K[Find sound by<br>name in array]
+    K --> L{Check if sound<br>exists}
+    L --> M[Print warning<br>if sound not found]
+    L --> N[Play audio]
+    N --> O(End Execution)
+
+
+```
+
+# Overheat Mechanic
+
+De overheat feature zorgt er voor dat de game gebalanced door de player niet oneindig te laten schieten
+Om het telaten werken voeg je het script toe aan de gun en in de shooting script moet bij de shooting function de fire function hebben ook zijn er 2 events die er invooked worden wanneer hij overheated is en wanneer hij weer afgekoeld is je lan ook in de inspecter de floats van de heatthreshold aanpassen om het spel anders te blanceren
+
+
+### flowchart voor overheat mechanic:
+```mermaid
+graph TD;
+
+Start((Start)) --> A{Is firing?};
+A --> |Yes| B{Is overheated?};
+B --> |Yes| C[Cooldown];
+B --> |No| D{Is heat above threshold?};
+C --> D;
+D --> |Yes| E[Overheated];
+D --> |No| A;
+E --> F[Cooling down];
+F --> B;
 
 ```
