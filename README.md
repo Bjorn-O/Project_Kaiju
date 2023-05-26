@@ -69,6 +69,23 @@ flowchart TD;
 
 De Gun Aim systeem werkt met twee componenten en een camera-space Canvas. Het is crosshair focused, dus het punt op de canvas is het punt het wapen naar wijst. Door de camera te bewegen naar links en rechts kunnen we dus een gun-rotatie verder de hoeken in emuleren. Gezamelijk met een gelimiteerde breedte en hoogte waarin de speler zijn crosshair kan bewegen, creëert het 3 speelvelden waarin je de encounters kan ontwerpen. 
 
+# Networking [Player Manager & Client Manager]
+
+
+
+```mermaid
+flowchart TD;
+  idStart([Hosting started])-->idGiveShip{Give host ship ownership};
+  idGiveShip-->idCheckOcc{Every occupation filled?};
+  idGunReq([Gun ownership request])-->idCheckHost{Is player the host?};
+  idCheckHost-->|No|idGiveGun[Give player gun ownership];
+  idGiveGun-->idCheckOcc;
+  idSpotlightReq([Spotlight ownership request])-->idCheckHost2{Is player the host?};
+  idCheckHost2-->|No|idGiveSpotlight[Give player spotlight ownership];
+  idGiveSpotlight-->idCheckOcc;
+  idCheckOcc-->|Yes|idEnd([Ready up every player]);
+  ```
+  
 
 # Health system
 
