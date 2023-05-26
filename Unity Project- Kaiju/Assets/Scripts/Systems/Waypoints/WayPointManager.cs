@@ -59,7 +59,10 @@ namespace Systems.Waypoints
             {
                 if(!isLoop && waypointsList.IsLast(waypoint) || waypoint.GetPath() == null) return;
                 var path = waypoint.GetPath();
-                path.UpdatePath(waypoint.GetTransform(), waypointsList.GetNextPossibleItem(waypoint).GetTransform(), waypoint.GetCurveStrength());
+                path.UpdatePath(
+                    waypoint.GetTransform(),
+                    waypointsList.GetNextPossibleItem(waypoint).GetTransform(),
+                    waypoint.GetCurveStrength());
                 var lastPos = waypoint.GetTransform().position;
                 for (var i = 0; i <= gizmoLines; i++)
                 {

@@ -1,5 +1,4 @@
-﻿using TreeEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BezierPath
 {
