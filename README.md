@@ -71,7 +71,7 @@ De Gun Aim systeem werkt met twee componenten en een camera-space Canvas. Het is
 
 # Networking [Player Manager & Client Manager]
 
-
+De Player Manager is een Singleton die bijhoud hoeveel spelers der verbonden zijn aan de host. Eens de host geopend is kan hij de verschillende clients verdelen in de rollen die beschkibaar zijn. Daarna zet het de juiste Netwerk Objecten met de juiste eigenaars.
 
 ```mermaid
 flowchart TD;
