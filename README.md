@@ -129,3 +129,96 @@ attack_cancelled -->|no|bounds_check(Check if player is inside the bounds of the
 return_marker --> turn_visible(Turn visible)
 bounds_check --> return_marker
 ``` 
+
+# Wave System
+De wave Systeem is gemaakt zodat je makkelijk via een list nieuwe waves kunt aan maken en de tegenstanders op verschillende spawn points kunt laten spawnen. aan het einde van de laatste wave kun je met events een functie aan roepen ( nu gebruiken wij dit om naar de volgende waypoint te gaan)
+
+### flowchart voor Wave System
+```mermaid
+graph TD
+A(Start) --> B(Create WaveSystem)
+B --> C(Set up spawn points)
+C --> D(Set up waves)
+D --> E(Set up onLastWaveCompleted event)
+E --> F(Initialize variables)
+F --> G(StartFirstWave)
+G --> H(Is first wave?)
+H -- Yes --> I(Spawn Wave)
+H -- No --> J(End)
+I --> K(Are there available spawn points?)
+K -- Yes --> L(Pick random spawn point)
+L --> M(Spawn enemy)
+M --> N(Subscribe to enemy's OnDeath event)
+N --> O(Decrease enemy count)
+O -- Enemy count > 0 --> M
+O -- Enemy count <= 0 --> P(Is wave active?)
+P -- Yes --> Q(Increment wave index)
+P -- No --> J
+Q --> R(Is last wave?)
+R -- Yes --> S(Fire onLastWaveCompleted event)
+R -- No --> I
+
+```
+
+# Monster Total Health
+Deze script wordt gebruikt om alle tentakels van de final boss hun health samen te voegen om te monsters total health te bepalen. het is ook geschreven dat als je de tentakels aanvalt gaat de totaal health ook omlaag en dat is ook sneller dan alleen het hoofd te schieten.
+
+### flowchart voor monster total health
+```mermaid
+graph TD
+A(Start) --> B(Find AudioManager)
+B --> C(Find Enemies)
+C --> D[For each Enemy]
+D --> E(Get EnemyHealth component)
+E --> F(Add listener for OnDamage event)
+F --> G(Add Enemy's max health to total max health)
+G --> H(Set Head's max health to total max health)
+H --> I(Add listener for Head's OnDamage event)
+I --> J(Set total current health to total max health)
+J --> K(Set healthbar's max health to total max health)
+J --> L(Print total enemy health)
+J --> M(Print current enemy health)
+K --> N(Take Total Damage)
+N --> O(Decrease total current health)
+O --> P(Update healthbar)
+P --> Q(Is total current health <= 0?)
+Q -- Yes --> R(Kill Head)
+Q -- No --> S(Continue)
+R --> S(Kill Tentacles)
+S --> C
+```
+
+# Ship Movement [Unused]
+Deze script is voor de gescrapte boot/sheep movement mechanics. De boot wordt van achteren naar voren geduwd om realistische sheep fysica te proberen emuleren. Ook heeft de boot een "Pivot point" die gebruikt wordt om em te sturen. dit doet ie door de boot in de tegengestelde richting van waar je naartoe wilt te duwen. de achterkant van het schip/boot draait dan in de richting dat de spelen naar toe wilt.
+### flowchart voor ship movement
+
+```mermaid
+graph TD
+A(Start) --> B(Get Components)
+B --> C(Set Input booleans)
+C --> D(Brake input)
+C --> E(Accelerate input)
+C --> F(Steering input)
+D --> G(Is Brake on?)
+E --> H(Is Accelerate on?)
+F --> I(Get Steer value)
+G -- Yes --> J(Set _isBraking to true)
+G -- No --> K(Set _isBraking to false)
+H -- Yes --> L(Set _isAccelerating to true)
+H -- No --> M(Set _isAccelerating to false)
+L --> N(Set fovOnAccelerate.accelerate to true)
+M --> O(Set fovOnAccelerate.accelerate to false)
+I --> P(Set _steer value)
+P --> Q(Get forward direction)
+Q --> R(Check if moving forward)
+R -- Yes --> S(Compute currentSpeed)
+R -- No --> T(Skip)
+S --> U(Rotate boat by applying force)
+U --> V(Accelerate boat)
+V --> W(Apply drag)
+W --> X(Compute velocity)
+X --> Y(Update velocity)
+Y --> Z(Compute currentSpeed)
+Z --> A
+
+```
