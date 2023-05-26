@@ -65,6 +65,11 @@ flowchart TD;
       idSetCp-->idSetCurrentWp(Set current waypoint to next waypoint);
 ```
 
+# Gun Aim
+
+De Gun Aim systeem werkt met twee componenten en een camera-space Canvas. Het is crosshair focused, dus het punt op de canvas is het punt het wapen naar wijst. Door de camera te bewegen naar links en rechts kunnen we dus een gun-rotatie verder de hoeken in emuleren. Gezamelijk met een gelimiteerde breedte en hoogte waarin de speler zijn crosshair kan bewegen, creëert het 3 speelvelden waarin je de encounters kan ontwerpen. 
+
+
 # Health system
 
 Het gezondheidssysteem biedt functionaliteit om de gezondheid van spelers en vijanden in een spel te beheren. Het stelt je in staat om gezondheidswaarden bij te houden en bij te werken, events te activeren bij veranderingen in de gezondheid de health system bestaat uit 3 scripts: playerhealth enemy health en IDamage
