@@ -32,6 +32,8 @@ public class RailSteering : MonoBehaviour
         _targetX += _steerDir * steeringSpeed * Time.deltaTime;
         _targetX = Mathf.Clamp(_targetX, -maxDistance, maxDistance);
 
+        Debug.Log(_targetX);
+
         _transform.localPosition = new Vector3(_targetX, 0, 0);
     }
 }
