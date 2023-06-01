@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour, IDamage
 {
@@ -32,8 +33,8 @@ public class EnemyHealth : MonoBehaviour, IDamage
         if (_isDead) return;
         
         currentHealth -= damage;
-        OnDamage.Invoke(damage);
-        if (!(currentHealth <= 0)) return;
+        OnDamage.Invoke(currentHealth);
+        if (!(currentHealth <= 0))  return;
         _isDead = true;
         EnemyDeath();
     }
