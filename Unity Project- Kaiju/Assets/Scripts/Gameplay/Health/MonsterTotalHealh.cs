@@ -32,7 +32,7 @@ public class MonsterTotalHealh : MonoBehaviour
 
         headHealth.OnDamage.AddListener(TakeTotalDamage);
         _totalCurrentHealth = _totalMaxHealth;
-        healthbar.SetMaxHealth(_totalMaxHealth);
+        //healthbar.SetMaxHealth(_totalMaxHealth);
 
         Debug.Log("Total enemy health: " + _totalMaxHealth);
         Debug.Log("Current enemy health: " + _totalCurrentHealth); 
